@@ -204,36 +204,178 @@
     });
   }
 
-  function initContactForm(root) {
-    var form = root.querySelector(".form-grid");
-    if (!form) return;
-    var button = form.querySelector('button[type="submit"]');
-    var status = root.getElementById("form-status");
 
-    // Form chưa nối backend/email thật (action="#") — đây chỉ là UX mô phỏng
-    // phía client. Cần nối API/email thật (vd Formspree hoặc backend riêng)
-    // trước khi release chính thức.
-    form.addEventListener("submit", function (event) {
-      event.preventDefault();
-      if (typeof form.checkValidity === "function" && !form.checkValidity()) {
-        if (typeof form.reportValidity === "function") form.reportValidity();
-        return;
+  // ---- lead source (landing page, referrer, UTM) --------------------------
+  // Ghi lại nguồn truy cập đầu tiên trong phiên để gắn vào mọi form lead.
+  // Chưa gửi đi đâu — sẵn sàng cho GA4/CRM khi nối backend.
+  function leadSource() {
+    var KEY = "cmb_src";
+    var data = null;
+    try { data = JSON.parse(sessionStorage.getItem(KEY) || "null"); } catch (e) {}
+    if (!data) {
+      var q = new URLSearchParams(location.search);
+      data = {
+        landing: location.pathname,
+        referrer: document.referrer || "direct",
+        utm_source: q.get("utm_source") || "",
+        utm_medium: q.get("utm_medium") || "",
+        utm_campaign: q.get("utm_campaign") || ""
+      };
+      try { sessionStorage.setItem(KEY, JSON.stringify(data)); } catch (e) {}
+    }
+    return data;
+  }
+
+  function requestCode() {
+    var d = new Date();
+    var pad = function (n) { return (n < 10 ? "0" : "") + n; };
+    var rnd = Math.random().toString(36).slice(2, 6).toUpperCase();
+    return "CMB-" + String(d.getFullYear()).slice(2) + pad(d.getMonth() + 1) + pad(d.getDate()) + "-" + rnd;
+  }
+
+  function initLeadForms(root) {
+    var src = leadSource();
+    var q = new URLSearchParams(location.search);
+    root.querySelectorAll("form[data-lead]").forEach(function (form) {
+      var srcField = form.querySelector('[name="nguon"]');
+      if (srcField) srcField.value = JSON.stringify(Object.assign({ page: location.pathname }, src));
+
+      // prefill from query (?nhu-cau=..., ?sp=...)
+      var need = q.get("nhu-cau");
+      var sel = form.querySelector('select[name="nhucau"]');
+      if (need && sel) {
+        Array.prototype.forEach.call(sel.options, function (o) { if (o.value === need || o.text === need) sel.value = o.value; });
       }
-      if (button) {
-        button.disabled = true;
-        button.classList.add("is-loading");
+      var sp = q.get("sp");
+      var note = form.querySelector('textarea[name="noidung"]');
+      if (sp && note && !note.value) note.value = "Yêu cầu cấu hình/báo giá: " + sp + "\n";
+      if (sp && sel && !sel.value) {
+        Array.prototype.forEach.call(sel.options, function (o) { if (/cấu hình/i.test(o.text)) sel.value = o.value || o.text; });
       }
-      window.setTimeout(function () {
-        if (button) {
-          button.disabled = false;
-          button.classList.remove("is-loading");
+
+      var done = form.parentNode.querySelector(".lead-done");
+      var button = form.querySelector('button[type="submit"]');
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        if (!form.checkValidity()) { form.reportValidity(); return; }
+        if (button) { button.disabled = true; button.classList.add("is-loading"); }
+        window.setTimeout(function () {
+          if (button) { button.disabled = false; button.classList.remove("is-loading"); }
+          var code = requestCode();
+          if (done) {
+            var nameField = form.querySelector('[name="ten"]');
+            done.querySelectorAll("[data-code]").forEach(function (el) { el.textContent = code; });
+            done.querySelectorAll("[data-name]").forEach(function (el) { el.textContent = nameField && nameField.value ? nameField.value.trim() : "bạn"; });
+            form.hidden = true;
+            done.hidden = false;
+            done.setAttribute("tabindex", "-1");
+            done.focus({ preventScroll: true });
+            var top = done.getBoundingClientRect().top + window.pageYOffset - 120;
+            if (done.getBoundingClientRect().top < 80) window.scrollTo({ top: top, behavior: "smooth" });
+          }
+          form.reset();
+          if (srcField) srcField.value = JSON.stringify(Object.assign({ page: location.pathname }, src));
+        }, 700);
+      });
+      if (done) {
+        var again = done.querySelector(".lead-done__again");
+        if (again) again.addEventListener("click", function () { done.hidden = true; form.hidden = false; });
+      }
+    });
+  }
+
+  // "Đăng ký" on a course card preselects that course in the form below
+  function initCoursePick(root) {
+    root.querySelectorAll("[data-course]").forEach(function (a) {
+      a.addEventListener("click", function () {
+        var sel = root.querySelector('form[data-lead] select[name="nhucau"]');
+        if (sel) sel.value = a.getAttribute("data-course");
+      });
+    });
+  }
+
+  // ---- in-page section nav (solution pages) --------------------------------
+  function initSolnav(root) {
+    var nav = root.querySelector(".solnav");
+    if (!nav || !("IntersectionObserver" in window)) return;
+    var links = Array.prototype.slice.call(nav.querySelectorAll('a[href^="#"]'));
+    var map = {};
+    links.forEach(function (a) { map[a.getAttribute("href").slice(1)] = a; });
+    var current = null;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        var a = map[e.target.id];
+        if (!a || a === current) return;
+        if (current) current.classList.remove("is-current");
+        a.classList.add("is-current");
+        current = a;
+        var list = a.parentNode;
+        if (list.scrollWidth > list.clientWidth) {
+          list.scrollTo({ left: a.offsetLeft - 16, behavior: "smooth" });
         }
-        if (status) {
-          status.hidden = false;
-          status.textContent = "Cảm ơn bạn đã gửi yêu cầu! Đội ngũ Cameramienbac sẽ liên hệ lại trong thời gian sớm nhất.";
-        }
-        form.reset();
-      }, 900);
+      });
+    }, { rootMargin: "-35% 0px -60% 0px" });
+    Object.keys(map).forEach(function (id) {
+      var sec = root.getElementById(id);
+      if (sec) io.observe(sec);
+    });
+  }
+
+  // ---- product catalog filter ---------------------------------------------
+  function initCatalog(root) {
+    var box = root.querySelector("[data-catalog]");
+    if (!box) return;
+    var items = Array.prototype.slice.call(box.querySelectorAll(".pitem"));
+    var cats = box.querySelectorAll(".cats button");
+    var app = box.querySelector('[data-f="app"]');
+    var brand = box.querySelector('[data-f="brand"]');
+    var count = box.querySelector(".catbar__count");
+    var empty = box.querySelector(".cat-empty");
+    var reset = box.querySelector(".catbar__reset");
+    var cat = "";
+    function apply() {
+      var n = 0;
+      items.forEach(function (it) {
+        var ok = (!cat || it.dataset.cat === cat) &&
+          (!app.value || (" " + it.dataset.app + " ").indexOf(" " + app.value + " ") > -1) &&
+          (!brand.value || (" " + it.dataset.brand + " ").indexOf(" " + brand.value + " ") > -1);
+        it.hidden = !ok;
+        if (ok) n++;
+      });
+      if (count) count.textContent = "Hiển thị " + n + " / " + items.length + " dòng sản phẩm";
+      if (empty) empty.hidden = n > 0;
+    }
+    cats.forEach(function (b) {
+      b.addEventListener("click", function () {
+        cats.forEach(function (x) { x.classList.toggle("is-active", x === b); x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+        cat = b.dataset.cat || "";
+        apply();
+      });
+    });
+    [app, brand].forEach(function (s) { s.addEventListener("change", apply); });
+    if (reset) reset.addEventListener("click", function () {
+      app.value = ""; brand.value = ""; cat = "";
+      cats.forEach(function (x, i) { x.classList.toggle("is-active", i === 0); x.setAttribute("aria-pressed", i === 0 ? "true" : "false"); });
+      apply();
+    });
+    // deep link: san-pham?nhom=camera-ai#danh-muc
+    var pre = new URLSearchParams(location.search).get("nhom");
+    if (pre) {
+      cats.forEach(function (b) { if (b.dataset.cat === pre) b.click(); });
+    } else {
+      apply();
+    }
+  }
+
+  // ---- downloads not yet supplied ------------------------------------------
+  function initPendingFiles(root) {
+    root.querySelectorAll("[data-file-pending]").forEach(function (a) {
+      a.addEventListener("click", function (e) {
+        e.preventDefault();
+        var note = a.closest(".dl-wrap") && a.closest(".dl-wrap").querySelector(".dl-note");
+        if (note) note.hidden = false;
+      });
     });
   }
 
@@ -374,11 +516,13 @@
   function markCurrent(root) {
     var raw = location.pathname.split("/").pop() || "index.html";
     // Hỗ trợ cả URL sạch (/lien-he) và URL có .html (/lien-he.html) do cleanUrls
-    var here = raw.split("?")[0].split("#")[0].replace(/\.html$/, "") || "index";
+    var here = document.body.getAttribute("data-nav") || raw.split("?")[0].split("#")[0].replace(/\.html$/, "") || "index";
     if (here === "index") here = "index";
     root.querySelectorAll(".main-nav a").forEach(function (link) {
       var target = link.getAttribute("href");
       if (!target || target.charAt(0) === "#") return;
+      // deep links (?nhom=, #anchor) point into a page — never mark them current
+      if (!link.classList.contains("nav-link") && /[?#]/.test(target)) return;
       var norm = target.split("/").pop().split("?")[0].split("#")[0].replace(/\.html$/, "") || "index";
       var match = norm === here;
       if (link.classList.contains("nav-link")) {
@@ -415,8 +559,17 @@
       markCurrent(document);
       initProjectFilter(document);
       initNewsFilter(document);
-      initContactForm(document);
+      initLeadForms(document);
+      initCoursePick(document);
+      initSolnav(document);
+      initCatalog(document);
+      initPendingFiles(document);
       initChatWidget(document);
+      // header/footer are injected after first paint, so re-apply the #anchor offset
+      if (location.hash.length > 1) {
+        var target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+        if (target) target.scrollIntoView();
+      }
       var yearEl = document.getElementById("footer-year");
       if (yearEl) yearEl.textContent = String(new Date().getFullYear());
     });

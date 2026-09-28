@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Exam — Giám sát phòng thi bằng AI | Cameramienbac</title>
+<meta name="description" content="AI Exam: giám sát phòng thi bằng camera AI, phát hiện hành vi bất thường, xác thực thí sinh bằng khuôn mặt, lưu trữ bằng chứng minh bạch.">
+<link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-nav="ai-exam">
+
+<div data-include="partials/header.html"></div>
+
+<main>
+  <section class="phero" style="--hero:url('assets/images/edu-path.jpg')">
+    <div class="container phero__inner">
+      <nav class="phero__crumbs" aria-label="Breadcrumb"><a href="./">Trang chủ</a><span aria-hidden="true">/</span><a href="giai-phap">Giải pháp</a><span aria-hidden="true">/</span><span>Giám sát phòng thi bằng AI</span></nav>
+      <p class="phero__eyebrow">Giải pháp <strong>AI Exam</strong></p>
+      <h1 class="phero__title">Giám sát phòng thi bằng AI<span>Minh bạch – Công bằng – Có bằng chứng</span></h1>
+      <p class="phero__lead">Hỗ trợ cán bộ coi thi phát hiện hành vi bất thường, xác thực thí sinh bằng khuôn mặt và lưu trữ video có mốc sự kiện để hậu kiểm.</p>
+      <ul class="phero__badges"><li class="phero__badge"><i><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8V5.4a2 2 0 0 1 2-2H8M16 3.4h2.6a2 2 0 0 1 2 2V8M20.6 16v2.6a2 2 0 0 1-2 2H16M8 20.6H5.4a2 2 0 0 1-2-2V16"/><circle cx="12" cy="10" r="2.6"/><path d="M7.8 17a4.6 4.6 0 0 1 8.4 0"/></svg></i><span>Xác thực thí sinh</span></li><li class="phero__badge"><i><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.4 12s3.6-6.6 9.6-6.6 9.6 6.6 9.6 6.6-3.6 6.6-9.6 6.6S2.4 12 2.4 12Z"/><circle cx="12" cy="12" r="2.8"/></svg></i><span>Cảnh báo hành vi</span></li><li class="phero__badge"><i><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.6" y="4.4" width="8.4" height="6.6" rx="1"/><rect x="13" y="4.4" width="8.4" height="6.6" rx="1"/><rect x="2.6" y="13" width="8.4" height="6.6" rx="1"/><rect x="13" y="13" width="8.4" height="6.6" rx="1"/></svg></i><span>Giám sát tập trung</span></li><li class="phero__badge"><i><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2.8H6.6a1.8 1.8 0 0 0-1.8 1.8v14.8a1.8 1.8 0 0 0 1.8 1.8h10.8a1.8 1.8 0 0 0 1.8-1.8V8Z"/><path d="M14 2.8V8h5.2M8.6 13h6.8M8.6 16.6h6.8"/></svg></i><span>Lưu bằng chứng</span></li></ul>
+      <div class="phero__actions"><a class="btn btn--solid btn--accent" href="#khao-sat">Yêu cầu khảo sát <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></a><a class="btn btn--ghost" href="#kien-truc">Xem kiến trúc <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></a></div>
+    </div>
+  </section>
+  <nav class="solnav" aria-label="Mục lục giải pháp">
+    <div class="container solnav__list"><a href="#doi-tuong">Đối tượng</a><a href="#van-de">Vấn đề</a><a href="#kien-truc">Kiến trúc</a><a href="#tinh-nang">Tính năng</a><a href="#thiet-bi">Thiết bị</a><a href="#trien-khai">Điều kiện triển khai</a><a href="#quy-trinh">Quy trình</a><a href="#faq">Câu hỏi</a><a class="solnav__cta" href="#khao-sat">Yêu cầu khảo sát →</a></div>
+  </nav>
+  <section class="psec" id="doi-tuong">
+    <div class="container">
+      <div class="psec__head"><p class="kicker">Đối tượng sử dụng</p><h2 class="psec__title">Giải pháp này dành cho ai?</h2></div>
+      <div class="grid grid--4">
+        <article class="aud"><span class="aud__icon"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.6 9.4 12 4.6l9.4 4.8L12 14.2 2.6 9.4Z"/><path d="M6.4 11.4v4.8c1.6 1.6 3.4 2.4 5.6 2.4s4-.8 5.6-2.4v-4.8M21.4 9.4v5.4"/></svg></span><div><h3 class="aud__title">Trường THCS, THPT</h3><p class="aud__text">Kỳ thi học kỳ, thi thử, thi tuyển sinh.</p></div></article>
+        <article class="aud"><span class="aud__icon"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4.6A1.6 1.6 0 0 1 5.6 3H20v15H5.6A1.6 1.6 0 0 0 4 19.6Zm0 15A1.6 1.6 0 0 0 5.6 21H20v-3"/><path d="M8.6 7.4h7"/></svg></span><div><h3 class="aud__title">Đại học, cao đẳng</h3><p class="aud__text">Thi kết thúc học phần, thi trên máy tính.</p></div></article>
+        <article class="aud"><span class="aud__icon"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="5.6"/><path d="m9.6 9 1.7 1.7 3.2-3.3M8.6 13.8 7.4 21l4.6-2.4 4.6 2.4-1.2-7.2"/></svg></span><div><h3 class="aud__title">Trung tâm khảo thí, chứng chỉ</h3><p class="aud__text">Thi chứng chỉ ngoại ngữ, tin học, nghề.</p></div></article>
+        <article class="aud"><span class="aud__icon"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.4" y="7" width="17.2" height="13" rx="1.6"/><path d="M8.6 7V5.2a1.6 1.6 0 0 1 1.6-1.6h3.6a1.6 1.6 0 0 1 1.6 1.6V7M3.4 12.4h17.2"/></svg></span><div><h3 class="aud__title">Doanh nghiệp</h3><p class="aud__text">Thi tuyển dụng, thi nâng bậc nội bộ.</p></div></article>
+      </div>
+    </div>
+  </section>
+  <section class="psec psec--tint" id="van-de">
+    <div class="container">
+      <div class="psec__head"><p class="kicker">Vấn đề</p><h2 class="psec__title">Những bài toán thường gặp</h2><p class="psec__lead">Các vấn đề chúng tôi hay gặp khi khảo sát thực tế — và cách giải pháp xử lý.</p></div>
+      <div class="grid grid--3">
+        <article class="pain">
+          <div class="pain__q"><h3><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.4 2.6 20.2h18.8L12 3.4Z"/><path d="M12 9.6v4.6"/><circle cx="12" cy="17.2" r=".9" fill="currentColor" stroke="none"/></svg>Một cán bộ khó quan sát cả phòng</h3><p>Góc khuất, thí sinh ngồi cuối phòng.</p></div>
+          <p class="pain__a"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.2 12.2 2.6 2.6 5-5.2"/></svg><span><strong>Cách xử lý:</strong> Camera AI toàn cảnh, đánh dấu vị trí có hành vi bất thường để cán bộ kiểm tra.</span></p>
+        </article>
+        <article class="pain">
+          <div class="pain__q"><h3><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.4 2.6 20.2h18.8L12 3.4Z"/><path d="M12 9.6v4.6"/><circle cx="12" cy="17.2" r=".9" fill="currentColor" stroke="none"/></svg>Thi hộ, sai danh tính</h3><p>Đối chiếu ảnh thẻ thủ công tốn thời gian.</p></div>
+          <p class="pain__a"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.2 12.2 2.6 2.6 5-5.2"/></svg><span><strong>Cách xử lý:</strong> Xác thực khuôn mặt tại cửa phòng thi, đối chiếu danh sách dự thi.</span></p>
+        </article>
+        <article class="pain">
+          <div class="pain__q"><h3><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.4 2.6 20.2h18.8L12 3.4Z"/><path d="M12 9.6v4.6"/><circle cx="12" cy="17.2" r=".9" fill="currentColor" stroke="none"/></svg>Khiếu nại sau kỳ thi</h3><p>Thiếu bằng chứng khách quan khi xử lý vi phạm.</p></div>
+          <p class="pain__a"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.2 12.2 2.6 2.6 5-5.2"/></svg><span><strong>Cách xử lý:</strong> Video lưu trữ có mốc sự kiện, trích xuất nhanh đoạn cần xem.</span></p>
+        </article>
+        <article class="pain">
+          <div class="pain__q"><h3><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.4 2.6 20.2h18.8L12 3.4Z"/><path d="M12 9.6v4.6"/><circle cx="12" cy="17.2" r=".9" fill="currentColor" stroke="none"/></svg>Nhiều phòng thi, ít người giám sát</h3><p>Hội đồng thi không nắm được toàn cảnh.</p></div>
+          <p class="pain__a"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.2 12.2 2.6 2.6 5-5.2"/></svg><span><strong>Cách xử lý:</strong> Màn hình giám sát tập trung tất cả phòng thi, cảnh báo đẩy về hội đồng.</span></p>
+        </article>
+        <article class="pain">
+          <div class="pain__q"><h3><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.4 2.6 20.2h18.8L12 3.4Z"/><path d="M12 9.6v4.6"/><circle cx="12" cy="17.2" r=".9" fill="currentColor" stroke="none"/></svg>Thi trên máy tính</h3><p>Nhìn màn hình người khác, trao đổi thiết bị.</p></div>
+          <p class="pain__a"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.2 12.2 2.6 2.6 5-5.2"/></svg><span><strong>Cách xử lý:</strong> Kết hợp camera góc rộng và quy tắc phát hiện quay người, trao đổi vật.</span></p>
+        </article>
+        <article class="pain">
+          <div class="pain__q"><h3><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.4 2.6 20.2h18.8L12 3.4Z"/><path d="M12 9.6v4.6"/><circle cx="12" cy="17.2" r=".9" fill="currentColor" stroke="none"/></svg>Lo ngại quyền riêng tư</h3><p>Thí sinh lo bị ghi hình ngoài mục đích.</p></div>
+          <p class="pain__a"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.2 12.2 2.6 2.6 5-5.2"/></svg><span><strong>Cách xử lý:</strong> Chỉ ghi hình trong thời gian thi, phân quyền xem, thời hạn lưu rõ ràng.</span></p>
+        </article>
+      </div>
+    </div>
+  </section>
+  <section class="psec" id="kien-truc">
+    <div class="container">
+      <div class="psec__head"><p class="kicker">Kiến trúc đề xuất</p><h2 class="psec__title">Kiến trúc hệ thống</h2><p class="psec__lead">Mô hình tham chiếu 4 lớp. Cấu hình thực tế được điều chỉnh sau khảo sát hiện trạng.</p></div>
+      <div class="arch4">
+        <div class="arch4__layer"><p class="arch4__step">Thiết bị hiện trường</p><h3 class="arch4__title">Phòng thi</h3><ul class="arch4__list"><li>Camera góc rộng mỗi phòng</li><li>Camera/máy xác thực tại cửa</li><li>Micro thu âm (tùy quy chế)</li><li>Màn hình thông tin phòng thi</li></ul></div>
+        <div class="arch4__layer"><p class="arch4__step">Truyền dẫn & biên</p><h3 class="arch4__title">Mạng & xử lý</h3><ul class="arch4__list"><li>Switch PoE từng tầng</li><li>AI box phân tích hành vi</li><li>NVR lưu trữ theo kỳ thi</li><li>UPS</li></ul></div>
+        <div class="arch4__layer"><p class="arch4__step">Trung tâm</p><h3 class="arch4__title">Hội đồng thi</h3><ul class="arch4__list"><li>Phần mềm giám sát tập trung</li><li>Danh sách thí sinh, ảnh đối chiếu</li><li>Quy tắc cảnh báo theo ca thi</li><li>Kho bằng chứng video</li></ul></div>
+        <div class="arch4__layer"><p class="arch4__step">Người dùng</p><h3 class="arch4__title">Ứng dụng</h3><ul class="arch4__list"><li>Cán bộ coi thi: cảnh báo tại chỗ</li><li>Hội đồng: màn hình tổng</li><li>Thanh tra: tra cứu, trích xuất</li><li>Báo cáo sau kỳ thi</li></ul></div>
+      </div><p class="arch-note">AI chỉ đưa ra cảnh báo để cán bộ coi thi kiểm tra; quyết định xử lý vi phạm do con người thực hiện theo quy chế thi.</p>
+    </div>
+  </section>
+  <section class="psec psec--tint" id="tinh-nang">
+    <div class="container">
+      <div class="psec__head"><p class="kicker">Tính năng</p><h2 class="psec__title">Tính năng chính</h2></div>
+      <div class="grid grid--4">
+        <article class="fcard"><span class="fcard__icon"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8V5.4a2 2 0 0 1 2-2H8M16 3.4h2.6a2 2 0 0 1 2 2V8M20.6 16v2.6a2 2 0 0 1-2 2H16M8 20.6H5.4a2 2 0 0 1-2-2V16"/><circle cx="12" cy="10" r="2.6"/><path d="M7.8 17a4.6 4.6 0 0 1 8.4 0"/></svg></span><h3 class="fcard__title">Xác thực thí sinh</h3><p class="fcard__text">Đối chiếu khuôn mặt với ảnh hồ sơ tại cửa phòng thi.</p></article>
+        <article class="fcard"><span class="fcard__icon"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.4 12s3.6-6.6 9.6-6.6 9.6 6.6 9.6 6.6-3.6 6.6-9.6 6.6S2.4 12 2.4 12Z"/><circle cx="12" cy="12" r="2.8"/></svg></span><h3 class="fcard__title">Phát hiện hành vi bất thường</h3><p class="fcard__text">Quay ngang, cúi thấp kéo dài, trao đổi vật, rời chỗ (tùy thuật toán).</p></article>
+        <article class="fcard"><span class="fcard__icon"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.6" y="4.4" width="8.4" height="6.6" rx="1"/><rect x="13" y="4.4" width="8.4" height="6.6" rx="1"/><rect x="2.6" y="13" width="8.4" height="6.6" rx="1"/><rect x="13" y="13" width="8.4" height="6.6" rx="1"/></svg></span><h3 class="fcard__title">Giám sát tập trung</h3><p class="fcard__text">Xem đồng thời nhiều phòng, cảnh báo đẩy về hội đồng.</p></article>
+        <article class="fcard"><span class="fcard__icon"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2.8H6.6a1.8 1.8 0 0 0-1.8 1.8v14.8a1.8 1.8 0 0 0 1.8 1.8h10.8a1.8 1.8 0 0 0 1.8-1.8V8Z"/><path d="M14 2.8V8h5.2M8.6 13h6.8M8.6 16.6h6.8"/></svg></span><h3 class="fcard__title">Lưu trữ bằng chứng</h3><p class="fcard__text">Video có mốc sự kiện, trích xuất đoạn clip phục vụ hậu kiểm.</p></article>
+        <article class="fcard"><span class="fcard__icon"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7.4V12l3 2"/></svg></span><h3 class="fcard__title">Theo ca thi</h3><p class="fcard__text">Chỉ ghi hình/phân tích trong khung giờ thi đã cấu hình.</p></article>
+        <article class="fcard"><span class="fcard__icon"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 20.6h17.2M6.4 16.6v-4M11 16.6V7.4M15.6 16.6v-6.2M20 16.6V4.4"/></svg></span><h3 class="fcard__title">Báo cáo kỳ thi</h3><p class="fcard__text">Thống kê cảnh báo theo phòng, theo ca.</p></article>
+        <article class="fcard"><span class="fcard__icon"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4.4" y="10.4" width="15.2" height="10.2" rx="2"/><path d="M8 10.4V7.6a4 4 0 0 1 8 0v2.8"/><circle cx="12" cy="15.4" r="1.4"/></svg></span><h3 class="fcard__title">Phân quyền</h3><p class="fcard__text">Chỉ người được giao mới xem/trích xuất video.</p></article>
+        <article class="fcard"><span class="fcard__icon"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.4"/><path d="M2.6 20a6.4 6.4 0 0 1 12.8 0"/><path d="M16 4.8a3.4 3.4 0 0 1 0 6.4M17.8 14.2A6.4 6.4 0 0 1 21.4 20"/></svg></span><h3 class="fcard__title">Hỗ trợ cán bộ coi thi</h3><p class="fcard__text">Giảm tải quan sát, tập trung vào tình huống cần xử lý.</p></article>
+      </div>
+    </div>
+  </section>
+  <section class="psec" id="thiet-bi">
+    <div class="container">
+      <div class="psec__head"><p class="kicker">Danh mục thiết bị</p><h2 class="psec__title">Thiết bị trong giải pháp</h2><p class="psec__lead">Xem thêm danh mục đầy đủ tại <a href="san-pham#danh-muc" style="color:var(--blue-600);text-decoration:underline">trang Sản phẩm</a>.</p></div>
+      <div class="dtable-wrap"><table class="dtable dtable--stack">
+          <thead><tr><th>Hạng mục</th><th>Vai trò</th><th>Cấu hình gợi ý</th><th>Hãng tham khảo</th></tr></thead>
+          <tbody>
+            <tr><td data-label="Hạng mục"><span>Camera phòng thi</span></td><td data-label="Vai trò"><span>Quan sát toàn phòng</span></td><td data-label="Cấu hình gợi ý"><span>Góc rộng, độ phân giải đủ nhìn rõ bàn thi cuối phòng</span></td><td data-label="Hãng tham khảo"><div class="tag-list"><span>Hikvision</span><span>Dahua</span><span>Axis</span><span>Hanwha</span></div></td></tr>
+            <tr><td data-label="Hạng mục"><span>Thiết bị xác thực</span></td><td data-label="Vai trò"><span>Đối chiếu khuôn mặt tại cửa</span></td><td data-label="Cấu hình gợi ý"><span>Máy nhận diện hoặc camera + phần mềm</span></td><td data-label="Hãng tham khảo"><div class="tag-list"><span>Hikvision</span><span>Dahua</span></div></td></tr>
+            <tr><td data-label="Hạng mục"><span>AI box / AI server</span></td><td data-label="Vai trò"><span>Phân tích hành vi</span></td><td data-label="Cấu hình gợi ý"><span>Số luồng theo số phòng thi</span></td><td data-label="Hãng tham khảo"><div class="tag-list"><span>NVIDIA</span><span>Intel</span></div></td></tr>
+            <tr><td data-label="Hạng mục"><span>NVR</span></td><td data-label="Vai trò"><span>Lưu trữ theo kỳ thi</span></td><td data-label="Cấu hình gợi ý"><span>Dung lượng theo số phòng × thời lượng × thời hạn lưu</span></td><td data-label="Hãng tham khảo"><div class="tag-list"><span>Hikvision</span><span>Dahua</span><span>TVT</span></div></td></tr>
+            <tr><td data-label="Hạng mục"><span>Phần mềm giám sát thi</span></td><td data-label="Vai trò"><span>Màn hình tổng, cảnh báo, trích xuất</span></td><td data-label="Cấu hình gợi ý"><span>Theo quy chế từng đơn vị</span></td><td data-label="Hãng tham khảo"><div class="tag-list"><span>Theo dự án</span></div></td></tr>
+          </tbody>
+        </table></div>
+        <p class="claim-note"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.4"/><circle cx="12" cy="7.8" r=".9" fill="currentColor" stroke="none"/></svg><span><strong>Lưu ý:</strong> Bảng trên là danh mục tham khảo. Thông số kỹ thuật (độ phân giải, khoảng cách nhận diện, số kênh, độ chính xác thuật toán…) phụ thuộc từng hãng/model và điều kiện lắp đặt, được ghi theo datasheet của hãng trong báo giá. Cam kết thương mại (tiến độ, bảo hành, hỗ trợ) được thể hiện riêng trong hợp đồng.</span></p>
+    </div>
+  </section>
+  <section class="psec psec--tint" id="trien-khai">
+    <div class="container">
+      <div class="psec__head"><p class="kicker">Điều kiện triển khai</p><h2 class="psec__title">Cần chuẩn bị gì để triển khai?</h2><p class="psec__lead">Những điều kiện ảnh hưởng trực tiếp đến hiệu quả hệ thống. Chúng tôi sẽ kiểm tra cùng bạn khi khảo sát.</p></div>
+      <ul class="checks"><li><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="2.8" width="6" height="5" rx="1"/><rect x="2.6" y="16.2" width="6" height="5" rx="1"/><rect x="15.4" y="16.2" width="6" height="5" rx="1"/><path d="M12 7.8v4.2M5.6 16.2V12h12.8v4.2"/></svg><div><strong>Hạ tầng mạng</strong><span>Đường truyền LAN/cáp quang giữa các khu vực; băng thông đủ cho số luồng video (thường 4–8 Mbps/camera 4MP).</span></div></li><li><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.4 2.6 5.6 13.4h5.2l-1.2 8 8-11h-5.4l1.2-7.8Z"/></svg><div><strong>Nguồn điện & chống sét</strong><span>Nguồn ổn định cho tủ thiết bị, UPS cho đầu ghi/máy chủ; tiếp địa và chống sét cho camera ngoài trời.</span></div></li><li><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.6v2M12 19.4v2M2.6 12h2M19.4 12h2M5.4 5.4l1.4 1.4M17.2 17.2l1.4 1.4M5.4 18.6l1.4-1.4M17.2 6.8l1.4-1.4"/></svg><div><strong>Bố trí phòng thi</strong><span>Ánh sáng đều, bố trí bàn cố định; vị trí camera bao quát không bị che khuất.</span></div></li><li><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.4 3.4 20.6 10.6M11 5.8l7.2 7.2M12.2 4.6 8.6 8.2l7.2 7.2 3.6-3.6M10.4 13.6 3.4 20.6M3 21h9"/></svg><div><strong>Quy chế thi</strong><span>Thống nhất quy chế sử dụng camera, thời hạn lưu trữ và người có quyền xem.</span></div></li><li><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4.4" y="10.4" width="15.2" height="10.2" rx="2"/><path d="M8 10.4V7.6a4 4 0 0 1 8 0v2.8"/><circle cx="12" cy="15.4" r="1.4"/></svg><div><strong>Thông báo thí sinh</strong><span>Thông báo trước về việc ghi hình và mục đích sử dụng dữ liệu.</span></div></li><li><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.4"/><path d="M2.6 20a6.4 6.4 0 0 1 12.8 0"/><path d="M16 4.8a3.4 3.4 0 0 1 0 6.4M17.8 14.2A6.4 6.4 0 0 1 21.4 20"/></svg><div><strong>Danh sách & ảnh thí sinh</strong><span>Dữ liệu dự thi để xác thực khuôn mặt (nếu dùng).</span></div></li></ul>
+    </div>
+  </section>
+  <section class="psec" id="quy-trinh">
+    <div class="container">
+      <div class="psec__head"><p class="kicker">Quy trình</p><h2 class="psec__title">Quy trình triển khai 6 bước</h2></div>
+      <ol class="proc"><li><strong>Tiếp nhận nhu cầu</strong><span>Trao đổi bài toán, quy mô, ngân sách dự kiến.</span></li><li><strong>Khảo sát hiện trạng</strong><span>Khảo sát tại chỗ: vị trí, ánh sáng, mạng, nguồn điện.</span></li><li><strong>Thiết kế & báo giá</strong><span>Bản vẽ bố trí, danh mục thiết bị theo hãng/model, báo giá chi tiết.</span></li><li><strong>Thi công lắp đặt</strong><span>Lắp đặt, đi dây, cấu hình thiết bị và phần mềm.</span></li><li><strong>Nghiệm thu & đào tạo</strong><span>Chạy thử, tinh chỉnh AI, nghiệm thu, đào tạo vận hành.</span></li><li><strong>Bảo hành & hỗ trợ</strong><span>Bảo hành theo hãng, bảo trì định kỳ, hỗ trợ kỹ thuật.</span></li></ol>
+    </div>
+  </section>
+  <section class="psec psec--tint" id="faq">
+    <div class="container">
+      <div class="psec__head"><p class="kicker">Câu hỏi thường gặp</p><h2 class="psec__title">Giải đáp thắc mắc</h2></div>
+      <div class="faq"><details><summary>AI có tự kết luận thí sinh gian lận không?</summary><div class="faq__a"><p>Không. AI chỉ đánh dấu hành vi bất thường để cán bộ coi thi kiểm tra. Việc kết luận và xử lý vi phạm do con người thực hiện theo quy chế.</p></div></details><details><summary>Có dùng được camera đang lắp trong lớp học không?</summary><div class="faq__a"><p>Có thể, nếu góc quay và độ phân giải đáp ứng. Chúng tôi sẽ kiểm tra từng phòng khi khảo sát.</p></div></details><details><summary>Video phòng thi lưu bao lâu?</summary><div class="faq__a"><p>Theo quy chế của đơn vị. Hệ thống lưu trữ được thiết kế theo thời hạn yêu cầu và tự xóa khi hết hạn.</p></div></details><details><summary>Có triển khai cho kỳ thi ngắn hạn được không?</summary><div class="faq__a"><p>Có thể triển khai theo đợt thi; phương án thuê/triển khai tạm thời sẽ trao đổi cụ thể khi khảo sát.</p></div></details></div><p class="arch-note">Xem thêm tại <a href="cau-hoi-thuong-gap" style="color:var(--blue-600);text-decoration:underline">Câu hỏi thường gặp</a>.</p>
+    </div>
+  </section>
+  <section class="psec">
+    <div class="container">
+      <div class="psec__head"><h2 class="psec__title">Tìm hiểu thêm</h2></div>
+      <div class="related"><a href="truong-hoc-ai"><i><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.6 9.4 12 4.6l9.4 4.8L12 14.2 2.6 9.4Z"/><path d="M6.4 11.4v4.8c1.6 1.6 3.4 2.4 5.6 2.4s4-.8 5.6-2.4v-4.8M21.4 9.4v5.4"/></svg></i><div><strong>Trường học AI</strong><span>Giải pháp tổng thể cho nhà trường</span></div></a><a href="ai-attendance"><i><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8V5.4a2 2 0 0 1 2-2H8M16 3.4h2.6a2 2 0 0 1 2 2V8M20.6 16v2.6a2 2 0 0 1-2 2H16M8 20.6H5.4a2 2 0 0 1-2-2V16"/><circle cx="12" cy="10" r="2.6"/><path d="M7.8 17a4.6 4.6 0 0 1 8.4 0"/></svg></i><div><strong>AI Attendance</strong><span>Điểm danh bằng khuôn mặt</span></div></a><a href="ky-tuc-xa-thong-minh"><i><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.8 18.6V6.4M2.8 14h18.4v4.6M21.2 14v-2.6a2.4 2.4 0 0 0-2.4-2.4h-7.4V14"/><circle cx="7" cy="10.8" r="1.8"/></svg></i><div><strong>Ký túc xá thông minh</strong><span>An toàn khu nội trú</span></div></a></div>
+    </div>
+  </section>
+  <section class="psec psec--last" id="khao-sat">
+    <div class="container">
+      
+      <div class="survey">
+        <div>
+          <p class="kicker" style="color:#ff8a92">Lời mời khảo sát</p>
+          <h2 class="survey__title">Khảo sát phòng thi</h2>
+          <p class="survey__lead">Cho chúng tôi biết số phòng thi và hình thức thi — chuyên viên sẽ liên hệ khảo sát và đề xuất phương án.</p>
+          <ul class="survey__points"><li><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.2 12.2 2.6 2.6 5-5.2"/></svg><span>Khảo sát hiện trạng và tư vấn phương án phù hợp ngân sách</span></li><li><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.2 12.2 2.6 2.6 5-5.2"/></svg><span>Đề xuất cấu hình, danh mục thiết bị theo hãng/model rõ ràng</span></li><li><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.2 12.2 2.6 2.6 5-5.2"/></svg><span>Báo giá chi tiết từng hạng mục để dễ so sánh và phê duyệt</span></li></ul>
+          <div class="survey__contact">
+            <a href="tel:0979406868"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.3 10.6a15.1 15.1 0 0 0 7.1 7.1l2.4-2.4a1.1 1.1 0 0 1 1.1-.27 12.4 12.4 0 0 0 3.9.62 1.1 1.1 0 0 1 1.1 1.1v3.8a1.1 1.1 0 0 1-1.1 1.1A18.6 18.6 0 0 1 2.2 3.1 1.1 1.1 0 0 1 3.3 2h3.8a1.1 1.1 0 0 1 1.1 1.1c0 1.36.22 2.67.62 3.9a1.1 1.1 0 0 1-.27 1.1l-2.25 2.5Z"/></svg>0979 406 868</a>
+            <a href="mailto:cameramienbac@cmvn.vn"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.6" y="5" width="18.8" height="14" rx="1.4"/><path d="m3.4 6.2 8.6 6.6 8.6-6.6"/></svg>cameramienbac@cmvn.vn</a>
+          </div>
+        </div>
+        <div class="survey__form">
+          <form class="lead-form" data-lead novalidate>
+            <input type="hidden" name="bai_toan" value="AI Exam">
+            <input type="hidden" name="nguon" value="">
+            
+            <p class="field"><label class="field__label" for="ks-ten">Họ và tên<span> *</span></label>
+              <input id="ks-ten" name="ten" type="text" autocomplete="name" placeholder="Nguyễn Văn A" required></p>
+            <p class="field"><label class="field__label" for="ks-sdt">Số điện thoại<span> *</span></label>
+              <input id="ks-sdt" name="sdt" type="tel" inputmode="tel" autocomplete="tel" pattern="\+?[0-9 .]{9,15}" title="Số điện thoại gồm 9–15 chữ số" placeholder="09xx xxx xxx" required></p>
+            <p class="field"><label class="field__label" for="ks-dv">Đơn vị / Công ty</label>
+              <input id="ks-dv" name="donvi" type="text" autocomplete="organization" placeholder="Tên đơn vị (nếu có)"></p>
+            <p class="field"><label class="field__label" for="ks-tt">Tỉnh / Thành phố<span> *</span></label>
+              <input id="ks-tt" name="tinh" type="text" autocomplete="address-level1" placeholder="VD: Hà Nội" required></p>
+            <p class="field"><label class="field__label" for="ks-qm">Số phòng thi</label>
+              <select id="ks-qm" name="quymo"><option value="">Chọn quy mô</option><option>Dưới 10 phòng</option><option>10 – 30 phòng</option><option>30 – 100 phòng</option><option>Trên 100 phòng</option></select></p>
+            <p class="field"><label class="field__label" for="ks-tg">Thời gian dự kiến</label>
+              <select id="ks-tg" name="thoigian"><option value="">Chọn thời gian</option><option>Trong 1 tháng</option><option>1 – 3 tháng</option><option>3 – 6 tháng</option><option>Đang tìm hiểu</option></select></p>
+            
+            <p class="field field--full"><label class="field__label" for="ks-nd">Mô tả nhu cầu</label>
+              <textarea id="ks-nd" name="noidung" placeholder="Hiện trạng, số điểm cần giám sát, yêu cầu đặc biệt…"></textarea></p>
+            <label class="consent"><input type="checkbox" name="dongy" required> <span>Tôi đồng ý để Cameramienbac liên hệ và xử lý thông tin này theo <a href="chinh-sach-bao-mat">Chính sách bảo mật</a>.</span></label>
+            <div class="lead-form__actions">
+              <button class="btn btn--solid btn--accent" type="submit"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 3 10.6 13.4M21 3l-6.6 18-3.8-7.6L3 9.8 21 3Z"/></svg>Gửi yêu cầu khảo sát</button>
+              <span class="lead-form__hint">Hoặc gọi <a href="tel:0979406868" style="color:var(--blue-600);font-weight:600">0979 406 868</a></span>
+            </div>
+          </form>
+          <div class="lead-done" hidden role="status" aria-live="polite">
+            <span class="lead-done__icon"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.2 12.2 2.6 2.6 5-5.2"/></svg></span>
+            <h3>Đã ghi nhận yêu cầu của <span data-name>bạn</span></h3>
+            <p>Mã yêu cầu của bạn</p>
+            <span class="lead-done__code" data-code>CMB-000000-XXXX</span>
+            <p>Vui lòng lưu lại mã này để tiện trao đổi. Chuyên viên Cameramienbac sẽ liên hệ lại trong giờ làm việc (Thứ 2 – Thứ 7, 8:00 – 17:30).</p>
+            <button type="button" class="lead-done__again">Gửi yêu cầu khác</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div data-include="partials/footer.html"></div>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
