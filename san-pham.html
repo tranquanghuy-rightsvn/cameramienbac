@@ -9,6 +9,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/images/prd-hero.webp" media="(min-width: 720px)" fetchpriority="high">
+<link rel="preload" as="image" href="assets/images/prd-hero-m.webp" media="(max-width: 719px)" fetchpriority="high">
+<link rel="preload" href="partials/header.html" as="fetch" crossorigin="anonymous">
+<link rel="preload" href="partials/footer.html" as="fetch" crossorigin="anonymous">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -322,7 +326,7 @@
       </div>
       <div class="grid grid--5">
         <article class="mcard">
-          <div class="mcard__media"><img src="assets/images/prd-need-1.jpg" alt="Camera gia đình" loading="lazy"></div>
+          <div class="mcard__media"><img src="assets/images/prd-need-1.webp" alt="Camera gia đình" loading="lazy" width="364" height="206" decoding="async"></div>
           <div class="mcard__body">
             
             <h3 class="mcard__title">Camera gia đình</h3>
@@ -335,7 +339,7 @@
           </div>
         </article>
         <article class="mcard">
-          <div class="mcard__media"><img src="assets/images/prd-need-2.jpg" alt="Camera văn phòng" loading="lazy"></div>
+          <div class="mcard__media"><img src="assets/images/prd-need-2.webp" alt="Camera văn phòng" loading="lazy" width="364" height="206" decoding="async"></div>
           <div class="mcard__body">
             
             <h3 class="mcard__title">Camera văn phòng</h3>
@@ -348,7 +352,7 @@
           </div>
         </article>
         <article class="mcard">
-          <div class="mcard__media"><img src="assets/images/prd-need-3.jpg" alt="Camera cửa hàng" loading="lazy"></div>
+          <div class="mcard__media"><img src="assets/images/prd-need-3.webp" alt="Camera cửa hàng" loading="lazy" width="724" height="412" decoding="async"></div>
           <div class="mcard__body">
             
             <h3 class="mcard__title">Camera cửa hàng</h3>
@@ -361,7 +365,7 @@
           </div>
         </article>
         <article class="mcard">
-          <div class="mcard__media"><img src="assets/images/prd-need-4.jpg" alt="Camera nhà xưởng" loading="lazy"></div>
+          <div class="mcard__media"><img src="assets/images/prd-need-4.webp" alt="Camera nhà xưởng" loading="lazy" width="724" height="412" decoding="async"></div>
           <div class="mcard__body">
             
             <h3 class="mcard__title">Camera nhà xưởng</h3>
@@ -374,7 +378,7 @@
           </div>
         </article>
         <article class="mcard">
-          <div class="mcard__media"><img src="assets/images/prd-need-5.jpg" alt="Camera công trình" loading="lazy"></div>
+          <div class="mcard__media"><img src="assets/images/prd-need-5.webp" alt="Camera công trình" loading="lazy" width="728" height="412" decoding="async"></div>
           <div class="mcard__body">
             
             <h3 class="mcard__title">Camera công trình</h3>
@@ -397,32 +401,32 @@
       </div>
       <div class="grid grid--6">
         <article class="dcard">
-          <div class="dcard__media"><img src="assets/images/prd-dev-1.jpg" alt="Camera IP" loading="lazy"></div>
+          <div class="dcard__media"><img src="assets/images/prd-dev-1.webp" alt="Camera IP" loading="lazy" width="300" height="140" decoding="async"></div>
           <h3 class="dcard__title">Camera IP</h3>
           <p class="dcard__text">Hikvision / Dahua / Hanwha</p>
         </article>
         <article class="dcard">
-          <div class="dcard__media"><img src="assets/images/prd-dev-2.jpg" alt="Đầu ghi hình (NVR/DVR)" loading="lazy"></div>
+          <div class="dcard__media"><img src="assets/images/prd-dev-2.webp" alt="Đầu ghi hình (NVR/DVR)" loading="lazy" width="300" height="140" decoding="async"></div>
           <h3 class="dcard__title">Đầu ghi hình (NVR/DVR)</h3>
           <p class="dcard__text">Lưu trữ dữ liệu, quản lý tập trung</p>
         </article>
         <article class="dcard">
-          <div class="dcard__media"><img src="assets/images/prd-dev-3.jpg" alt="Switch PoE" loading="lazy"></div>
+          <div class="dcard__media"><img src="assets/images/prd-dev-3.webp" alt="Switch PoE" loading="lazy" width="300" height="140" decoding="async"></div>
           <h3 class="dcard__title">Switch PoE</h3>
           <p class="dcard__text">Cấp nguồn và truyền dữ liệu</p>
         </article>
         <article class="dcard">
-          <div class="dcard__media"><img src="assets/images/prd-dev-4.jpg" alt="Ổ cứng lưu trữ" loading="lazy"></div>
+          <div class="dcard__media"><img src="assets/images/prd-dev-4.webp" alt="Ổ cứng lưu trữ" loading="lazy" width="300" height="140" decoding="async"></div>
           <h3 class="dcard__title">Ổ cứng lưu trữ</h3>
           <p class="dcard__text">Tối ưu cho camera giám sát</p>
         </article>
         <article class="dcard">
-          <div class="dcard__media"><img src="assets/images/prd-dev-5.jpg" alt="Phụ kiện lắp đặt" loading="lazy"></div>
+          <div class="dcard__media"><img src="assets/images/prd-dev-5.webp" alt="Phụ kiện lắp đặt" loading="lazy" width="300" height="140" decoding="async"></div>
           <h3 class="dcard__title">Phụ kiện lắp đặt</h3>
           <p class="dcard__text">Jack, hộp đấu nối, giá đỡ, cáp…</p>
         </article>
         <article class="dcard">
-          <div class="dcard__media"><img src="assets/images/prd-dev-6.jpg" alt="Thiết bị mạng" loading="lazy"></div>
+          <div class="dcard__media"><img src="assets/images/prd-dev-6.webp" alt="Thiết bị mạng" loading="lazy" width="300" height="140" decoding="async"></div>
           <h3 class="dcard__title">Thiết bị mạng</h3>
           <p class="dcard__text">Router, Switch, Access Point</p>
         </article>
@@ -437,28 +441,28 @@
       </div>
       <div class="grid grid--4">
         <article class="scard">
-          <div class="scard__media"><img src="assets/images/prd-soft-1.jpg" alt="CameraAi Mobile" loading="lazy"></div>
+          <div class="scard__media"><img src="assets/images/prd-soft-1.webp" alt="CameraAi Mobile" loading="lazy" width="180" height="184" decoding="async"></div>
           <div>
             <b>CameraAi Mobile</b><span>Trên điện thoại</span>
             <p class="scard__meta"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6.6" y="2.6" width="10.8" height="18.8" rx="2.4"/><path d="M10.6 5.6h2.8"/><path d="M11 18.4h2"/></svg>iOS / Android</p>
           </div>
         </article>
         <article class="scard">
-          <div class="scard__media"><img src="assets/images/prd-soft-2.jpg" alt="CameraAi PC" loading="lazy"></div>
+          <div class="scard__media"><img src="assets/images/prd-soft-2.webp" alt="CameraAi PC" loading="lazy" width="200" height="140" decoding="async"></div>
           <div>
             <b>CameraAi PC</b><span>Trên máy tính</span>
             <p class="scard__meta"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4.4" y="5" width="15.2" height="10" rx="1.4"/><path d="M2.6 18.4h18.8"/></svg>Windows / macOS</p>
           </div>
         </article>
         <article class="scard">
-          <div class="scard__media"><img src="assets/images/prd-soft-3.jpg" alt="Nền tảng Web" loading="lazy"></div>
+          <div class="scard__media"><img src="assets/images/prd-soft-3.webp" alt="Nền tảng Web" loading="lazy" width="200" height="140" decoding="async"></div>
           <div>
             <b>Nền tảng Web</b><span>Quản lý từ xa</span>
             <p class="scard__meta"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3.2 12h17.6M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>Trình duyệt web</p>
           </div>
         </article>
         <article class="scard">
-          <div class="scard__media"><img src="assets/images/prd-soft-4.jpg" alt="Tích hợp hệ thống" loading="lazy"></div>
+          <div class="scard__media"><img src="assets/images/prd-soft-4.webp" alt="Tích hợp hệ thống" loading="lazy" width="216" height="176" decoding="async"></div>
           <div>
             <b>Tích hợp hệ thống</b><span>API / SDK</span>
             <p class="scard__meta"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8.6 8.4-4 3.6 4 3.6M15.4 8.4l4 3.6-4 3.6M13.4 5.4l-2.8 13.2"/></svg>Tùy biến theo nhu cầu</p>
@@ -476,7 +480,7 @@
             <p class="pband__text">Nền tảng tích hợp dữ liệu từ camera AI, cảm biến IoT và các hệ thống quản lý — giám sát, phân tích và vận hành thông minh trên một giao diện duy nhất.</p>
             <a class="btn btn--solid" href="aiot-platform">Khám phá AIoT Platform <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></a>
           </div>
-          <div class="pband__art"><img src="assets/images/iot-dash.jpg" alt="Giao diện AIoT Platform" loading="lazy"></div>
+          <div class="pband__art"><img src="assets/images/iot-dash.webp" alt="Giao diện AIoT Platform" loading="lazy" width="640" height="340" decoding="async"></div>
         </div>
       </div>
     </div>
@@ -486,7 +490,7 @@
     <div class="container">
       <div class="slogan">
         <div class="slogan__inner">
-          <span class="brand"><img class="brand__mark" src="assets/images/logo-mark.png" alt="" width="400" height="346">
+          <span class="brand"><img class="brand__mark" src="assets/images/logo-mark.png" alt="" width="400" height="346" decoding="async" loading="lazy">
             <span class="brand__text"><span class="brand__name">CAMERAMIENBAC</span><span class="brand__sub">AI &amp; AIoT</span></span>
           </span>
           <div class="slogan__body">

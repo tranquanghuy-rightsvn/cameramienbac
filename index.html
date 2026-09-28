@@ -9,6 +9,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/images/hero-bg.webp" media="(min-width: 720px)" fetchpriority="high">
+<link rel="preload" as="image" href="assets/images/hero-bg-m.webp" media="(max-width: 719px)" fetchpriority="high">
+<link rel="preload" href="partials/header.html" as="fetch" crossorigin="anonymous">
+<link rel="preload" href="partials/footer.html" as="fetch" crossorigin="anonymous">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -93,7 +97,7 @@
 
         <article class="pcard">
           <div class="pcard__media">
-            <img src="assets/images/card-1.jpg" alt="Tòa nhà cao tầng tại Cầu Giấy, Hà Nội" loading="lazy" width="561" height="432">
+            <img src="assets/images/card-1.webp" alt="Tòa nhà cao tầng tại Cầu Giấy, Hà Nội" loading="lazy" width="561" height="432" decoding="async">
           </div>
           <div class="pcard__body">
             <span class="pcard__badge"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -107,7 +111,7 @@
 
         <article class="pcard">
           <div class="pcard__media">
-            <img src="assets/images/card-2.jpg" alt="Học sinh trong phòng máy tính" loading="lazy" width="543" height="432">
+            <img src="assets/images/card-2.webp" alt="Học sinh trong phòng máy tính" loading="lazy" width="543" height="432" decoding="async">
           </div>
           <div class="pcard__body">
             <span class="pcard__badge"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -121,7 +125,7 @@
 
         <article class="pcard">
           <div class="pcard__media">
-            <img src="assets/images/card-3.jpg" alt="Nhân viên vận hành trung tâm giám sát" loading="lazy" width="552" height="432">
+            <img src="assets/images/card-3.webp" alt="Nhân viên vận hành trung tâm giám sát" loading="lazy" width="552" height="432" decoding="async">
           </div>
           <div class="pcard__body">
             <span class="pcard__badge"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -135,7 +139,7 @@
 
         <article class="pcard">
           <div class="pcard__media">
-            <img src="assets/images/card-4.jpg" alt="Đô thị hiện đại về đêm" loading="lazy" width="549" height="432">
+            <img src="assets/images/card-4.webp" alt="Đô thị hiện đại về đêm" loading="lazy" width="549" height="432" decoding="async">
           </div>
           <div class="pcard__body">
             <span class="pcard__badge"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -149,7 +153,7 @@
 
         <article class="pcard">
           <div class="pcard__media">
-            <img src="assets/images/card-5.jpg" alt="Khách hàng mua sắm trong trung tâm thương mại" loading="lazy" width="567" height="432">
+            <img src="assets/images/card-5.webp" alt="Khách hàng mua sắm trong trung tâm thương mại" loading="lazy" width="567" height="432" decoding="async">
           </div>
           <div class="pcard__body">
             <span class="pcard__badge"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -314,7 +318,7 @@
       </div>
       <div class="grid grid--3">
         <article class="hprj">
-          <a class="hprj__media" href="du-an" tabindex="-1" aria-hidden="true"><img src="assets/images/prj-1.jpg" alt="" loading="lazy"></a>
+          <a class="hprj__media" href="du-an" tabindex="-1" aria-hidden="true"><img src="assets/images/prj-1.webp" alt="" loading="lazy" width="988" height="400" decoding="async"></a>
           <div class="hprj__body">
             <h3 class="hprj__title"><a href="du-an">Tòa nhà Thông Minh Vinhomes Ocean Park</a></h3>
             <p class="hprj__loc">Gia Lâm, Hà Nội · 320 camera</p>
@@ -323,7 +327,7 @@
           </div>
         </article>
         <article class="hprj">
-          <a class="hprj__media" href="du-an-kcn-bac-thang-long" tabindex="-1" aria-hidden="true"><img src="assets/images/prj-3.jpg" alt="" loading="lazy"></a>
+          <a class="hprj__media" href="du-an-kcn-bac-thang-long" tabindex="-1" aria-hidden="true"><img src="assets/images/prj-3.webp" alt="" loading="lazy" width="996" height="400" decoding="async"></a>
           <div class="hprj__body">
             <h3 class="hprj__title"><a href="du-an-kcn-bac-thang-long">KCN Bắc Thăng Long</a></h3>
             <p class="hprj__loc">Đông Anh, Hà Nội · 150 camera</p>
@@ -332,7 +336,7 @@
           </div>
         </article>
         <article class="hprj">
-          <a class="hprj__media" href="du-an" tabindex="-1" aria-hidden="true"><img src="assets/images/prj-4.jpg" alt="" loading="lazy"></a>
+          <a class="hprj__media" href="du-an" tabindex="-1" aria-hidden="true"><img src="assets/images/prj-4.webp" alt="" loading="lazy" width="988" height="400" decoding="async"></a>
           <div class="hprj__body">
             <h3 class="hprj__title"><a href="du-an">Trường THPT Chuyên Hà Nội – Amsterdam</a></h3>
             <p class="hprj__loc">Cầu Giấy, Hà Nội · 120 camera</p>
@@ -356,17 +360,17 @@
         <article class="quote">
           <p class="quote__mark">&ldquo;</p>
           <p class="quote__text">Hệ thống camera AI vận hành ổn định, đội ngũ kỹ thuật hỗ trợ nhanh chóng mỗi khi cần. Rất hài lòng với chất lượng dịch vụ.</p>
-          <p class="quote__by"><img src="assets/images/prj-1.jpg" alt="Vinhomes Ocean Park" loading="lazy"><span><b>Vinhomes Ocean Park</b><span>Gia Lâm, Hà Nội</span></span></p>
+          <p class="quote__by"><img src="assets/images/prj-1.webp" alt="Vinhomes Ocean Park" loading="lazy" width="988" height="400" decoding="async"><span><b>Vinhomes Ocean Park</b><span>Gia Lâm, Hà Nội</span></span></p>
         </article>
         <article class="quote">
           <p class="quote__mark">&ldquo;</p>
           <p class="quote__text">Giải pháp kiểm soát ra vào và camera AI giúp tối ưu vận hành tòa nhà, tích hợp mượt mà với hệ thống quản lý sẵn có.</p>
-          <p class="quote__by"><img src="assets/images/prj-2.jpg" alt="Trụ sở Tập đoàn FPT" loading="lazy"><span><b>Tập đoàn FPT</b><span>Cầu Giấy, Hà Nội</span></span></p>
+          <p class="quote__by"><img src="assets/images/prj-2.webp" alt="Trụ sở Tập đoàn FPT" loading="lazy" width="992" height="400" decoding="async"><span><b>Tập đoàn FPT</b><span>Cầu Giấy, Hà Nội</span></span></p>
         </article>
         <article class="quote">
           <p class="quote__mark">&ldquo;</p>
           <p class="quote__text">Camera AI giúp nhà trường giám sát an ninh khuôn viên hiệu quả hơn, phụ huynh cũng yên tâm hơn rất nhiều.</p>
-          <p class="quote__by"><img src="assets/images/prj-4.jpg" alt="Trường THPT Chuyên Hà Nội – Amsterdam" loading="lazy"><span><b>THPT Chuyên Hà Nội – Amsterdam</b><span>Cầu Giấy, Hà Nội</span></span></p>
+          <p class="quote__by"><img src="assets/images/prj-4.webp" alt="Trường THPT Chuyên Hà Nội – Amsterdam" loading="lazy" width="988" height="400" decoding="async"><span><b>THPT Chuyên Hà Nội – Amsterdam</b><span>Cầu Giấy, Hà Nội</span></span></p>
         </article>
       </div>
     </div>
@@ -380,11 +384,11 @@
       <p class="partners__lead">Thiết bị và nền tảng từ các thương hiệu uy tín trong lĩnh vực camera và giải pháp an ninh.</p>
 
       <div class="partners__list">
-        <div class="partners__item"><img src="assets/images/partner-hikvision.png" alt="Hikvision" loading="lazy"></div>
-        <div class="partners__item"><img src="assets/images/partner-dahua.png" alt="Dahua Technology" loading="lazy"></div>
-        <div class="partners__item"><img src="assets/images/partner-tvt.png" alt="TVT" loading="lazy"></div>
-        <div class="partners__item"><img src="assets/images/partner-axis.png" alt="Axis Communications" loading="lazy"></div>
-        <div class="partners__item"><img src="assets/images/partner-hanwha.png" alt="Hanwha Vision" loading="lazy"></div>
+        <div class="partners__item"><img src="assets/images/partner-hikvision.webp" alt="Hikvision" loading="lazy" width="472" height="76" decoding="async"></div>
+        <div class="partners__item"><img src="assets/images/partner-dahua.webp" alt="Dahua Technology" loading="lazy" width="400" height="128" decoding="async"></div>
+        <div class="partners__item"><img src="assets/images/partner-tvt.webp" alt="TVT" loading="lazy" width="333" height="117" decoding="async"></div>
+        <div class="partners__item"><img src="assets/images/partner-axis.webp" alt="Axis Communications" loading="lazy" width="349" height="134" decoding="async"></div>
+        <div class="partners__item"><img src="assets/images/partner-hanwha.webp" alt="Hanwha Vision" loading="lazy" width="562" height="132" decoding="async"></div>
       </div>
     </div>
   </section>
@@ -398,7 +402,7 @@
       </div>
       <div class="news-list">
         <article class="news">
-          <a class="news__media" href="tin-tuc-5-dau-hieu-camera-loi-thoi" tabindex="-1" aria-hidden="true"><img src="assets/images/news-1.jpg" alt="" loading="lazy"><span class="news__tag">Giải pháp</span></a>
+          <a class="news__media" href="tin-tuc-5-dau-hieu-camera-loi-thoi" tabindex="-1" aria-hidden="true"><img src="assets/images/news-1.webp" alt="" loading="lazy" width="1280" height="720" decoding="async"><span class="news__tag">Giải pháp</span></a>
           <div class="news__body">
             <p class="news__meta"><span><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.4" y="5" width="17.2" height="15" rx="1.6"/><path d="M3.4 9.4h17.2M8 3v3.6M16 3v3.6"/></svg>12/09/2025</span><span><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 6.8V12l3.4 2"/></svg>6 phút đọc</span></p>
             <h3 class="news__title"><a href="tin-tuc-5-dau-hieu-camera-loi-thoi">5 dấu hiệu cho thấy hệ thống camera của bạn đã lỗi thời</a></h3>
@@ -407,7 +411,7 @@
           </div>
         </article>
         <article class="news">
-          <a class="news__media" href="lien-he" tabindex="-1" aria-hidden="true"><img src="assets/images/news-2.jpg" alt="" loading="lazy"><span class="news__tag">Công nghệ</span></a>
+          <a class="news__media" href="lien-he" tabindex="-1" aria-hidden="true"><img src="assets/images/news-2.webp" alt="" loading="lazy" width="1280" height="720" decoding="async"><span class="news__tag">Công nghệ</span></a>
           <div class="news__body">
             <p class="news__meta"><span><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.4" y="5" width="17.2" height="15" rx="1.6"/><path d="M3.4 9.4h17.2M8 3v3.6M16 3v3.6"/></svg>02/09/2025</span><span><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 6.8V12l3.4 2"/></svg>5 phút đọc</span></p>
             <h3 class="news__title"><a href="lien-he">Nhận diện khuôn mặt hoạt động thế nào trong thực tế?</a></h3>
@@ -416,7 +420,7 @@
           </div>
         </article>
         <article class="news">
-          <a class="news__media" href="lien-he" tabindex="-1" aria-hidden="true"><img src="assets/images/news-3.jpg" alt="" loading="lazy"><span class="news__tag">Dự án</span></a>
+          <a class="news__media" href="lien-he" tabindex="-1" aria-hidden="true"><img src="assets/images/news-3.webp" alt="" loading="lazy" width="1280" height="720" decoding="async"><span class="news__tag">Dự án</span></a>
           <div class="news__body">
             <p class="news__meta"><span><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.4" y="5" width="17.2" height="15" rx="1.6"/><path d="M3.4 9.4h17.2M8 3v3.6M16 3v3.6"/></svg>25/08/2025</span><span><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 6.8V12l3.4 2"/></svg>4 phút đọc</span></p>
             <h3 class="news__title"><a href="lien-he">Bàn giao hệ thống 300 camera cho nhà máy tại Bắc Ninh</a></h3>
@@ -433,7 +437,7 @@
     <div class="container">
       <div class="slogan">
         <div class="slogan__inner">
-          <span class="brand"><img class="brand__mark" src="assets/images/logo-mark.png" alt="" width="400" height="346">
+          <span class="brand"><img class="brand__mark" src="assets/images/logo-mark.png" alt="" width="400" height="346" decoding="async" loading="lazy">
             <span class="brand__text"><span class="brand__name">CAMERAMIENBAC</span><span class="brand__sub">AI &amp; AIoT</span></span>
           </span>
           <div class="slogan__body">

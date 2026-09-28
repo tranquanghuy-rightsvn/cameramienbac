@@ -9,6 +9,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/images/iot-hero.webp" media="(min-width: 720px)" fetchpriority="high">
+<link rel="preload" as="image" href="assets/images/iot-hero-m.webp" media="(max-width: 719px)" fetchpriority="high">
+<link rel="preload" href="partials/header.html" as="fetch" crossorigin="anonymous">
+<link rel="preload" href="partials/footer.html" as="fetch" crossorigin="anonymous">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body data-nav="aiot-platform">
@@ -120,27 +124,27 @@
           <div class="boxed__head"><i><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.8 20.6h18.4"/><rect x="3.8" y="9.4" width="5" height="11.2"/><rect x="9.8" y="4.4" width="5" height="16.2"/><rect x="15.8" y="12.4" width="4.4" height="8.2"/></svg></i><h2>ỨNG DỤNG ĐA LĨNH VỰC</h2></div>
           <div class="grid grid--3 grid--tight">
           <a class="app" href="lien-he">
-            <span class="app__media"><img src="assets/images/iot-app-1.jpg" alt="Đô thị thông minh" loading="lazy"></span>
+            <span class="app__media"><img src="assets/images/iot-app-1.webp" alt="Đô thị thông minh" loading="lazy" width="333" height="246" decoding="async"></span>
             <span class="app__cap"><i><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.8 20.6h18.4"/><rect x="3.8" y="9.4" width="5" height="11.2"/><rect x="9.8" y="4.4" width="5" height="16.2"/><rect x="15.8" y="12.4" width="4.4" height="8.2"/></svg></i>Đô thị thông minh</span>
           </a>
           <a class="app" href="lien-he">
-            <span class="app__media"><img src="assets/images/iot-app-2.jpg" alt="An ninh &amp; Giám sát" loading="lazy"></span>
+            <span class="app__media"><img src="assets/images/iot-app-2.webp" alt="An ninh &amp; Giám sát" loading="lazy" width="348" height="246" decoding="async"></span>
             <span class="app__cap"><i><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.6" y="4.4" width="8.4" height="6.6" rx="1"/><rect x="13" y="4.4" width="8.4" height="6.6" rx="1"/><rect x="2.6" y="13" width="8.4" height="6.6" rx="1"/><rect x="13" y="13" width="8.4" height="6.6" rx="1"/></svg></i>An ninh &amp; Giám sát</span>
           </a>
           <a class="app" href="lien-he">
-            <span class="app__media"><img src="assets/images/iot-app-3.jpg" alt="Giao thông thông minh" loading="lazy"></span>
+            <span class="app__media"><img src="assets/images/iot-app-3.webp" alt="Giao thông thông minh" loading="lazy" width="690" height="492" decoding="async"></span>
             <span class="app__cap"><i><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15.4h16M5.4 15.4V19a1 1 0 0 1-1 1H3.4a1 1 0 0 1-1-1v-3.6M21.6 15.4V19a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1v-3.6"/><path d="M3.2 15.4 5 9.2A2 2 0 0 1 6.9 7.8h10.2A2 2 0 0 1 19 9.2l1.8 6.2Z"/><circle cx="7" cy="12.4" r=".9" fill="currentColor" stroke="none"/><circle cx="17" cy="12.4" r=".9" fill="currentColor" stroke="none"/></svg></i>Giao thông thông minh</span>
           </a>
           <a class="app" href="lien-he">
-            <span class="app__media"><img src="assets/images/iot-app-4.jpg" alt="Khu công nghiệp" loading="lazy"></span>
+            <span class="app__media"><img src="assets/images/iot-app-4.webp" alt="Khu công nghiệp" loading="lazy" width="333" height="246" decoding="async"></span>
             <span class="app__cap"><i><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.8 20.6V10l6 3.6V10l6 3.6V6.4h6.4v14.2H2.8Z"/></svg></i>Khu công nghiệp</span>
           </a>
           <a class="app" href="lien-he">
-            <span class="app__media"><img src="assets/images/iot-app-5.jpg" alt="Giáo dục &amp; Y tế" loading="lazy"></span>
+            <span class="app__media"><img src="assets/images/iot-app-5.webp" alt="Giáo dục &amp; Y tế" loading="lazy" width="696" height="492" decoding="async"></span>
             <span class="app__cap"><i><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.4 1.8 8.2 12 13l10.2-4.8L12 3.4Z"/><path d="M5.6 10.6v4.8c0 1.9 2.9 3.4 6.4 3.4s6.4-1.5 6.4-3.4v-4.8"/></svg></i>Giáo dục &amp; Y tế</span>
           </a>
           <a class="app" href="lien-he">
-            <span class="app__media"><img src="assets/images/iot-app-6.jpg" alt="Nông nghiệp thông minh" loading="lazy"></span>
+            <span class="app__media"><img src="assets/images/iot-app-6.webp" alt="Nông nghiệp thông minh" loading="lazy" width="690" height="492" decoding="async"></span>
             <span class="app__cap"><i><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.4 3.6C10.8 3.6 4.6 7.8 4.6 15a5.8 5.8 0 0 0 1.6 4.2c4-8.4 8.4-10.6 8.4-10.6-3 3-6.2 7.4-8 12.8"/></svg></i>Nông nghiệp thông minh</span>
           </a>
           </div>
@@ -207,21 +211,21 @@
         <div class="boxed__head"><i><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="5.6"/><path d="m9.6 9 1.7 1.7 3.2-3.3"/><path d="M8.4 13.6 7 21l5-2.6 5 2.6-1.4-7.4"/></svg></i><h2>ĐỐI TÁC CÔNG NGHỆ AI</h2>
           <p>Nền tảng và phần cứng AI từ các hãng công nghệ uy tín, được lựa chọn theo từng bài toán.</p></div>
         <ul class="logo-strip">
-          <li><img src="assets/images/brand-fpt.png" alt="FPT" loading="lazy"></li>
-          <li><img src="assets/images/brand-intel.png" alt="Intel" loading="lazy"></li>
-          <li><img src="assets/images/brand-nvidia.png" alt="NVIDIA" loading="lazy"></li>
-          <li><img src="assets/images/brand-microsoft.png" alt="Microsoft" loading="lazy"></li>
-          <li><img src="assets/images/brand-aws.png" alt="AWS" loading="lazy"></li>
-          <li><img src="assets/images/brand-viettel.png" alt="Viettel" loading="lazy"></li>
+          <li><img src="assets/images/brand-fpt.webp" alt="FPT" loading="lazy" width="165" height="102" decoding="async"></li>
+          <li><img src="assets/images/brand-intel.webp" alt="Intel" loading="lazy" width="179" height="74" decoding="async"></li>
+          <li><img src="assets/images/brand-nvidia.webp" alt="NVIDIA" loading="lazy" width="290" height="66" decoding="async"></li>
+          <li><img src="assets/images/brand-microsoft.webp" alt="Microsoft" loading="lazy" width="252" height="61" decoding="async"></li>
+          <li><img src="assets/images/brand-aws.webp" alt="AWS" loading="lazy" width="137" height="88" decoding="async"></li>
+          <li><img src="assets/images/brand-viettel.webp" alt="Viettel" loading="lazy" width="191" height="43" decoding="async"></li>
         </ul>
         <div class="boxed__head boxed__head--sub"><i><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.6" y="7" width="13" height="10" rx="2.2"/><path d="m16 11.2 5-2.6v7l-5-2.6z"/></svg></i><h2>ĐỐI TÁC THIẾT BỊ</h2>
           <p>Thương hiệu camera và thiết bị IoT chúng tôi tích hợp vào nền tảng.</p></div>
         <ul class="logo-strip">
-          <li><img src="assets/images/partner-hikvision.png" alt="Hikvision" loading="lazy"></li>
-          <li><img src="assets/images/partner-dahua.png" alt="Dahua" loading="lazy"></li>
-          <li><img src="assets/images/partner-tvt.png" alt="TVT" loading="lazy"></li>
-          <li><img src="assets/images/partner-axis.png" alt="Axis" loading="lazy"></li>
-          <li><img src="assets/images/partner-hanwha.png" alt="Hanwha Vision" loading="lazy"></li>
+          <li><img src="assets/images/partner-hikvision.webp" alt="Hikvision" loading="lazy" width="472" height="76" decoding="async"></li>
+          <li><img src="assets/images/partner-dahua.webp" alt="Dahua" loading="lazy" width="400" height="128" decoding="async"></li>
+          <li><img src="assets/images/partner-tvt.webp" alt="TVT" loading="lazy" width="333" height="117" decoding="async"></li>
+          <li><img src="assets/images/partner-axis.webp" alt="Axis" loading="lazy" width="349" height="134" decoding="async"></li>
+          <li><img src="assets/images/partner-hanwha.webp" alt="Hanwha Vision" loading="lazy" width="562" height="132" decoding="async"></li>
         </ul>
       </div>
     </div>

@@ -67,7 +67,7 @@ body {
    the UA rule for [hidden] and keep JS-hidden elements on screen. */
 [hidden] { display: none !important; }
 
-img { max-width: 100%; display: block; }
+img { max-width: 100%; height: auto; display: block; }
 
 /* safety net: an inline icon without an explicit size never blows up */
 svg { flex: none; }
@@ -297,7 +297,7 @@ body.nav-locked { overflow: hidden; }
 .hero {
   position: relative;
   min-height: 372px;
-  background: #001741 url("../images/hero-bg.jpg") center top / cover no-repeat;
+  background: #001741 url("../images/hero-bg.webp") center top / cover no-repeat;
   overflow: hidden;
 }
 
@@ -967,7 +967,7 @@ body.nav-locked { overflow: hidden; }
   padding: 48px 0 56px;
   background:
     linear-gradient(180deg, rgba(0, 18, 52, .86) 0%, rgba(0, 24, 66, .72) 55%, rgba(0, 30, 80, .6) 100%),
-    #0150b3 url("../images/whyus-bg.jpg") center / cover no-repeat;
+    #0150b3 url("../images/whyus-bg.webp") center / cover no-repeat;
 }
 
 .whyus__head { max-width: 620px; margin-bottom: 28px; }
@@ -1015,7 +1015,7 @@ body.nav-locked { overflow: hidden; }
   height: 234px;
   margin-right: max(var(--gutter), calc((100vw - var(--container)) / 2));
   overflow: hidden;
-  background: #f7fafd url("../images/solution-panel.jpg") right top / auto 100% no-repeat;
+  background: #f7fafd url("../images/solution-panel.webp") right top / auto 100% no-repeat;
 }
 
 .solution__content {
@@ -1115,7 +1115,7 @@ body.nav-locked { overflow: hidden; }
    11. Footer
    -------------------------------------------------------------------------- */
 .site-footer {
-  background: #001338 url("../images/footer-bg.jpg") center / cover no-repeat;
+  background: #001338 url("../images/footer-bg.webp") center / cover no-repeat;
   color: #fff;
 }
 
@@ -1429,11 +1429,11 @@ body.nav-locked { overflow: hidden; }
   color: #fff;
 }
 
-.phero--bld { background-image: url("../images/sol-bld-hero.jpg"); }
-.phero--news { background-image: url("../images/sol-bld-hero.jpg"); }
-.phero--edu { background-image: url("../images/sol-edu-hero.jpg"); }
-.phero--all { background-image: url("../images/sol-all-hero.jpg"); }
-.phero--prd { background-image: url("../images/prd-hero.jpg"); }
+.phero--bld { background-image: url("../images/sol-bld-hero.webp"); }
+.phero--news { background-image: url("../images/sol-bld-hero.webp"); }
+.phero--edu { background-image: url("../images/sol-edu-hero.webp"); }
+.phero--all { background-image: url("../images/sol-all-hero.webp"); }
+.phero--prd { background-image: url("../images/prd-hero.webp"); }
 
 .phero::before {
   content: "";
@@ -1758,7 +1758,7 @@ h1, h2, h3, .phero__title span { text-wrap: balance; }
 .cta-band {
   position: relative;
   overflow: hidden;
-  background: #00194a url("../images/whyus-bg.jpg") center / cover no-repeat;
+  background: #00194a url("../images/whyus-bg.webp") center / cover no-repeat;
   color: #fff;
 }
 
@@ -1839,7 +1839,7 @@ h1, h2, h3, .phero__title span { text-wrap: balance; }
   overflow: hidden;
   padding: 32px 28px;
   border-radius: 12px;
-  background: #062350 url("../images/edu-path.jpg") right center / cover no-repeat;
+  background: #062350 url("../images/edu-path.webp") right center / cover no-repeat;
   color: #fff;
 }
 
@@ -1856,7 +1856,7 @@ h1, h2, h3, .phero__title span { text-wrap: balance; }
 .split__title--sm { font-size: 24px; }
 .split__text { max-width: 360px; margin-top: 10px; font-size: 15px; line-height: 23px; color: #cfe2f7; }
 .split__text--wide { max-width: none; }
-.split__panel--about { background-image: url("../images/prj-2.jpg"); }
+.split__panel--about { background-image: url("../images/prj-2.webp"); }
 
 .steps {
   display: grid;
@@ -2116,8 +2116,8 @@ h1, h2, h3, .phero__title span { text-wrap: balance; }
 /* ==========================================================================
    14. Dự án / Liên hệ / Giới thiệu / Tin tức
    ========================================================================== */
-.phero--prj { background-image: url("../images/prj-hero.jpg"); }
-.phero--ct  { background-image: url("../images/ct-hero.jpg"); }
+.phero--prj { background-image: url("../images/prj-hero.webp"); }
+.phero--ct  { background-image: url("../images/ct-hero.webp"); }
 
 /* --- layout with sidebar ------------------------------------------------- */
 .with-aside {
@@ -2351,7 +2351,7 @@ h1, h2, h3, .phero__title span { text-wrap: balance; }
 .stats-band {
   position: relative;
   overflow: hidden;
-  background: #01255f url("../images/whyus-bg.jpg") center / cover no-repeat;
+  background: #01255f url("../images/whyus-bg.webp") center / cover no-repeat;
   color: #fff;
 }
 
@@ -2519,7 +2519,7 @@ h1, h2, h3, .phero__title span { text-wrap: balance; }
   position: relative;
   overflow: hidden;
   border-radius: 12px;
-  background: #02234f url("../images/whyus-bg.jpg") center / cover no-repeat;
+  background: #02234f url("../images/whyus-bg.webp") center / cover no-repeat;
   color: #fff;
 }
 
@@ -2704,8 +2704,8 @@ h1, h2, h3, .phero__title span { text-wrap: balance; }
 /* ==========================================================================
    15. AIoT Platform / Trung tâm AI
    ========================================================================== */
-.phero--iot { background-image: url("../images/iot-hero.jpg"); }
-.phero--ai  { background-image: url("../images/ai-hero.jpg"); }
+.phero--iot { background-image: url("../images/iot-hero.webp"); }
+.phero--ai  { background-image: url("../images/ai-hero.webp"); }
 
 /* --- boxed section (white card on tinted page) --------------------------- */
 .boxed {
@@ -4111,3 +4111,27 @@ h1, h2, h3, .phero__title span { text-wrap: balance; }
 }
 .facts dd { margin: 0; } .facts dd a { color: var(--blue-600); }
 .course__meta { min-height: 52px; align-content: flex-start; }
+
+/* mobile banner variants (960px) */
+@media (max-width: 719px) {
+  .hero { background-image: url("../images/hero-bg-m.webp"); }
+  .whyus { background-image: linear-gradient(180deg, rgba(0, 18, 52, .86) 0%, rgba(0, 24, 66, .72) 55%, rgba(0, 30, 80, .6) 100%), url("../images/whyus-bg-m.webp"); }
+  .solution__panel { background-image: url("../images/solution-panel-m.webp"); }
+  .site-footer { background-image: url("../images/footer-bg-m.webp"); }
+  .phero--bld { background-image: url("../images/sol-bld-hero-m.webp"); }
+  .phero--news { background-image: url("../images/sol-bld-hero-m.webp"); }
+  .phero--edu { background-image: url("../images/sol-edu-hero-m.webp"); }
+  .phero--all { background-image: url("../images/sol-all-hero-m.webp"); }
+  .phero--prd { background-image: url("../images/prd-hero-m.webp"); }
+  .cta-band { background-image: url("../images/whyus-bg-m.webp"); }
+  .split__panel { background-image: url("../images/edu-path-m.webp"); }
+  .split__panel--about { background-image: url("../images/prj-2-m.webp"); }
+  .phero--prj { background-image: url("../images/prj-hero-m.webp"); }
+  .phero--ct { background-image: url("../images/ct-hero-m.webp"); }
+  .stats-band { background-image: url("../images/whyus-bg-m.webp"); }
+  .slogan { background-image: url("../images/whyus-bg-m.webp"); }
+  .phero--iot { background-image: url("../images/iot-hero-m.webp"); }
+  .phero--ai { background-image: url("../images/ai-hero-m.webp"); }
+  .phero[style*="--hero"] { background-image: var(--hero-m, var(--hero)); }
+}
+/* /mobile banner variants */

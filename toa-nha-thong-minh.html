@@ -9,6 +9,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/images/sol-bld-hero.webp" media="(min-width: 720px)" fetchpriority="high">
+<link rel="preload" as="image" href="assets/images/sol-bld-hero-m.webp" media="(max-width: 719px)" fetchpriority="high">
+<link rel="preload" href="partials/header.html" as="fetch" crossorigin="anonymous">
+<link rel="preload" href="partials/footer.html" as="fetch" crossorigin="anonymous">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body data-nav="toa-nha-thong-minh">
@@ -136,7 +140,7 @@
       </div>
       <div class="grid grid--4">
         <article class="mcard">
-          <div class="mcard__media"><img src="assets/images/bld-use-1.jpg" alt="Tòa nhà văn phòng" loading="lazy"></div>
+          <div class="mcard__media"><img src="assets/images/bld-use-1.webp" alt="Tòa nhà văn phòng" loading="lazy" width="952" height="472" decoding="async"></div>
           <div class="mcard__body">
             
             <h3 class="mcard__title">Tòa nhà văn phòng</h3>
@@ -150,7 +154,7 @@
           </div>
         </article>
         <article class="mcard">
-          <div class="mcard__media"><img src="assets/images/bld-use-2.jpg" alt="Khu chung cư" loading="lazy"></div>
+          <div class="mcard__media"><img src="assets/images/bld-use-2.webp" alt="Khu chung cư" loading="lazy" width="900" height="472" decoding="async"></div>
           <div class="mcard__body">
             
             <h3 class="mcard__title">Khu chung cư</h3>
@@ -164,7 +168,7 @@
           </div>
         </article>
         <article class="mcard">
-          <div class="mcard__media"><img src="assets/images/bld-use-3.jpg" alt="Trung tâm thương mại" loading="lazy"></div>
+          <div class="mcard__media"><img src="assets/images/bld-use-3.webp" alt="Trung tâm thương mại" loading="lazy" width="924" height="472" decoding="async"></div>
           <div class="mcard__body">
             
             <h3 class="mcard__title">Trung tâm thương mại</h3>
@@ -178,7 +182,7 @@
           </div>
         </article>
         <article class="mcard">
-          <div class="mcard__media"><img src="assets/images/bld-use-4.jpg" alt="Nhà máy - Khu công nghiệp" loading="lazy"></div>
+          <div class="mcard__media"><img src="assets/images/bld-use-4.webp" alt="Nhà máy - Khu công nghiệp" loading="lazy" width="920" height="472" decoding="async"></div>
           <div class="mcard__body">
             
             <h3 class="mcard__title">Nhà máy - Khu công nghiệp</h3>
@@ -202,35 +206,35 @@
       </div>
       <div class="grid grid--5">
         <article class="pj">
-          <div class="pj__media"><img src="assets/images/bld-prj-1.jpg" alt="Dự án Eco Green City" loading="lazy"></div>
+          <div class="pj__media"><img src="assets/images/bld-prj-1.webp" alt="Dự án Eco Green City" loading="lazy" width="712" height="308" decoding="async"></div>
           <div class="pj__body">
             <h3 class="pj__title"><a href="du-an">Dự án Eco Green City</a></h3>
             <p class="pj__meta"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21.4s7-6 7-11a7 7 0 1 0-14 0c0 5 7 11 7 11Z"/><circle cx="12" cy="10.2" r="2.6"/></svg>Hà Nội</p>
           </div>
         </article>
         <article class="pj">
-          <div class="pj__media"><img src="assets/images/bld-prj-2.jpg" alt="Tòa nhà Capital Place" loading="lazy"></div>
+          <div class="pj__media"><img src="assets/images/bld-prj-2.webp" alt="Tòa nhà Capital Place" loading="lazy" width="708" height="308" decoding="async"></div>
           <div class="pj__body">
             <h3 class="pj__title"><a href="du-an">Tòa nhà Capital Place</a></h3>
             <p class="pj__meta"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21.4s7-6 7-11a7 7 0 1 0-14 0c0 5 7 11 7 11Z"/><circle cx="12" cy="10.2" r="2.6"/></svg>Hà Nội</p>
           </div>
         </article>
         <article class="pj">
-          <div class="pj__media"><img src="assets/images/bld-prj-3.jpg" alt="Khu đô thị Vinhomes Grand Park" loading="lazy"></div>
+          <div class="pj__media"><img src="assets/images/bld-prj-3.webp" alt="Khu đô thị Vinhomes Grand Park" loading="lazy" width="708" height="308" decoding="async"></div>
           <div class="pj__body">
             <h3 class="pj__title"><a href="du-an">Khu đô thị Vinhomes Grand Park</a></h3>
             <p class="pj__meta"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21.4s7-6 7-11a7 7 0 1 0-14 0c0 5 7 11 7 11Z"/><circle cx="12" cy="10.2" r="2.6"/></svg>TP. Hồ Chí Minh</p>
           </div>
         </article>
         <article class="pj">
-          <div class="pj__media"><img src="assets/images/bld-prj-4.jpg" alt="Bệnh viện Đa khoa Quốc tế" loading="lazy"></div>
+          <div class="pj__media"><img src="assets/images/bld-prj-4.webp" alt="Bệnh viện Đa khoa Quốc tế" loading="lazy" width="708" height="308" decoding="async"></div>
           <div class="pj__body">
             <h3 class="pj__title"><a href="du-an">Bệnh viện Đa khoa Quốc tế</a></h3>
             <p class="pj__meta"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21.4s7-6 7-11a7 7 0 1 0-14 0c0 5 7 11 7 11Z"/><circle cx="12" cy="10.2" r="2.6"/></svg>Hà Nội</p>
           </div>
         </article>
         <article class="pj">
-          <div class="pj__media"><img src="assets/images/bld-prj-5.jpg" alt="Khu công nghiệp VSIP" loading="lazy"></div>
+          <div class="pj__media"><img src="assets/images/bld-prj-5.webp" alt="Khu công nghiệp VSIP" loading="lazy" width="708" height="308" decoding="async"></div>
           <div class="pj__body">
             <h3 class="pj__title"><a href="du-an">Khu công nghiệp VSIP</a></h3>
             <p class="pj__meta"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21.4s7-6 7-11a7 7 0 1 0-14 0c0 5 7 11 7 11Z"/><circle cx="12" cy="10.2" r="2.6"/></svg>Bình Dương</p>

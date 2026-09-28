@@ -9,6 +9,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/images/sol-edu-hero.webp" media="(min-width: 720px)" fetchpriority="high">
+<link rel="preload" as="image" href="assets/images/sol-edu-hero-m.webp" media="(max-width: 719px)" fetchpriority="high">
+<link rel="preload" href="partials/header.html" as="fetch" crossorigin="anonymous">
+<link rel="preload" href="partials/footer.html" as="fetch" crossorigin="anonymous">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body data-nav="truong-hoc-ai">
@@ -86,7 +90,7 @@
       </div>
       <div class="grid grid--5">
         <article class="mcard">
-          <div class="mcard__media"><img src="assets/images/edu-sol-1.jpg" alt="Giám sát lớp học thông minh" loading="lazy"></div>
+          <div class="mcard__media"><img src="assets/images/edu-sol-1.webp" alt="Giám sát lớp học thông minh" loading="lazy" width="728" height="448" decoding="async"></div>
           <div class="mcard__body">
             <span class="mcard__badge"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.6" y="7" width="13" height="10" rx="2.4"/><path d="m16 11.2 5-2.6v7l-5-2.6z"/><circle cx="8.4" cy="12" r="2.2"/></svg></span>
             <h3 class="mcard__title">Giám sát lớp học thông minh</h3>
@@ -99,7 +103,7 @@
           </div>
         </article>
         <article class="mcard">
-          <div class="mcard__media"><img src="assets/images/edu-sol-2.jpg" alt="Hỗ trợ giảng dạy bằng AI" loading="lazy"></div>
+          <div class="mcard__media"><img src="assets/images/edu-sol-2.webp" alt="Hỗ trợ giảng dạy bằng AI" loading="lazy" width="728" height="448" decoding="async"></div>
           <div class="mcard__body">
             <span class="mcard__badge"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4.4" y="7.6" width="15.2" height="11" rx="2.4"/><path d="M12 3.4v4.2"/><circle cx="8.8" cy="12.6" r="1.3"/><circle cx="15.2" cy="12.6" r="1.3"/><path d="M9.6 16h4.8"/></svg></span>
             <h3 class="mcard__title">Hỗ trợ giảng dạy bằng AI</h3>
@@ -112,7 +116,7 @@
           </div>
         </article>
         <article class="mcard">
-          <div class="mcard__media"><img src="assets/images/edu-sol-3.jpg" alt="Quản lý học sinh toàn diện" loading="lazy"></div>
+          <div class="mcard__media"><img src="assets/images/edu-sol-3.webp" alt="Quản lý học sinh toàn diện" loading="lazy" width="728" height="448" decoding="async"></div>
           <div class="mcard__body">
             <span class="mcard__badge"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9.2" cy="8.2" r="3.4"/><path d="M2.8 20.2a6.4 6.4 0 0 1 12.8 0"/><path d="M16.4 5.2a3.4 3.4 0 0 1 0 6.6M17.8 14.6a6.4 6.4 0 0 1 3.4 5.6"/></svg></span>
             <h3 class="mcard__title">Quản lý học sinh toàn diện</h3>
@@ -125,7 +129,7 @@
           </div>
         </article>
         <article class="mcard">
-          <div class="mcard__media"><img src="assets/images/edu-sol-4.jpg" alt="An ninh trường học" loading="lazy"></div>
+          <div class="mcard__media"><img src="assets/images/edu-sol-4.webp" alt="An ninh trường học" loading="lazy" width="364" height="224" decoding="async"></div>
           <div class="mcard__body">
             <span class="mcard__badge"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.6 4 5.8v6.1c0 5 3.4 9.2 8 10.4 4.6-1.2 8-5.4 8-10.4V5.8l-8-3.2Z"/></svg></span>
             <h3 class="mcard__title">An ninh trường học</h3>
@@ -138,7 +142,7 @@
           </div>
         </article>
         <article class="mcard">
-          <div class="mcard__media"><img src="assets/images/edu-sol-5.jpg" alt="Nền tảng quản lý giáo dục" loading="lazy"></div>
+          <div class="mcard__media"><img src="assets/images/edu-sol-5.webp" alt="Nền tảng quản lý giáo dục" loading="lazy" width="364" height="224" decoding="async"></div>
           <div class="mcard__body">
             <span class="mcard__badge"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3.2 12h17.6M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span>
             <h3 class="mcard__title">Nền tảng quản lý giáo dục</h3>
@@ -243,7 +247,7 @@
   <section class="psec">
     <div class="container">
       <div class="split">
-        <div class="split__panel" style="background-image:url('assets/images/edu-sol-1.jpg')">
+        <div class="split__panel" style="background-image:url('assets/images/edu-sol-1.webp')">
           <h2 class="split__title">Những trải nghiệm thực tế<br>từ các trường đã triển khai</h2>
           <p class="split__text">Hàng trăm trường học trên toàn quốc đã tin tưởng và lựa chọn Cameramienbac. Cùng xem họ nói gì về chúng tôi!</p>
           <a class="btn btn--solid btn--accent btn--sm" href="lien-he">Tư vấn cho trường bạn <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></a>
@@ -252,17 +256,17 @@
           <article class="quote">
             <p class="quote__mark">&ldquo;</p>
             <p class="quote__text">Hệ thống camera AI giúp nhà trường quản lý lớp học hiệu quả hơn, giảm thiểu rủi ro và nâng cao chất lượng giảng dạy.</p>
-            <p class="quote__by"><img src="assets/images/edu-school-1.jpg" alt="Trường THPT Nguyễn Huệ" loading="lazy"><span><b>Trường THPT Nguyễn Huệ</b><span>Hà Nội</span></span></p>
+            <p class="quote__by"><img src="assets/images/edu-school-1.webp" alt="Trường THPT Nguyễn Huệ" loading="lazy" width="728" height="448" decoding="async"><span><b>Trường THPT Nguyễn Huệ</b><span>Hà Nội</span></span></p>
           </article>
           <article class="quote">
             <p class="quote__mark">&ldquo;</p>
             <p class="quote__text">Nền tảng quản lý học sinh rất dễ sử dụng, phụ huynh cũng có thể theo dõi tiến độ học tập của con em mình mọi lúc, mọi nơi.</p>
-            <p class="quote__by"><img src="assets/images/edu-school-2.jpg" alt="Trường Tiểu học Lê Lợi" loading="lazy"><span><b>Trường Tiểu học Lê Lợi</b><span>Hải Phòng</span></span></p>
+            <p class="quote__by"><img src="assets/images/edu-school-2.webp" alt="Trường Tiểu học Lê Lợi" loading="lazy" width="708" height="308" decoding="async"><span><b>Trường Tiểu học Lê Lợi</b><span>Hải Phòng</span></span></p>
           </article>
           <article class="quote">
             <p class="quote__mark">&ldquo;</p>
             <p class="quote__text">Camera AI giúp nhà trường kiểm soát an ninh cổng trường chặt chẽ hơn, phụ huynh cũng yên tâm hơn khi con đến trường.</p>
-            <p class="quote__by"><img src="assets/images/edu-school-3.jpg" alt="Trường THCS Trần Phú" loading="lazy"><span><b>Trường THCS Trần Phú</b><span>Đà Nẵng</span></span></p>
+            <p class="quote__by"><img src="assets/images/edu-school-3.webp" alt="Trường THCS Trần Phú" loading="lazy" width="708" height="308" decoding="async"><span><b>Trường THCS Trần Phú</b><span>Đà Nẵng</span></span></p>
           </article>
         </div>
       </div>

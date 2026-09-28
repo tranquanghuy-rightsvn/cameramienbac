@@ -9,6 +9,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/images/ct-hero.webp" media="(min-width: 720px)" fetchpriority="high">
+<link rel="preload" as="image" href="assets/images/ct-hero-m.webp" media="(max-width: 719px)" fetchpriority="high">
+<link rel="preload" href="partials/header.html" as="fetch" crossorigin="anonymous">
+<link rel="preload" href="partials/footer.html" as="fetch" crossorigin="anonymous">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body data-nav="cau-hoi-thuong-gap">
@@ -16,7 +20,7 @@
 <div data-include="partials/header.html"></div>
 
 <main>
-  <section class="phero" style="--hero:url('assets/images/ct-hero.jpg')">
+  <section class="phero" style="--hero:url('assets/images/ct-hero.webp');--hero-m:url('assets/images/ct-hero-m.webp')">
     <div class="container phero__inner">
       <nav class="phero__crumbs" aria-label="Breadcrumb"><a href="./">Trang chủ</a><span aria-hidden="true">/</span><a href="tin-tuc">Kiến thức</a><span aria-hidden="true">/</span><span>Câu hỏi thường gặp</span></nav>
       <p class="phero__eyebrow">Kiến thức <strong>hỏi đáp</strong></p>

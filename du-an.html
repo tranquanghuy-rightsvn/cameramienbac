@@ -9,6 +9,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/images/prj-hero.webp" media="(min-width: 720px)" fetchpriority="high">
+<link rel="preload" as="image" href="assets/images/prj-hero-m.webp" media="(max-width: 719px)" fetchpriority="high">
+<link rel="preload" href="partials/header.html" as="fetch" crossorigin="anonymous">
+<link rel="preload" href="partials/footer.html" as="fetch" crossorigin="anonymous">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -77,7 +81,7 @@
           <div class="grid grid--3" id="prj-grid">
           <article class="prj" data-category="chung-cu" data-city="Hà Nội" data-year="2023">
             <div class="prj__media">
-              <img src="assets/images/prj-1.jpg" alt="Tòa nhà Thông Minh Vinhomes Ocean Park" loading="lazy">
+              <img src="assets/images/prj-1.webp" alt="Tòa nhà Thông Minh Vinhomes Ocean Park" loading="lazy" width="988" height="400" decoding="async">
               <span class="prj__tag"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4.4" y="3.4" width="15.2" height="17.2" rx="1.4"/><path d="M8 7.4h2.6M13.4 7.4H16M8 11.4h2.6M13.4 11.4H16M8 15.4h2.6M13.4 15.4H16"/></svg>Chung cư</span>
             </div>
             <div class="prj__body">
@@ -94,7 +98,7 @@
           </article>
           <article class="prj" data-category="van-phong" data-city="Hà Nội" data-year="2023">
             <div class="prj__media">
-              <img src="assets/images/prj-2.jpg" alt="Trụ sở Tập đoàn FPT" loading="lazy">
+              <img src="assets/images/prj-2.webp" alt="Trụ sở Tập đoàn FPT" loading="lazy" width="992" height="400" decoding="async">
               <span class="prj__tag"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4.4" y="3.4" width="15.2" height="17.2" rx="1.4"/><path d="M8 7.4h2.4M13.6 7.4H16M8 11.4h2.4M13.6 11.4H16M8 15.4h2.4M13.6 15.4H16"/></svg>Văn phòng</span>
             </div>
             <div class="prj__body">
@@ -111,7 +115,7 @@
           </article>
           <article class="prj" data-category="nha-may" data-city="Hà Nội" data-year="2022">
             <div class="prj__media">
-              <img src="assets/images/prj-3.jpg" alt="KCN Bắc Thăng Long" loading="lazy">
+              <img src="assets/images/prj-3.webp" alt="KCN Bắc Thăng Long" loading="lazy" width="996" height="400" decoding="async">
               <span class="prj__tag"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.8 20.6V10l6 3.6V10l6 3.6V6.4h6.4v14.2H2.8Z"/></svg>Nhà máy - KCN</span>
             </div>
             <div class="prj__body">
@@ -128,7 +132,7 @@
           </article>
           <article class="prj" data-category="truong-hoc" data-city="Hà Nội" data-year="2022">
             <div class="prj__media">
-              <img src="assets/images/prj-4.jpg" alt="Trường THPT Chuyên Hà Nội – Amsterdam" loading="lazy">
+              <img src="assets/images/prj-4.webp" alt="Trường THPT Chuyên Hà Nội – Amsterdam" loading="lazy" width="988" height="400" decoding="async">
               <span class="prj__tag"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.4 1.8 8.2 12 13l10.2-4.8L12 3.4Z"/><path d="M5.6 10.6v4.8c0 1.9 2.9 3.4 6.4 3.4s6.4-1.5 6.4-3.4v-4.8"/></svg>Trường học</span>
             </div>
             <div class="prj__body">
@@ -145,7 +149,7 @@
           </article>
           <article class="prj" data-category="do-thi" data-city="Hưng Yên" data-year="2021">
             <div class="prj__media">
-              <img src="assets/images/prj-5.jpg" alt="Khu đô thị Ecopark" loading="lazy">
+              <img src="assets/images/prj-5.webp" alt="Khu đô thị Ecopark" loading="lazy" width="921" height="371" decoding="async">
               <span class="prj__tag"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.8 20.6h18.4"/><rect x="3.8" y="9.4" width="5" height="11.2"/><rect x="9.8" y="4.4" width="5" height="16.2"/><rect x="15.8" y="12.4" width="4.4" height="8.2"/></svg>Khu đô thị</span>
             </div>
             <div class="prj__body">
@@ -162,7 +166,7 @@
           </article>
           <article class="prj" data-category="ngan-hang" data-city="Hà Nội" data-year="2019">
             <div class="prj__media">
-              <img src="assets/images/prj-6.jpg" alt="Ngân hàng BIDV – Chi nhánh Thái Hà" loading="lazy">
+              <img src="assets/images/prj-6.webp" alt="Ngân hàng BIDV – Chi nhánh Thái Hà" loading="lazy" width="996" height="400" decoding="async">
               <span class="prj__tag"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.2 9.4 12 4.2l8.8 5.2"/><path d="M5.4 9.4v9.2M9.8 9.4v9.2M14.2 9.4v9.2M18.6 9.4v9.2M2.8 20.6h18.4"/></svg>Ngân hàng</span>
             </div>
             <div class="prj__body">
@@ -179,7 +183,7 @@
           </article>
           <article class="prj" data-category="benh-vien" data-city="Hà Nội" data-year="2020">
             <div class="prj__media">
-              <img src="assets/images/prj-7.jpg" alt="Bệnh viện Bạch Mai" loading="lazy">
+              <img src="assets/images/prj-7.webp" alt="Bệnh viện Bạch Mai" loading="lazy" width="988" height="400" decoding="async">
               <span class="prj__tag"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4.4" width="16" height="16.2" rx="2"/><path d="M12 8.6v7.4M8.3 12.3h7.4"/></svg>Bệnh viện</span>
             </div>
             <div class="prj__body">
@@ -196,7 +200,7 @@
           </article>
           <article class="prj" data-category="truong-hoc" data-city="Hà Nội" data-year="2020">
             <div class="prj__media">
-              <img src="assets/images/prj-8.jpg" alt="Đại học Quốc gia Hà Nội" loading="lazy">
+              <img src="assets/images/prj-8.webp" alt="Đại học Quốc gia Hà Nội" loading="lazy" width="992" height="400" decoding="async">
               <span class="prj__tag"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.4 1.8 8.2 12 13l10.2-4.8L12 3.4Z"/><path d="M5.6 10.6v4.8c0 1.9 2.9 3.4 6.4 3.4s6.4-1.5 6.4-3.4v-4.8"/></svg>Trường học</span>
             </div>
             <div class="prj__body">
@@ -213,7 +217,7 @@
           </article>
           <article class="prj" data-category="nha-may" data-city="Bắc Ninh" data-year="2019">
             <div class="prj__media">
-              <img src="assets/images/prj-9.jpg" alt="Nhà máy Samsung Bắc Ninh" loading="lazy">
+              <img src="assets/images/prj-9.webp" alt="Nhà máy Samsung Bắc Ninh" loading="lazy" width="996" height="400" decoding="async">
               <span class="prj__tag"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.8 20.6V10l6 3.6V10l6 3.6V6.4h6.4v14.2H2.8Z"/></svg>Nhà máy - KCN</span>
             </div>
             <div class="prj__body">
@@ -239,7 +243,7 @@
     <div class="container">
       <div class="slogan">
         <div class="slogan__inner">
-          <span class="brand"><img class="brand__mark" src="assets/images/logo-mark.png" alt="" width="400" height="346">
+          <span class="brand"><img class="brand__mark" src="assets/images/logo-mark.png" alt="" width="400" height="346" decoding="async" loading="lazy">
             <span class="brand__text"><span class="brand__name">CAMERAMIENBAC</span><span class="brand__sub">AI &amp; AIoT</span></span>
           </span>
           <div class="slogan__body">

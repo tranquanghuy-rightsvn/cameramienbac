@@ -9,6 +9,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/images/prj-3.webp" media="(min-width: 720px)" fetchpriority="high">
+<link rel="preload" as="image" href="assets/images/prj-3-m.webp" media="(max-width: 719px)" fetchpriority="high">
+<link rel="preload" href="partials/header.html" as="fetch" crossorigin="anonymous">
+<link rel="preload" href="partials/footer.html" as="fetch" crossorigin="anonymous">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body data-nav="du-an">
@@ -16,7 +20,7 @@
 <div data-include="partials/header.html"></div>
 
 <main>
-  <section class="phero" style="--hero:url('assets/images/prj-3.jpg')">
+  <section class="phero" style="--hero:url('assets/images/prj-3.webp');--hero-m:url('assets/images/prj-3-m.webp')">
     <div class="container phero__inner">
       <nav class="phero__crumbs" aria-label="Breadcrumb"><a href="./">Trang chủ</a><span aria-hidden="true">/</span><a href="du-an">Dự án</a><span aria-hidden="true">/</span><span>KCN Bắc Thăng Long</span></nav>
       <p class="phero__eyebrow">Dự án <strong>tiêu biểu</strong></p>
@@ -30,7 +34,7 @@
     <div class="container">
       
       <div class="doc doc--aside">
-        <article class="prose" style="max-width:none"><figure><img src="assets/images/prj-3.jpg" alt="Khu công nghiệp Bắc Thăng Long" width="996" height="400"></figure>
+        <article class="prose" style="max-width:none"><figure><img src="assets/images/prj-3.webp" alt="Khu công nghiệp Bắc Thăng Long" width="996" height="400" decoding="async"></figure>
           <h2 id="bai-toan">Bài toán</h2>
           <p>Khu công nghiệp có diện tích rộng, nhiều cổng ra vào và tuyến hàng rào dài. Yêu cầu đặt ra là giám sát liên tục toàn khu, phát hiện sớm xâm nhập ngoài giờ và tập trung hình ảnh về một phòng điều hành.</p>
           <h2 id="giai-phap">Giải pháp triển khai</h2>

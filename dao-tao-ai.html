@@ -9,6 +9,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/images/news-4.webp" media="(min-width: 720px)" fetchpriority="high">
+<link rel="preload" as="image" href="assets/images/news-4-m.webp" media="(max-width: 719px)" fetchpriority="high">
+<link rel="preload" href="partials/header.html" as="fetch" crossorigin="anonymous">
+<link rel="preload" href="partials/footer.html" as="fetch" crossorigin="anonymous">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body data-nav="dao-tao-ai">
@@ -16,7 +20,7 @@
 <div data-include="partials/header.html"></div>
 
 <main>
-  <section class="phero" style="--hero:url('assets/images/news-4.jpg')">
+  <section class="phero" style="--hero:url('assets/images/news-4.webp');--hero-m:url('assets/images/news-4-m.webp')">
     <div class="container phero__inner">
       <nav class="phero__crumbs" aria-label="Breadcrumb"><a href="./">Trang chủ</a><span aria-hidden="true">/</span><a href="trung-tam-ai">AI &amp; Đào tạo</a><span aria-hidden="true">/</span><span>Đào tạo &amp; Workshop</span></nav>
       <p class="phero__eyebrow">AI &amp; <strong>Đào tạo</strong></p>
@@ -31,7 +35,7 @@
       <div class="psec__head"><p class="kicker">Chương trình</p><h2 class="psec__title">Chương trình đào tạo</h2><p class="psec__lead">Nội dung và thời lượng có thể điều chỉnh theo nhu cầu của đơn vị.</p></div>
       <div class="grid grid--4">
         <article class="course">
-          <div class="course__media"><img src="assets/images/ai-use-4.jpg" alt="" loading="lazy"></div>
+          <div class="course__media"><img src="assets/images/ai-use-4.webp" alt="" loading="lazy" width="555" height="234" decoding="async"></div>
           <div class="course__body">
             <div class="course__meta"><span class="chip">Nửa ngày – 1 ngày</span><span class="chip">Trực tiếp / Online</span></div>
             <h3 class="course__title">Workshop AI cho lãnh đạo</h3>
@@ -41,7 +45,7 @@
           </div>
         </article>
         <article class="course">
-          <div class="course__media"><img src="assets/images/card-3.jpg" alt="" loading="lazy"></div>
+          <div class="course__media"><img src="assets/images/card-3.webp" alt="" loading="lazy" width="552" height="432" decoding="async"></div>
           <div class="course__body">
             <div class="course__meta"><span class="chip">1 – 2 ngày</span><span class="chip">Tại công trình</span></div>
             <h3 class="course__title">Vận hành hệ thống camera AI</h3>
@@ -51,7 +55,7 @@
           </div>
         </article>
         <article class="course">
-          <div class="course__media"><img src="assets/images/edu-sol-1.jpg" alt="" loading="lazy"></div>
+          <div class="course__media"><img src="assets/images/edu-sol-1.webp" alt="" loading="lazy" width="728" height="448" decoding="async"></div>
           <div class="course__body">
             <div class="course__meta"><span class="chip">2 – 4 buổi</span><span class="chip">Trực tiếp / Online</span></div>
             <h3 class="course__title">AI trong nhà trường</h3>
@@ -61,7 +65,7 @@
           </div>
         </article>
         <article class="course">
-          <div class="course__media"><img src="assets/images/iot-dash.jpg" alt="" loading="lazy"></div>
+          <div class="course__media"><img src="assets/images/iot-dash.webp" alt="" loading="lazy" width="640" height="340" decoding="async"></div>
           <div class="course__body">
             <div class="course__meta"><span class="chip">Theo dự án</span><span class="chip">Workshop + triển khai</span></div>
             <h3 class="course__title">Xây dựng trợ lý AI theo tài liệu doanh nghiệp</h3>

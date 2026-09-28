@@ -9,6 +9,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/images/edu-path.webp" media="(min-width: 720px)" fetchpriority="high">
+<link rel="preload" as="image" href="assets/images/edu-path-m.webp" media="(max-width: 719px)" fetchpriority="high">
+<link rel="preload" href="partials/header.html" as="fetch" crossorigin="anonymous">
+<link rel="preload" href="partials/footer.html" as="fetch" crossorigin="anonymous">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body data-nav="ai-exam">
@@ -16,7 +20,7 @@
 <div data-include="partials/header.html"></div>
 
 <main>
-  <section class="phero" style="--hero:url('assets/images/edu-path.jpg')">
+  <section class="phero" style="--hero:url('assets/images/edu-path.webp');--hero-m:url('assets/images/edu-path-m.webp')">
     <div class="container phero__inner">
       <nav class="phero__crumbs" aria-label="Breadcrumb"><a href="./">Trang chủ</a><span aria-hidden="true">/</span><a href="giai-phap">Giải pháp</a><span aria-hidden="true">/</span><span>Giám sát phòng thi bằng AI</span></nav>
       <p class="phero__eyebrow">Giải pháp <strong>AI Exam</strong></p>

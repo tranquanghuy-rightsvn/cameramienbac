@@ -9,6 +9,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/images/ct-hero.webp" media="(min-width: 720px)" fetchpriority="high">
+<link rel="preload" as="image" href="assets/images/ct-hero-m.webp" media="(max-width: 719px)" fetchpriority="high">
+<link rel="preload" href="partials/header.html" as="fetch" crossorigin="anonymous">
+<link rel="preload" href="partials/footer.html" as="fetch" crossorigin="anonymous">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body data-nav="lien-he">
@@ -44,7 +48,7 @@
           <li><i><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 6.8V12l3.4 2"/></svg></i><span><b>Thứ 2 - Thứ 7: 8:00 - 17:30</b><span>Giờ làm việc văn phòng</span></span></li>
           </ul>
           <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=15+ng%C3%B5+36+Ho%C3%A0ng+Qu%E1%BB%91c+Vi%E1%BB%87t%2C+C%E1%BA%A7u+Gi%E1%BA%A5y%2C+H%C3%A0+N%E1%BB%99i" target="_blank" rel="noopener">
-            <img src="assets/images/ct-map.jpg" alt="Bản đồ: 15 ngõ 36 Hoàng Quốc Việt, Cầu Giấy, Hà Nội" loading="lazy">
+            <img src="assets/images/ct-map.webp" alt="Bản đồ: 15 ngõ 36 Hoàng Quốc Việt, Cầu Giấy, Hà Nội" loading="lazy" width="962" height="600" decoding="async">
             <span class="map__cta">Mở Google Maps</span>
           </a>
         </div>
@@ -95,7 +99,7 @@
     <div class="container">
       <div class="slogan">
         <div class="slogan__inner">
-          <span class="brand"><img class="brand__mark" src="assets/images/logo-mark.png" alt="" width="400" height="346">
+          <span class="brand"><img class="brand__mark" src="assets/images/logo-mark.png" alt="" width="400" height="346" decoding="async" loading="lazy">
             <span class="brand__text"><span class="brand__name">CAMERAMIENBAC</span><span class="brand__sub">AI &amp; AIoT</span></span>
           </span>
           <div class="slogan__body">
