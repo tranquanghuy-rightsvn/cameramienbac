@@ -27,7 +27,14 @@ toa-nha-thong-minh/index.html      Giải pháp › Tòa nhà thông minh
 truong-hoc-ai/index.html           Giải pháp › Trường học AI
 giai-phap-toan-dien/index.html     Giải pháp › Giải pháp toàn diện
 san-pham/index.html                Sản phẩm
-aiot-platform/index.html           Sản phẩm › AIoT Platform
+san-pham/camera-ai/index.html      Sản phẩm › Camera AI
+san-pham/luu-tru/index.html        Sản phẩm › NVR & lưu trữ
+san-pham/ai-server/index.html      Sản phẩm › AI Server / AI Box
+san-pham/ra-vao/index.html         Sản phẩm › Kiểm soát ra vào
+san-pham/anpr/index.html           Sản phẩm › Barrier & ANPR
+san-pham/iot/index.html            Sản phẩm › IoT & cảm biến
+san-pham/mang/index.html           Sản phẩm › Thiết bị mạng
+san-pham/aiot-platform/index.html  Sản phẩm › AIoT Platform
 trung-tam-ai/index.html            Giải pháp › Trung tâm AI
 du-an/index.html                   Dự án (có bộ lọc + 9 dự án mẫu)
 ve-chung-toi/index.html            Về chúng tôi
@@ -80,7 +87,7 @@ menu trùng slug của URL đang mở (`/<slug>/`).
 
 | Trang | Đặt ở | Lý do |
 |-------|-------|-------|
-| `/aiot-platform/` | **Sản phẩm › AIoT Platform** | Là nền tảng phần mềm; trong ảnh thiết kế menu đang active ở "Sản phẩm" |
+| `/san-pham/aiot-platform/` | **Sản phẩm › AIoT Platform** | Là nền tảng phần mềm; trong ảnh thiết kế menu đang active ở "Sản phẩm" |
 | `/trung-tam-ai/` | **Giải pháp › Trung tâm AI** | Bản chất là nhóm giải pháp AI; thêm vào dropdown sẵn có nên không phải thêm mục cấp 1 |
 
 Cả hai đều được thêm **link chéo**: `/san-pham/` có khối giới thiệu AIoT Platform,
