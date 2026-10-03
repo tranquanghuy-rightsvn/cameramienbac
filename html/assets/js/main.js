@@ -359,8 +359,8 @@
       cats.forEach(function (x, i) { x.classList.toggle("is-active", i === 0); x.setAttribute("aria-pressed", i === 0 ? "true" : "false"); });
       apply();
     });
-    // deep link: san-pham?nhom=camera-ai#danh-muc
-    var pre = new URLSearchParams(location.search).get("nhom");
+    // deep link: san-pham/camera-ai/ (via <body data-nhom>) or legacy ?nhom=camera-ai#danh-muc
+    var pre = root.body.getAttribute("data-nhom") || new URLSearchParams(location.search).get("nhom");
     if (pre) {
       cats.forEach(function (b) { if (b.dataset.cat === pre) b.click(); });
     } else {
