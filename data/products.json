@@ -1842,5 +1842,63 @@
     "specifications": {},
     "url": "https://www.hanwhavision.com/global/products/product-details/XNF-A8014RV",
     "source": "hanwhavision.com"
+  },
+  {
+    "title": "AXIS M2036-LE Bullet Camera",
+    "price": null,
+    "original_price": null,
+    "description": null,
+    "images": [
+      "https://www.axis.com/sites/axis/files/styles/square_500x500_/public/2022-03/1600_m2035-m2036-white-front-2110.png.webp?itok=tZBr4a3T"
+    ],
+    "specifications": {},
+    "url": "https://www.axis.com/products/axis-m2036-le",
+    "source": "axis.com"
+  },
+  {
+    "title": "AXIS M3086-V Dome Camera",
+    "price": null,
+    "original_price": null,
+    "description": null,
+    "images": [
+      "https://www.axis.com/sites/axis/files/styles/square_500x500_/public/2026-06/m3086v_ceiling_front_2112_5000x5000_Productimagewithcropping.png.webp?itok=8ZJmoysp"
+    ],
+    "specifications": {},
+    "url": "https://www.axis.com/products/axis-m3086-v",
+    "source": "axis.com"
+  },
+  {
+    "title": "AXIS M5075 PTZ Camera",
+    "price": null,
+    "original_price": null,
+    "description": null,
+    "images": [],
+    "specifications": {},
+    "url": "https://www.axis.com/products/axis-m5075",
+    "source": "axis.com"
+  },
+  {
+    "title": "AXIS P1388 Box Camera",
+    "price": null,
+    "original_price": null,
+    "description": null,
+    "images": [
+      "https://www.axis.com/sites/axis/files/styles/square_500x500_/public/2024-01/p1388_wall_front_2311.png.webp?itok=8UiOtlzW"
+    ],
+    "specifications": {},
+    "url": "https://www.axis.com/products/axis-p1388",
+    "source": "axis.com"
+  },
+  {
+    "title": "AXIS Q1971-E Thermal Camera",
+    "price": null,
+    "original_price": null,
+    "description": null,
+    "images": [
+      "https://www.axis.com/sites/axis/files/styles/square_500x500_/public/2024-08/q1961te_wall_angle_right_2210-Productimageswithcropping.png.webp?itok=VgHV4Uuv"
+    ],
+    "specifications": {},
+    "url": "https://www.axis.com/products/axis-q1971-e",
+    "source": "axis.com"
   }
 ]
