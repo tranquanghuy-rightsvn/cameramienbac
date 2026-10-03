@@ -1758,5 +1758,89 @@
     "specifications": {},
     "url": "https://hikvision.vn/san-pham/camera-ip-2/camera-ip-anh-nhiet/camera-anh-nhiet-phat-hien-khoi-va-chay-rung.html",
     "source": "hikvision.vn"
+  },
+  {
+    "title": "XNB-A8004 — 5MP AI Box Camera",
+    "price": null,
+    "original_price": null,
+    "description": null,
+    "images": [
+      "https://hvsgmpprdstorage.blob.core.windows.net/pim/XNB-A8004/thumbnails/medium_XNB-A9004,A8004,A6004_01_M.png"
+    ],
+    "specifications": {},
+    "url": "https://www.hanwhavision.com/global/products/product-details/XNB-A8004",
+    "source": "hanwhavision.com"
+  },
+  {
+    "title": "XNB-A9004 — 8MP AI Box Camera",
+    "price": null,
+    "original_price": null,
+    "description": null,
+    "images": [
+      "https://hvsgmpprdstorage.blob.core.windows.net/pim/XNB-A9004/thumbnails/medium_05/XNB-A9004A8004A6004_01_M.png"
+    ],
+    "specifications": {},
+    "url": "https://www.hanwhavision.com/global/products/product-details/XNB-A9004",
+    "source": "hanwhavision.com"
+  },
+  {
+    "title": "XNB-A6004 — 2MP AI Box Camera",
+    "price": null,
+    "original_price": null,
+    "description": null,
+    "images": [
+      "https://hvsgmpprdstorage.blob.core.windows.net/pim/XNB-A9004/thumbnails/medium_05/XNB-A9004A8004A6004_01_M.png"
+    ],
+    "specifications": {},
+    "url": "https://www.hanwhavision.com/global/products/product-details/XNB-A6004",
+    "source": "hanwhavision.com"
+  },
+  {
+    "title": "XNV-A8084RS — 5MP Stainless Steel AI IR Vandal Dome",
+    "price": null,
+    "original_price": null,
+    "description": null,
+    "images": [
+      "https://hvsgmpprdstorage.blob.core.windows.net/pim/XNV-A8084RS/thumbnails/medium_Product Images_XNV-A9084RS,XNV-A8084RS_251212_Common_01_M.png"
+    ],
+    "specifications": {},
+    "url": "https://www.hanwhavision.com/global/products/product-details/XNV-A8084RS",
+    "source": "hanwhavision.com"
+  },
+  {
+    "title": "XNV-A9084RS — 8MP Stainless Steel AI IR Vandal Dome Camera",
+    "price": null,
+    "original_price": null,
+    "description": null,
+    "images": [
+      "https://hvsgmpprdstorage.blob.core.windows.net/pim/XNV-A9084RS/thumbnails/medium_Product Images_XNV-A9084RS,XNV-A8084RS_251212_Common_01_M.png"
+    ],
+    "specifications": {},
+    "url": "https://www.hanwhavision.com/global/products/product-details/XNV-A9084RS",
+    "source": "hanwhavision.com"
+  },
+  {
+    "title": "XNF-A8014R — 6MP AI IR Fisheye Camera",
+    "price": null,
+    "original_price": null,
+    "description": null,
+    "images": [
+      "https://hvsgmpprdstorage.blob.core.windows.net/pim/XNF-A8014R/thumbnails/medium_Product Images_XNF-A9014R,XNF-A8014R_251208_Common_01_M.png"
+    ],
+    "specifications": {},
+    "url": "https://www.hanwhavision.com/global/products/product-details/XNF-A8014R",
+    "source": "hanwhavision.com"
+  },
+  {
+    "title": "XNF-A8014RV — 6MP AI IR Fisheye Camera",
+    "price": null,
+    "original_price": null,
+    "description": null,
+    "images": [
+      "https://hvsgmpprdstorage.blob.core.windows.net/pim/XNF-A8014RV/thumbnails/medium_Product Images_XNF-A9014RV,XNF-A8014RV_251205_Common_01_M.png"
+    ],
+    "specifications": {},
+    "url": "https://www.hanwhavision.com/global/products/product-details/XNF-A8014RV",
+    "source": "hanwhavision.com"
   }
 ]
