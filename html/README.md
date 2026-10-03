@@ -48,6 +48,14 @@ assets/images/                     Ảnh đã tách từ file thiết kế
 assets/design/                     File thiết kế gốc (tham chiếu)
 ```
 
+### Vùng do trang quản trị (CMS) quản lý — KHÔNG sửa tay
+
+Sản phẩm, tin tức, danh mục tin được quản lý ở `/admin/` (xem `../GAS.md`). `../scripts/build.py`
+ghi đè các vùng nằm giữa mốc `<!-- cms:<tên>:start -->` / `<!-- cms:<tên>:end -->` trong
+`partials/catalog.html`, `hang-*/index.html`, `tin-tuc/index.html`, và sinh `tin-tuc/<slug>/`.
+Sửa tay trong các vùng đó sẽ bị mất ở lần build sau; xoá mốc thì build dừng với lỗi.
+Muốn sửa giao diện thẻ/bài viết: sửa `../scripts/build.py` hoặc `../templates/news-detail.html`.
+
 ### Thêm trang mới
 
 ```html

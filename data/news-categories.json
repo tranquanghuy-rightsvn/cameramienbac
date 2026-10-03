@@ -1,0 +1,32 @@
+[
+  {
+    "slug": "giai-phap",
+    "name": "Giải pháp",
+    "order": 1
+  },
+  {
+    "slug": "cong-nghe",
+    "name": "Công nghệ",
+    "order": 2
+  },
+  {
+    "slug": "du-an",
+    "name": "Dự án",
+    "order": 3
+  },
+  {
+    "slug": "giao-duc",
+    "name": "Giáo dục",
+    "order": 4
+  },
+  {
+    "slug": "huong-dan",
+    "name": "Hướng dẫn",
+    "order": 5
+  },
+  {
+    "slug": "an-ninh",
+    "name": "An ninh",
+    "order": 6
+  }
+]

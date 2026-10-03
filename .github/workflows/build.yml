@@ -1,0 +1,62 @@
+name: Build site tĩnh từ data/
+
+# Chỉ trigger ở đúng các file LUÔN là commit CHỐT của một thao tác trong trang quản trị — KHÔNG
+# trigger theo cả thư mục data/**. Một lần Lưu tin tức sinh nhiều commit liên tiếp (ảnh -> chi
+# tiết bài -> danh sách tổng); trigger theo thư mục sẽ build ngay từ commit ĐẦU (lúc danh sách
+# chưa cập nhật) và deploy nhầm trạng thái dở dang. Xem GAS.md mục VIII.
+#   data/catalog.json          -> Lưu/Xoá sản phẩm (1 file, tự nó là chốt)
+#   data/news.json             -> Lưu/Xoá tin tức (Code.js ghi SAU CÙNG)
+#   data/news-categories.json  -> Lưu/Xoá danh mục tin
+#   data/legacy-news.json      -> sửa tay danh sách bài viết tay cũ
+# data/chat-qa.json + data/ai-settings.json KHÔNG cần build: trợ lý AI đọc thẳng lúc chat.
+on:
+  push:
+    branches: [master]
+    paths:
+      - "data/catalog.json"
+      - "data/news.json"
+      - "data/news-categories.json"
+      - "data/legacy-news.json"
+      - "templates/**"
+      - "scripts/build.py"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+# Hai lần Lưu sát nhau có thể chạy chồng 2 job; job sau đợi job trước xong rồi chạy trên dữ
+# liệu mới nhất, tránh 2 job cùng push lên html/ và đá nhau.
+concurrency:
+  group: build-html
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build html/ từ data/ + templates/
+        run: python3 scripts/build.py
+
+      # build.py chỉ ghi vào html/ (trang tin sinh ra mang dấu <!-- build.py:generated --> ngay
+      # trong file), nên `git add -A html/` là đủ — -A để stage cả trang mồ côi bị build xoá.
+      # Commit của CI chỉ đụng html/ nên không tự trigger lại workflow này.
+      - name: Commit html/ đã build
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A html/
+          git diff --cached --quiet && echo "Không có thay đổi để commit." && exit 0
+          git commit -m "CI: build html từ data/"
+          git pull --rebase origin master
+          git push
+
+      # KHÔNG có bước deploy ở đây: hosting (Vercel/Cloudflare...) nối với repo sẽ tự deploy
+      # khi có commit mới trên master, kể cả commit do CI đẩy lên ở bước trên.

@@ -1,0 +1,1190 @@
+[
+  {
+    "id": "camera-ai-than-tru-bullet",
+    "title": "Camera AI thân trụ (bullet)",
+    "category": "camera-ai",
+    "apps": [
+      "an-ninh",
+      "nha-may",
+      "toa-nha",
+      "do-thi"
+    ],
+    "brands": [
+      "hikvision",
+      "dahua",
+      "axis",
+      "hanwha"
+    ],
+    "description": "Giám sát ngoài trời, hàng rào, cổng; phát hiện xâm nhập, phân loại người/xe.",
+    "model_brand": "hikvision",
+    "model": "Hikvision DS-2CD2683G2-LIZS2UHUN",
+    "model_note": "8MP",
+    "price": 17000000,
+    "image": "assets/images/products/ds-2cd2683g2-lizs2uhun.jpg",
+    "image_alt": "Camera AI thân trụ Hikvision DS-2CD2683G2-LIZS2UHUN",
+    "cta_label": "",
+    "cta_url": "",
+    "order": 1,
+    "updated_at": "2026-10-03T00:00:00Z"
+  },
+  {
+    "id": "camera-ai-ban-cau-dome",
+    "title": "Camera AI bán cầu (dome)",
+    "category": "camera-ai",
+    "apps": [
+      "an-ninh",
+      "toa-nha",
+      "truong-hoc",
+      "van-phong"
+    ],
+    "brands": [
+      "hikvision",
+      "dahua",
+      "axis",
+      "hanwha",
+      "tvt"
+    ],
+    "description": "Lắp trong nhà: sảnh, hành lang, lớp học, văn phòng; thẩm mỹ, chống phá hoại.",
+    "model_brand": "hikvision",
+    "model": "Hikvision DS-2CE72DF0T-F",
+    "model_note": "2MP ColorVu",
+    "price": 0,
+    "image": "assets/images/products/ds-2ce72df0t-f.jpg",
+    "image_alt": "Camera AI bán cầu Hikvision DS-2CE72DF0T-F ColorVu",
+    "cta_label": "",
+    "cta_url": "",
+    "order": 2,
+    "updated_at": "2026-10-03T00:00:00Z"
+  },
+  {
+    "id": "camera-ptz-ai",
+    "title": "Camera PTZ AI",
+    "category": "camera-ai",
+    "apps": [
+      "an-ninh",
+      "nha-may",
+      "do-thi"
+    ],
+    "brands": [
+      "hikvision",
+      "dahua",
+      "axis",
+      "hanwha"
+    ],
+    "description": "Quay quét, zoom quang học, tự động bám đối tượng cho khu vực rộng.",
+    "model_brand": "hikvision",
+    "model": "Hikvision DS-2DE5232IW-AE(B)",
+    "model_note": "2MP, zoom 32x",
+    "price": 0,
+    "image": "assets/images/products/ds-2de5232iw-aeb.jpg",
+    "image_alt": "Camera PTZ AI Hikvision DS-2DE5232IW-AE(B)",
+    "cta_label": "",
+    "cta_url": "",
+    "order": 3,
+    "updated_at": "2026-10-03T00:00:00Z"
+  },
+  {
+    "id": "camera-nhan-dien-khuon-mat",
+    "title": "Camera nhận diện khuôn mặt",
+    "category": "camera-ai",
+    "apps": [
+      "an-ninh",
+      "van-phong",
+      "truong-hoc",
+      "toa-nha"
+    ],
+    "brands": [
+      "hikvision",
+      "dahua",
+      "hanwha"
+    ],
+    "description": "Nhận diện tại cửa ra vào, sảnh; chống ngược sáng (WDR).",
+    "model_brand": "hikvision",
+    "model": "Hikvision IDS-2SH6B6G0-IZS",
+    "model_note": "đếm người/nhận diện khuôn mặt",
+    "price": 0,
+    "image": "assets/images/products/ids-2sh6b6g0-izs.jpg",
+    "image_alt": "Camera AI nhận diện khuôn mặt Hikvision IDS-2SH6B6G0-IZS",
+    "cta_label": "",
+    "cta_url": "",
+    "order": 4,
+    "updated_at": "2026-10-03T00:00:00Z"
+  },
+  {
+    "id": "camera-toan-canh-da-cam-bien",
+    "title": "Camera toàn cảnh / đa cảm biến",
+    "category": "camera-ai",
+    "apps": [
+      "an-ninh",
+      "do-thi",
+      "nha-may",
+      "bai-xe"
+    ],
+    "brands": [
+      "hikvision",
+      "dahua",
+      "axis",
+      "hanwha"
+    ],
+    "description": "Một thiết bị bao quát 180–360°, giảm số điểm lắp cho bãi rộng, ngã tư.",
+    "model_brand": "hikvision",
+    "model": "Hikvision TandemVu DS-8SHC25MXS-DLW",
+    "model_note": "",
+    "price": 46980000,
+    "image": "assets/images/products/ds-8shc25mxs-dlw.jpg",
+    "image_alt": "Camera toàn cảnh TandemVu Hikvision DS-8SHC25MXS-DLW",
+    "cta_label": "",
+    "cta_url": "",
+    "order": 5,
+    "updated_at": "2026-10-03T00:00:00Z"
+  },
+  {
+    "id": "camera-nhiet",
+    "title": "Camera nhiệt",
+    "category": "camera-ai",
+    "apps": [
+      "nha-may",
+      "an-ninh"
+    ],
+    "brands": [
+      "hikvision",
+      "dahua",
+      "axis",
+      "hanwha"
+    ],
+    "description": "Phát hiện điểm nóng, cảnh báo cháy sớm, giám sát trong bóng tối hoàn toàn.",
+    "model_brand": "hikvision",
+    "model": "Hikvision DS-2TD8167-150ZC4FW",
+    "model_note": "bi-spectrum, phát hiện khói/cháy rừng",
+    "price": 0,
+    "image": "assets/images/products/ds-2td8167-150zc4fw.png",
+    "image_alt": "Camera ảnh nhiệt Hikvision DS-2TD8167-150ZC4FW phát hiện khói, cháy rừng",
+    "cta_label": "",
+    "cta_url": "",
+    "order": 6,
+    "updated_at": "2026-10-03T00:00:00Z"
+  },
+  {
+    "id": "camera-ai-colorvu-4mp",
+    "title": "Camera AI ColorVu 4MP",
+    "category": "camera-ai",
+    "apps": [
+      "an-ninh",
+      "nha-may",
+      "toa-nha"
+    ],
+    "brands": [
+      "hikvision"
+    ],
+    "description": "Hình ảnh có màu cả ban đêm nhờ ống kính khẩu độ lớn, không cần đèn hồng ngoại phụ trợ.",
+    "model_brand": "hikvision",
+    "model": "Hikvision DS-2SH7G46G2-LIZS",
+    "model_note": "4MP, ColorVu",
+    "price": 7700000,
+    "image": "assets/images/products/ds-2sh7g46g2-lizs.jpg",
+    "image_alt": "Camera AI ColorVu Hikvision DS-2SH7G46G2-LIZS",
+    "cta_label": "",
+    "cta_url": "",
+    "order": 7,
+    "updated_at": "2026-10-03T00:00:00Z"
+  },
+  {
+    "id": "camera-ai-acusense-4mp",
+    "title": "Camera AI AcuSense 4MP",
+    "category": "camera-ai",
+    "apps": [
+      "an-ninh",
+      "nha-may",
+      "do-thi"
+    ],
+    "brands": [
+      "hikvision"
+    ],
+    "description": "Lọc báo động giả bằng AI, chỉ cảnh báo khi phát hiện người/xe thật sự.",
+    "model_brand": "hikvision",
+    "model": "Hikvision DS-2SH646G2-LIZSU",
+    "model_note": "4MP, AcuSense",
+    "price": 7400000,
+    "image": "assets/images/products/ds-2sh646g2-lizsu.jpg",
+    "image_alt": "Camera AI AcuSense Hikvision DS-2SH646G2-LIZSU",
+    "cta_label": "",
+    "cta_url": "",
+    "order": 8,
+    "updated_at": "2026-10-03T00:00:00Z"
+  },
+  {
+    "id": "camera-ai-hong-ngoai-xa-90m",
+    "title": "Camera AI hồng ngoại xa 90m",
+    "category": "camera-ai",
+    "apps": [
+      "an-ninh",
+      "do-thi",
+      "bai-xe"
+    ],
+    "brands": [
+      "hikvision"
+    ],
+    "description": "Tầm nhìn hồng ngoại xa cho hàng rào, tường bao, khu vực thiếu sáng diện rộng.",
+    "model_brand": "hikvision",
+    "model": "Hikvision DS-2SH56AD-5IS",
+    "model_note": "5MP, IR 90m",
+    "price": 7650000,
+    "image": "assets/images/products/ds-2sh56ad-5is.jpg",
+    "image_alt": "Camera AI hồng ngoại 90m Hikvision DS-2SH56AD-5IS",
+    "cta_label": "",
+    "cta_url": "",
+    "order": 9,
+    "updated_at": "2026-10-03T00:00:00Z"
+  },
+  {
+    "id": "camera-nhan-dien-bien-so-anpr",
+    "title": "Camera nhận diện biển số (ANPR)",
+    "category": "camera-ai",
+    "apps": [
+      "do-thi",
+      "an-ninh",
+      "bai-xe"
+    ],
+    "brands": [
+      "hikvision"
+    ],
+    "description": "Đọc và ghi nhận biển số xe ra/vào tự động cho bãi xe, cổng kiểm soát.",
+    "model_brand": "hikvision",
+    "model": "Hikvision iDS-CGT43L",
+    "model_note": "",
+    "price": 0,
+    "image": "assets/images/products/ids-cgt43l.png",
+    "image_alt": "Camera nhận diện biển số Hikvision iDS-CGT43L",
+    "cta_label": "",
+    "cta_url": "",
+    "order": 10,
+    "updated_at": "2026-10-03T00:00:00Z"
+  },
+  {
+    "id": "camera-ai-than-tru-dahua-4mp",
+    "title": "Camera AI thân trụ Dahua 4MP",
+    "category": "camera-ai",
+    "apps": [
+      "an-ninh",
+      "nha-may",
+      "toa-nha"
+    ],
+    "brands": [
+      "dahua"
+    ],
+    "description": "Lựa chọn thay thế hãng Dahua cho giám sát ngoài trời, tương thích đầu ghi XVR/NVR hiện có.",
+    "model_brand": "dahua",
+    "model": "Dahua DH-IPC-B1B40P",
+    "model_note": "4MP, IP67, IR 30m",
+    "price": 0,
+    "image": "assets/images/products/dh-ipc-b1b40p.png",
+    "image_alt": "Camera AI thân trụ Dahua DH-IPC-B1B40P",
+    "cta_label": "",
+    "cta_url": "",
+    "order": 11,
+    "updated_at": "2026-10-03T00:00:00Z"
+  },
+  {
+    "id": "camera-ai-mat-cao-turret-dahua-4mp",
+    "title": "Camera AI mắt cáo (turret) Dahua 4MP",
+    "category": "camera-ai",
+    "apps": [
+      "an-ninh",
+      "toa-nha",
+      "van-phong"
+    ],
+    "brands": [
+      "dahua"
+    ],
+    "description": "Lắp áp trần/tường trong nhà và hiên mái; kiểu dáng nhỏ gọn, khó tháo dỡ hơn dome lộ dây.",
+    "model_brand": "dahua",
+    "model": "Dahua DH-IPC-T1B40P",
+    "model_note": "4MP, IP67, IR 30m",
+    "price": 0,
+    "image": "assets/images/products/dh-ipc-t1b40p.png",
+    "image_alt": "Camera AI mắt cáo Dahua DH-IPC-T1B40P",
+    "cta_label": "",
+    "cta_url": "",
+    "order": 12,
+    "updated_at": "2026-10-03T00:00:00Z"
+  },
+  {
+    "id": "camera-ai-ban-cau-dahua-2mp-trong-nha",
+    "title": "Camera AI bán cầu Dahua 2MP (trong nhà)",
+    "category": "camera-ai",
+    "apps": [
+      "an-ninh",
+      "van-phong"
+    ],
+    "brands": [
+      "dahua"
+    ],
+    "description": "Lắp áp trần trong nhà: hành lang, văn phòng, cửa hàng; giá tiết kiệm cho dự án nhiều điểm.",
+    "model_brand": "dahua",
+    "model": "Dahua DH-IPC-D1B20P",
+    "model_note": "2MP, IR 20m",
+    "price": 0,
+    "image": "assets/images/products/dh-ipc-d1b20p.png",
+    "image_alt": "Camera AI bán cầu Dahua DH-IPC-D1B20P",
+    "cta_label": "",
+    "cta_url": "",
+    "order": 13,
+    "updated_at": "2026-10-03T00:00:00Z"
+  },
+  {
+    "id": "camera-ai-ban-cau-dahua-2mp-ngoai-troi",
+    "title": "Camera AI bán cầu Dahua 2MP (ngoài trời)",
+    "category": "camera-ai",
+    "apps": [
+      "an-ninh",
+      "nha-may"
+    ],
+    "brands": [
+      "dahua"
+    ],
+    "description": "Phiên bản chuẩn IP67, IR xa hơn bản trong nhà; phù hợp mái hiên, sân sau, hành lang ngoài trời.",
+    "model_brand": "dahua",
+    "model": "Dahua DH-IPC-D2B20P",
+    "model_note": "2MP, IP67, IR 30m",
+    "price": 0,
+    "image": "assets/images/products/dh-ipc-d2b20p.png",
+    "image_alt": "Camera AI bán cầu ngoài trời Dahua DH-IPC-D2B20P",
+    "cta_label": "",
+    "cta_url": "",
+    "order": 14,
+    "updated_at": "2026-10-03T00:00:00Z"
+  },
+  {
+    "id": "camera-ai-mat-cao-turret-dahua-2mp",
+    "title": "Camera AI mắt cáo (turret) Dahua 2MP",
+    "category": "camera-ai",
+    "apps": [
+      "an-ninh",
+      "do-thi"
+    ],
+    "brands": [
+      "dahua"
+    ],
+    "description": "Camera mắt cáo phổ thông, lắp nhanh, phù hợp dự án cần tiết kiệm ngân sách.",
+    "model_brand": "dahua",
+    "model": "Dahua DH-IPC-T1B20P",
+    "model_note": "2MP, IP67, IR 30m",
+    "price": 0,
+    "image": "assets/images/products/dh-ipc-t1b20p.png",
+    "image_alt": "Camera AI mắt cáo Dahua DH-IPC-T1B20P",
+    "cta_label": "",
+    "cta_url": "",
+    "order": 15,
+    "updated_at": "2026-10-03T00:00:00Z"
+  },
+  {
+    "id": "camera-ai-than-tru-dahua-2mp",
+    "title": "Camera AI thân trụ Dahua 2MP",
+    "category": "camera-ai",
+    "apps": [
+      "an-ninh",
+      "bai-xe"
+    ],
+    "brands": [
+      "dahua"
+    ],
+    "description": "Camera thân trụ phổ thông, giám sát cổng, sân vườn, kho nhỏ với chi phí tiết kiệm.",
+    "model_brand": "dahua",
+    "model": "Dahua DH-IPC-B1B20P",
+    "model_note": "2MP, IP67, IR 30m",
+    "price": 0,
+    "image": "assets/images/products/dh-ipc-b1b20p.png",
+    "image_alt": "Camera AI thân trụ Dahua DH-IPC-B1B20P",
+    "cta_label": "",
+    "cta_url": "",
+    "order": 16,
+    "updated_at": "2026-10-03T00:00:00Z"
+  },
+  {
+    "id": "camera-speed-dome-mini-ai",
+    "title": "Camera Speed Dome mini AI",
+    "category": "camera-ai",
+    "apps": [
+      "an-ninh",
+      "toa-nha",
+      "van-phong"
+    ],
+    "brands": [
+      "hikvision"
+    ],
+    "description": "PTZ cỡ nhỏ, lắp trong nhà/hiên mái, quay quét linh hoạt cho sảnh, hành lang rộng.",
+    "model_brand": "hikvision",
+    "model": "Hikvision DS-2DE3A404IW-DE/W",
+    "model_note": "4MP",
+    "price": 0,
+    "image": "assets/images/products/ds-2de3a404iw-dew.jpg",
+    "image_alt": "Camera Speed Dome mini AI Hikvision DS-2DE3A404IW-DE/W",
+    "cta_label": "",
+    "cta_url": "",
+    "order": 17,
+    "updated_at": "2026-10-03T00:00:00Z"
+  },
+  {
+    "id": "camera-ai-box-modular",
+    "title": "Camera AI Box (modular)",
+    "category": "camera-ai",
+    "apps": [
+      "an-ninh",
+      "nha-may"
+    ],
+    "brands": [
+      "hanwha"
+    ],
+    "description": "Thân máy tách rời, tùy chọn ống kính theo khoảng cách/góc nhìn; phù hợp lắp đặt chuyên biệt, nhà xưởng.",
+    "model_brand": "hanwha",
+    "model": "Hanwha Vision XNB-A9004",
+    "model_note": "8MP AI Box Camera",
+    "price": 0,
+    "image": "assets/images/products/xnb-a9004.png",
+    "image_alt": "Camera AI Box Hanwha Vision XNB-A9004",
+    "cta_label": "",
+    "cta_url": "",
+    "order": 18,
+    "updated_at": "2026-10-03T00:00:00Z"
+  },
+  {
+    "id": "camera-ai-vandal-dome-inox",
+    "title": "Camera AI Vandal Dome inox",
+    "category": "camera-ai",
+    "apps": [
+      "an-ninh",
+      "nha-may"
+    ],
+    "brands": [
+      "hanwha"
+    ],
+    "description": "Vỏ thép không gỉ chống ăn mòn, chống phá hoại; phù hợp nhà máy thực phẩm, y tế, môi trường khắc nghiệt.",
+    "model_brand": "hanwha",
+    "model": "Hanwha Vision XNV-A9084RS",
+    "model_note": "8MP, IR, inox",
+    "price": 0,
+    "image": "assets/images/products/xnv-a9084rs.png",
+    "image_alt": "Camera AI Vandal Dome inox Hanwha Vision XNV-A9084RS",
+    "cta_label": "",
+    "cta_url": "",
+    "order": 19,
+    "updated_at": "2026-10-03T00:00:00Z"
+  },
+  {
+    "id": "camera-ai-fisheye-360-trong-nha",
+    "title": "Camera AI Fisheye 360° (trong nhà)",
+    "category": "camera-ai",
+    "apps": [
+      "an-ninh",
+      "toa-nha",
+      "truong-hoc"
+    ],
+    "brands": [
+      "hanwha"
+    ],
+    "description": "Một camera bao quát toàn phòng, giảm số điểm lắp cho siêu thị, sảnh, lớp học.",
+    "model_brand": "hanwha",
+    "model": "Hanwha Vision XNF-A8014R",
+    "model_note": "6MP, trong nhà",
+    "price": 0,
+    "image": "assets/images/products/xnf-a8014r.png",
+    "image_alt": "Camera AI Fisheye 360 độ Hanwha Vision XNF-A8014R",
+    "cta_label": "",
+    "cta_url": "",
+    "order": 20,
+    "updated_at": "2026-10-03T00:00:00Z"
+  },
+  {
+    "id": "camera-ai-fisheye-360-ngoai-troi",
+    "title": "Camera AI Fisheye 360° (ngoài trời)",
+    "category": "camera-ai",
+    "apps": [
+      "an-ninh",
+      "do-thi",
+      "bai-xe"
+    ],
+    "brands": [
+      "hanwha"
+    ],
+    "description": "Phiên bản chuẩn chống nước IP66, lắp mái hiên, bãi xe, sân trong khu đô thị.",
+    "model_brand": "hanwha",
+    "model": "Hanwha Vision XNF-A8014RV",
+    "model_note": "6MP, IP66",
+    "price": 0,
+    "image": "assets/images/products/xnf-a8014rv.png",
+    "image_alt": "Camera AI Fisheye 360 độ ngoài trời Hanwha Vision XNF-A8014RV",
+    "cta_label": "",
+    "cta_url": "",
+    "order": 21,
+    "updated_at": "2026-10-03T00:00:00Z"
+  },
+  {
+    "id": "camera-ai-than-tru-axis",
+    "title": "Camera AI thân trụ Axis",
+    "category": "camera-ai",
+    "apps": [
+      "an-ninh",
+      "toa-nha",
+      "do-thi"
+    ],
+    "brands": [
+      "axis"
+    ],
+    "description": "Dòng phổ thông của Axis, hệ thống mở, dễ tích hợp VMS bên thứ ba; phù hợp dự án yêu cầu tiêu chuẩn cao với ngân sách vừa phải.",
+    "model_brand": "axis",
+    "model": "AXIS M2036-LE",
+    "model_note": "Bullet Camera",
+    "price": 0,
+    "image": "assets/images/products/axis-m2036-le.png",
+    "image_alt": "Camera AI thân trụ Axis M2036-LE",
+    "cta_label": "",
+    "cta_url": "",
+    "order": 22,
+    "updated_at": "2026-10-03T00:00:00Z"
+  },
+  {
+    "id": "camera-ai-ban-cau-axis",
+    "title": "Camera AI bán cầu Axis",
+    "category": "camera-ai",
+    "apps": [
+      "an-ninh",
+      "van-phong",
+      "truong-hoc"
+    ],
+    "brands": [
+      "axis"
+    ],
+    "description": "Lắp áp trần trong nhà: sảnh, hành lang, văn phòng, cửa hàng; thẩm mỹ gọn nhẹ.",
+    "model_brand": "axis",
+    "model": "AXIS M3086-V",
+    "model_note": "Dome Camera",
+    "price": 0,
+    "image": "assets/images/products/axis-m3086-v.png",
+    "image_alt": "Camera AI bán cầu Axis M3086-V",
+    "cta_label": "",
+    "cta_url": "",
+    "order": 23,
+    "updated_at": "2026-10-03T00:00:00Z"
+  },
+  {
+    "id": "camera-ptz-ai-axis",
+    "title": "Camera PTZ AI Axis",
+    "category": "camera-ai",
+    "apps": [
+      "an-ninh",
+      "nha-may",
+      "do-thi"
+    ],
+    "brands": [
+      "axis"
+    ],
+    "description": "PTZ cỡ nhỏ, quay quét linh hoạt cho sảnh, hành lang, khu vực cần bao quát rộng.",
+    "model_brand": "axis",
+    "model": "AXIS M5075",
+    "model_note": "PTZ Camera",
+    "price": 0,
+    "image": "assets/images/products/axis-m5075.png",
+    "image_alt": "Camera PTZ AI Axis M5075",
+    "cta_label": "",
+    "cta_url": "",
+    "order": 24,
+    "updated_at": "2026-10-03T00:00:00Z"
+  },
+  {
+    "id": "camera-ai-box-modular-axis",
+    "title": "Camera AI Box (modular) Axis",
+    "category": "camera-ai",
+    "apps": [
+      "an-ninh",
+      "nha-may"
+    ],
+    "brands": [
+      "axis"
+    ],
+    "description": "Thân máy tách rời, tùy chọn ống kính theo khoảng cách/góc nhìn; phù hợp lắp đặt chuyên biệt.",
+    "model_brand": "axis",
+    "model": "AXIS P1388",
+    "model_note": "Box Camera",
+    "price": 0,
+    "image": "assets/images/products/axis-p1388.png",
+    "image_alt": "Camera AI Box Axis P1388",
+    "cta_label": "",
+    "cta_url": "",
+    "order": 25,
+    "updated_at": "2026-10-03T00:00:00Z"
+  },
+  {
+    "id": "camera-nhiet-axis",
+    "title": "Camera nhiệt Axis",
+    "category": "camera-ai",
+    "apps": [
+      "nha-may",
+      "an-ninh"
+    ],
+    "brands": [
+      "axis"
+    ],
+    "description": "Phát hiện điểm nóng, cảnh báo cháy sớm, giám sát trong bóng tối hoàn toàn; môi trường công nghiệp.",
+    "model_brand": "axis",
+    "model": "AXIS Q1971-E",
+    "model_note": "Thermal Camera",
+    "price": 0,
+    "image": "assets/images/products/axis-q1971-e.png",
+    "image_alt": "Camera ảnh nhiệt Axis Q1971-E",
+    "cta_label": "",
+    "cta_url": "",
+    "order": 26,
+    "updated_at": "2026-10-03T00:00:00Z"
+  },
+  {
+    "id": "dau-ghi-nvr",
+    "title": "Đầu ghi NVR",
+    "category": "luu-tru",
+    "apps": [
+      "an-ninh",
+      "toa-nha",
+      "truong-hoc",
+      "van-phong",
+      "nha-may"
+    ],
+    "brands": [
+      "hikvision",
+      "dahua",
+      "tvt",
+      "hanwha"
+    ],
+    "description": "Ghi hình 8–64 kênh, quản lý tại chỗ cho từng khu vực.",
+    "model_brand": "",
+    "model": "",
+    "model_note": "",
+    "price": 0,
+    "image": "",
+    "image_alt": "",
+    "cta_label": "",
+    "cta_url": "",
+    "order": 1,
+    "updated_at": "2026-10-03T00:00:00Z"
+  },
+  {
+    "id": "nvr-tich-hop-ai",
+    "title": "NVR tích hợp AI",
+    "category": "luu-tru",
+    "apps": [
+      "an-ninh",
+      "van-phong",
+      "truong-hoc"
+    ],
+    "brands": [
+      "hikvision",
+      "dahua"
+    ],
+    "description": "Đầu ghi có phân tích AI, bổ sung AI cho camera thường.",
+    "model_brand": "",
+    "model": "",
+    "model_note": "",
+    "price": 0,
+    "image": "",
+    "image_alt": "",
+    "cta_label": "",
+    "cta_url": "",
+    "order": 2,
+    "updated_at": "2026-10-03T00:00:00Z"
+  },
+  {
+    "id": "may-chu-luu-tru",
+    "title": "Máy chủ lưu trữ",
+    "category": "luu-tru",
+    "apps": [
+      "an-ninh",
+      "do-thi",
+      "nha-may",
+      "toa-nha"
+    ],
+    "brands": [
+      "hikvision",
+      "dahua",
+      "axis"
+    ],
+    "description": "Lưu trữ tập trung dung lượng lớn, dự phòng RAID cho hệ thống nhiều camera.",
+    "model_brand": "",
+    "model": "",
+    "model_note": "",
+    "price": 0,
+    "image": "",
+    "image_alt": "",
+    "cta_label": "",
+    "cta_url": "",
+    "order": 3,
+    "updated_at": "2026-10-03T00:00:00Z"
+  },
+  {
+    "id": "ai-box-edge-ai",
+    "title": "AI Box (Edge AI)",
+    "category": "ai-server",
+    "apps": [
+      "an-ninh",
+      "truong-hoc",
+      "van-phong",
+      "nha-may"
+    ],
+    "brands": [
+      "nvidia",
+      "intel",
+      "hikvision",
+      "dahua"
+    ],
+    "description": "Thiết bị biên xử lý luồng video từ camera hiện có, chạy nội bộ.",
+    "model_brand": "",
+    "model": "",
+    "model_note": "",
+    "price": 0,
+    "image": "",
+    "image_alt": "",
+    "cta_label": "",
+    "cta_url": "",
+    "order": 1,
+    "updated_at": "2026-10-03T00:00:00Z"
+  },
+  {
+    "id": "ai-server-gpu",
+    "title": "AI Server GPU",
+    "category": "ai-server",
+    "apps": [
+      "do-thi",
+      "an-ninh",
+      "nha-may"
+    ],
+    "brands": [
+      "nvidia",
+      "intel"
+    ],
+    "description": "Máy chủ phân tích nâng cao, nhiều luồng, nhận diện khuôn mặt/biển số quy mô lớn.",
+    "model_brand": "",
+    "model": "",
+    "model_note": "",
+    "price": 0,
+    "image": "",
+    "image_alt": "",
+    "cta_label": "",
+    "cta_url": "",
+    "order": 2,
+    "updated_at": "2026-10-03T00:00:00Z"
+  },
+  {
+    "id": "bo-giai-ma-video-wall",
+    "title": "Bộ giải mã & video wall",
+    "category": "ai-server",
+    "apps": [
+      "do-thi",
+      "an-ninh",
+      "toa-nha"
+    ],
+    "brands": [
+      "hikvision",
+      "dahua"
+    ],
+    "description": "Hiển thị nhiều luồng camera lên màn hình ghép tại phòng điều hành.",
+    "model_brand": "",
+    "model": "",
+    "model_note": "",
+    "price": 0,
+    "image": "",
+    "image_alt": "",
+    "cta_label": "",
+    "cta_url": "",
+    "order": 3,
+    "updated_at": "2026-10-03T00:00:00Z"
+  },
+  {
+    "id": "may-cham-cong-khuon-mat",
+    "title": "Máy chấm công khuôn mặt",
+    "category": "ra-vao",
+    "apps": [
+      "van-phong",
+      "truong-hoc",
+      "nha-may"
+    ],
+    "brands": [
+      "hikvision",
+      "dahua"
+    ],
+    "description": "Chấm công, điểm danh, mở cửa; không chạm, chống giả mạo ảnh.",
+    "model_brand": "",
+    "model": "",
+    "model_note": "",
+    "price": 0,
+    "image": "",
+    "image_alt": "",
+    "cta_label": "",
+    "cta_url": "",
+    "order": 1,
+    "updated_at": "2026-10-03T00:00:00Z"
+  },
+  {
+    "id": "kiem-soat-cua",
+    "title": "Kiểm soát cửa",
+    "category": "ra-vao",
+    "apps": [
+      "van-phong",
+      "toa-nha",
+      "an-ninh"
+    ],
+    "brands": [
+      "hikvision",
+      "dahua"
+    ],
+    "description": "Khóa từ, đầu đọc thẻ/khuôn mặt, bộ điều khiển; phân quyền theo khu vực.",
+    "model_brand": "",
+    "model": "",
+    "model_note": "",
+    "price": 0,
+    "image": "",
+    "image_alt": "",
+    "cta_label": "",
+    "cta_url": "",
+    "order": 2,
+    "updated_at": "2026-10-03T00:00:00Z"
+  },
+  {
+    "id": "cong-xoay-cong-phan-lan",
+    "title": "Cổng xoay, cổng phân làn",
+    "category": "ra-vao",
+    "apps": [
+      "toa-nha",
+      "truong-hoc",
+      "nha-may"
+    ],
+    "brands": [
+      "hikvision",
+      "dahua"
+    ],
+    "description": "Kiểm soát từng người qua cổng, tích hợp nhận diện khuôn mặt/thẻ.",
+    "model_brand": "",
+    "model": "",
+    "model_note": "",
+    "price": 0,
+    "image": "",
+    "image_alt": "",
+    "cta_label": "",
+    "cta_url": "",
+    "order": 3,
+    "updated_at": "2026-10-03T00:00:00Z"
+  },
+  {
+    "id": "chuong-cua-man-hinh-video-intercom",
+    "title": "Chuông cửa màn hình (video intercom)",
+    "category": "ra-vao",
+    "apps": [
+      "toa-nha",
+      "van-phong"
+    ],
+    "brands": [
+      "hikvision",
+      "dahua"
+    ],
+    "description": "Liên lạc sảnh – căn hộ/phòng, mở cửa từ xa.",
+    "model_brand": "",
+    "model": "",
+    "model_note": "",
+    "price": 0,
+    "image": "",
+    "image_alt": "",
+    "cta_label": "",
+    "cta_url": "",
+    "order": 4,
+    "updated_at": "2026-10-03T00:00:00Z"
+  },
+  {
+    "id": "camera-nhan-dien-bien-so-anpr-2",
+    "title": "Camera nhận diện biển số (ANPR)",
+    "category": "anpr",
+    "apps": [
+      "bai-xe",
+      "toa-nha",
+      "nha-may",
+      "do-thi"
+    ],
+    "brands": [
+      "hikvision",
+      "dahua",
+      "hanwha"
+    ],
+    "description": "Nhận diện biển số Việt Nam cho làn ô tô, xe máy.",
+    "model_brand": "",
+    "model": "",
+    "model_note": "",
+    "price": 0,
+    "image": "",
+    "image_alt": "",
+    "cta_label": "",
+    "cta_url": "",
+    "order": 1,
+    "updated_at": "2026-10-03T00:00:00Z"
+  },
+  {
+    "id": "barrier-tu-dong",
+    "title": "Barrier tự động",
+    "category": "anpr",
+    "apps": [
+      "bai-xe",
+      "toa-nha",
+      "nha-may"
+    ],
+    "brands": [
+      "hikvision",
+      "dahua"
+    ],
+    "description": "Đóng mở làn xe, chống đập xe bằng cảm biến.",
+    "model_brand": "",
+    "model": "",
+    "model_note": "",
+    "price": 0,
+    "image": "",
+    "image_alt": "",
+    "cta_label": "",
+    "cta_url": "",
+    "order": 2,
+    "updated_at": "2026-10-03T00:00:00Z"
+  },
+  {
+    "id": "he-thong-bai-xe-tron-goi",
+    "title": "Hệ thống bãi xe trọn gói",
+    "category": "anpr",
+    "apps": [
+      "bai-xe",
+      "toa-nha"
+    ],
+    "brands": [
+      "hikvision",
+      "dahua"
+    ],
+    "description": "Làn xe, phần mềm vé tháng/lượt, tính phí, báo cáo doanh thu.",
+    "model_brand": "",
+    "model": "",
+    "model_note": "",
+    "price": 0,
+    "image": "",
+    "image_alt": "",
+    "cta_label": "",
+    "cta_url": "",
+    "order": 3,
+    "updated_at": "2026-10-03T00:00:00Z"
+  },
+  {
+    "id": "cam-bien-moi-truong",
+    "title": "Cảm biến môi trường",
+    "category": "iot",
+    "apps": [
+      "toa-nha",
+      "do-thi",
+      "nha-may"
+    ],
+    "brands": [],
+    "description": "Nhiệt độ, độ ẩm, chất lượng không khí, mực nước.",
+    "model_brand": "",
+    "model": "",
+    "model_note": "",
+    "price": 0,
+    "image": "",
+    "image_alt": "",
+    "cta_label": "",
+    "cta_url": "",
+    "order": 1,
+    "updated_at": "2026-10-03T00:00:00Z"
+  },
+  {
+    "id": "cam-bien-an-toan",
+    "title": "Cảm biến an toàn",
+    "category": "iot",
+    "apps": [
+      "toa-nha",
+      "nha-may",
+      "truong-hoc"
+    ],
+    "brands": [
+      "hikvision",
+      "dahua"
+    ],
+    "description": "Khói, nhiệt, rò nước, cửa mở; cảnh báo tức thời.",
+    "model_brand": "",
+    "model": "",
+    "model_note": "",
+    "price": 0,
+    "image": "",
+    "image_alt": "",
+    "cta_label": "",
+    "cta_url": "",
+    "order": 2,
+    "updated_at": "2026-10-03T00:00:00Z"
+  },
+  {
+    "id": "gateway-iot",
+    "title": "Gateway IoT",
+    "category": "iot",
+    "apps": [
+      "toa-nha",
+      "do-thi",
+      "nha-may"
+    ],
+    "brands": [],
+    "description": "Thu thập dữ liệu cảm biến (Modbus, BACnet, LoRa) về nền tảng.",
+    "model_brand": "",
+    "model": "",
+    "model_note": "",
+    "price": 0,
+    "image": "",
+    "image_alt": "",
+    "cta_label": "",
+    "cta_url": "",
+    "order": 3,
+    "updated_at": "2026-10-03T00:00:00Z"
+  },
+  {
+    "id": "switch-poe",
+    "title": "Switch PoE",
+    "category": "mang",
+    "apps": [
+      "an-ninh",
+      "toa-nha",
+      "truong-hoc",
+      "van-phong",
+      "nha-may"
+    ],
+    "brands": [
+      "hikvision",
+      "dahua"
+    ],
+    "description": "Cấp nguồn và dữ liệu cho camera qua một sợi cáp.",
+    "model_brand": "",
+    "model": "",
+    "model_note": "",
+    "price": 0,
+    "image": "",
+    "image_alt": "",
+    "cta_label": "",
+    "cta_url": "",
+    "order": 1,
+    "updated_at": "2026-10-03T00:00:00Z"
+  },
+  {
+    "id": "thiet-bi-quang-cap",
+    "title": "Thiết bị quang & cáp",
+    "category": "mang",
+    "apps": [
+      "nha-may",
+      "do-thi",
+      "toa-nha"
+    ],
+    "brands": [],
+    "description": "Truyền dẫn khoảng cách xa, trục chính giữa các tòa nhà.",
+    "model_brand": "",
+    "model": "",
+    "model_note": "",
+    "price": 0,
+    "image": "",
+    "image_alt": "",
+    "cta_label": "",
+    "cta_url": "",
+    "order": 2,
+    "updated_at": "2026-10-03T00:00:00Z"
+  },
+  {
+    "id": "ups-tu-rack",
+    "title": "UPS & tủ rack",
+    "category": "mang",
+    "apps": [
+      "an-ninh",
+      "toa-nha",
+      "truong-hoc",
+      "van-phong",
+      "nha-may"
+    ],
+    "brands": [],
+    "description": "Duy trì hoạt động khi mất điện, bảo vệ thiết bị trung tâm.",
+    "model_brand": "",
+    "model": "",
+    "model_note": "",
+    "price": 0,
+    "image": "",
+    "image_alt": "",
+    "cta_label": "",
+    "cta_url": "",
+    "order": 3,
+    "updated_at": "2026-10-03T00:00:00Z"
+  },
+  {
+    "id": "phan-mem-quan-ly-video-vms",
+    "title": "Phần mềm quản lý video (VMS)",
+    "category": "phan-mem",
+    "apps": [
+      "an-ninh",
+      "do-thi",
+      "toa-nha",
+      "nha-may"
+    ],
+    "brands": [
+      "hikvision",
+      "dahua",
+      "axis",
+      "hanwha"
+    ],
+    "description": "Giám sát tập trung, đa site, cảnh báo, tìm kiếm thông minh.",
+    "model_brand": "",
+    "model": "",
+    "model_note": "",
+    "price": 0,
+    "image": "",
+    "image_alt": "",
+    "cta_label": "",
+    "cta_url": "",
+    "order": 1,
+    "updated_at": "2026-10-03T00:00:00Z"
+  },
+  {
+    "id": "phan-mem-cham-cong-ra-vao",
+    "title": "Phần mềm chấm công & ra vào",
+    "category": "phan-mem",
+    "apps": [
+      "van-phong",
+      "truong-hoc",
+      "nha-may"
+    ],
+    "brands": [
+      "hikvision",
+      "dahua"
+    ],
+    "description": "Ca làm việc, bảng công, quản lý khách, phân quyền cửa.",
+    "model_brand": "",
+    "model": "",
+    "model_note": "",
+    "price": 0,
+    "image": "",
+    "image_alt": "",
+    "cta_label": "",
+    "cta_url": "",
+    "order": 2,
+    "updated_at": "2026-10-03T00:00:00Z"
+  },
+  {
+    "id": "aiot-platform",
+    "title": "AIoT Platform",
+    "category": "phan-mem",
+    "apps": [
+      "do-thi",
+      "toa-nha",
+      "nha-may"
+    ],
+    "brands": [],
+    "description": "Nền tảng kết nối camera, cảm biến, dashboard vận hành tập trung.",
+    "model_brand": "",
+    "model": "",
+    "model_note": "",
+    "price": 0,
+    "image": "",
+    "image_alt": "",
+    "cta_label": "Xem nền tảng",
+    "cta_url": "/san-pham/aiot-platform/",
+    "order": 3,
+    "updated_at": "2026-10-03T00:00:00Z"
+  }
+]

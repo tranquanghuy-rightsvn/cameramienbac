@@ -3,5 +3,10 @@
 node_modules
 .venv
 crawl.log
-scripts
+# scripts/ chứa script crawl cục bộ — chỉ track build.py (CI cần nó).
+scripts/*
+!scripts/build.py
 draft
+
+# GAS CMS backend: deploy bằng clasp, KHÔNG track git (logic phân quyền, cấu trúc Sheet).
+gas/

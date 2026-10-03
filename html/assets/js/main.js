@@ -7,6 +7,11 @@
 (function () {
   "use strict";
 
+  // URL /exec của trang quản trị (Google Apps Script) — nơi trợ lý chat AI trả lời, dùng nội
+  // dung nạp ở tab "Nội dung AI". Để trống thì khung chat dùng câu trả lời mẫu bên dưới.
+  // Deploy lại bằng "New version" thì URL không đổi, không phải sửa ở đây.
+  var CHAT_ENDPOINT = "";
+
   function initNav(root) {
     var toggle = root.querySelector(".nav-toggle");
     var nav = root.querySelector(".main-nav");
@@ -418,12 +423,61 @@
       scrollToBottom();
     }
 
+    // Lịch sử hội thoại gửi kèm mỗi lượt (máy chủ chỉ giữ ~10 tin gần nhất).
+    var history = [];
+    var pending = false;
+
+    function conversationId() {
+      var KEY = "cmb_chat_id";
+      var id = "";
+      try { id = sessionStorage.getItem(KEY) || ""; } catch (e) {}
+      if (!id) {
+        id = Date.now().toString(36) + Math.random().toString(36).slice(2, 10);
+        try { sessionStorage.setItem(KEY, id); } catch (e) {}
+      }
+      return id;
+    }
+
+    // Hỏi trợ lý AI; mọi lỗi (chưa cấu hình, mạng, quá tải) đều rơi về câu trả lời mẫu —
+    // không bao giờ để khách nhìn khung chat chết.
+    function askAssistant(text) {
+      if (!CHAT_ENDPOINT || !window.fetch) {
+        return new Promise(function (resolve) {
+          window.setTimeout(function () { resolve(pickReply(text)); }, 800);
+        });
+      }
+      var ctrl = window.AbortController ? new AbortController() : null;
+      var timer = ctrl ? window.setTimeout(function () { ctrl.abort(); }, 30000) : 0;
+      return fetch(CHAT_ENDPOINT, {
+        method: "POST",
+        // text/plain: giữ request "đơn giản" để trình duyệt không gửi preflight (máy chủ không xử lý OPTIONS).
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify({ action: "chat", conversationId: conversationId(), page: location.pathname, messages: history }),
+        signal: ctrl ? ctrl.signal : undefined
+      })
+        .then(function (res) { return res.json(); })
+        .then(function (data) {
+          if (data && data.ok && data.reply) return data.reply;
+          throw new Error((data && data.error) || "no_reply");
+        })
+        .catch(function (err) {
+          console.warn("[chat] dùng câu trả lời mẫu:", err && err.message);
+          return pickReply(text);
+        })
+        .then(function (reply) {
+          if (timer) window.clearTimeout(timer);
+          return reply;
+        });
+    }
+
     function sendMessage(text) {
       text = (text || "").trim();
-      if (!text) return;
+      if (!text || pending) return;
+      pending = true;
       var chips = root.getElementById("chatbox-chips");
       if (chips) chips.remove();
       appendMessage(text, "user");
+      history.push({ role: "user", text: text });
 
       var typing = document.createElement("div");
       typing.className = "chatbox__msg chatbox__msg--bot chatbox__msg--typing";
@@ -431,10 +485,13 @@
       messages.appendChild(typing);
       scrollToBottom();
 
-      window.setTimeout(function () {
+      askAssistant(text).then(function (reply) {
         typing.remove();
-        appendMessage(pickReply(text), "bot");
-      }, 800);
+        appendMessage(reply, "bot");
+        history.push({ role: "model", text: reply });
+        if (history.length > 20) history = history.slice(-20);
+        pending = false;
+      });
     }
 
     function openChat(prefillText) {
