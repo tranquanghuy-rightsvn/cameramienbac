@@ -10,7 +10,7 @@
   // URL /exec của trang quản trị (Google Apps Script) — nơi trợ lý chat AI trả lời, dùng nội
   // dung nạp ở tab "Nội dung AI". Để trống thì khung chat dùng câu trả lời mẫu bên dưới.
   // Deploy lại bằng "New version" thì URL không đổi, không phải sửa ở đây.
-  var CHAT_ENDPOINT = "";
+  var CHAT_ENDPOINT = "https://script.google.com/macros/s/AKfycbwPx44O9dZEjJwYZY5FNk3pqjTIC9jfFkJADA2VzCzKtXCQ_g2kG3aV_Px6IPBq23pI/exec";
 
   function initNav(root) {
     var toggle = root.querySelector(".nav-toggle");
