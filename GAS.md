@@ -172,6 +172,12 @@ Xem mục I.4. Tab "Người dùng" chỉ hiện với admin/root; server chặn
   `admin/ partials/ docs/ vendor/ assets/` và trang có meta `noindex`; `lastmod` chỉ cho tin tức)
   và `html/robots.txt` (Allow all + Sitemap; CỐ Ý không `Disallow: /admin/`). Domain ở hằng
   `SITE_URL` đầu file build.py (`https://cameramienbac.com.vn`).
+- `scripts/build.py` gắn vào `<head>` MỌI trang công khai 1 khối `<!-- seo:start -->…<!-- seo:end -->`
+  (tự sinh, không sửa tay): canonical, robots, Open Graph, Twitter Card, theme-color và JSON-LD
+  `@graph` (LocalBusiness + WebSite + WebPage/CollectionPage/ContactPage/AboutPage/FAQPage +
+  BreadcrumbList lấy từ breadcrumb hiển thị; trang tin thêm BlogPosting). Thông tin doanh nghiệp
+  ở hằng `ORG` đầu build.py. Muốn đổi title/description 1 trang: sửa `<title>`/meta description
+  của trang đó, khối SEO tự theo.
 - Độ trễ Lưu → lên site: ~1–2 phút (CI build + hosting deploy). Nội dung AI: tức thì.
 
 ## IX. Bug đã gặp ở dự án này

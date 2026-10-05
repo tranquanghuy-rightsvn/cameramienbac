@@ -306,13 +306,14 @@ def build_news(news, legacy, categories):
             "{{COVER}}": esc(post.get("cover")),
             "{{COVER_ALT}}": esc(post.get("cover_alt") or post.get("title")),
             "{{RELATED}}": related_html,
-            "{{CANONICAL}}": esc(f"{SITE_URL}/tin-tuc/{slug}/"),
             # Nội dung là HTML do CMS soạn — chèn nguyên văn, đã thêm lazy cho ảnh.
             "{{CONTENT}}": lazy_images(post.get("content_html") or ""),
         }
         out = tpl
         for key, value in mapping.items():
             out = out.replace(key, value)
+        # Gắn khối SEO ngay lúc render (không đợi bước sitemap) để file chỉ ghi khi thật sự đổi.
+        out = with_seo(out, f"{SITE_URL}/tin-tuc/{slug}/", meta)
         write_if_changed(SITE / "tin-tuc" / slug / "index.html", out)
         generated.add(slug)
     clean_orphan_news(generated)
@@ -347,27 +348,175 @@ def is_noindex(content):
     return bool(m and "noindex" in m.group(1).lower())
 
 
-CANONICAL_RE = re.compile(r'<link\s+rel="canonical"\s+href="[^"]*"\s*/?>', re.I)
+# ---- Thông tin doanh nghiệp cho JSON-LD — lấy đúng như footer/trang Liên hệ. ----
+ORG = {
+    "name": "Cameramienbac",
+    "legal_name": "Công ty Cổ phần Thương mại và Truyền thông Doanh Nhân Việt",
+    "description": "Camera AI & giải pháp an ninh thông minh cho doanh nghiệp, trường học và tòa nhà.",
+    "telephone": "+84979406868",
+    "email": "cameramienbac@cmvn.vn",
+    "street": "15 ngõ 36 Hoàng Quốc Việt",
+    "district": "Cầu Giấy",
+    "city": "Hà Nội",
+    "logo": "/assets/images/logo-full.png",
+    "default_image": "/assets/images/hero-bg.webp",
+}
+# Loại WebPage theo trang (mặc định "WebPage").
+PAGE_TYPES = {"tin-tuc": "CollectionPage", "san-pham": "CollectionPage", "du-an": "CollectionPage",
+              "lien-he": "ContactPage", "ve-chung-toi": "AboutPage", "cau-hoi-thuong-gap": "FAQPage"}
+
+SEO_BLOCK_RE = re.compile(r"[ \t]*<!-- seo:start -->.*?<!-- seo:end -->\n?", re.S)
+CANONICAL_RE = re.compile(r'[ \t]*<link\s+rel="canonical"\s+href="[^"]*"\s*/?>\n?', re.I)
 
 
-def with_canonical(content, url):
-    """Đặt <link rel="canonical"> trỏ đúng URL chính thức (domain .com.vn). Có rồi thì sửa
-    href, chưa có thì chèn ngay sau meta description (hoặc trước </head>). Idempotent."""
-    tag = f'<link rel="canonical" href="{esc(url)}">'
-    if CANONICAL_RE.search(content):
-        return CANONICAL_RE.sub(tag, content, count=1)
+def abs_url(path):
+    return path if path.startswith("http") else SITE_URL + "/" + path.lstrip("/")
+
+
+def strip_tags(text):
+    return html.unescape(re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", text))).strip()
+
+
+def head_text(content, pattern):
+    m = re.search(pattern, content, re.S | re.I)
+    return html.unescape(m.group(1)).strip() if m else ""
+
+
+def page_image(content):
+    """Ảnh đại diện khi chia sẻ: ảnh hero desktop đang preload của trang, không có thì ảnh mặc định."""
+    m = re.search(r'<link rel="preload" as="image" href="([^"]+)" media="\(min-width', content)
+    return abs_url(m.group(1) if m else ORG["default_image"])
+
+
+def breadcrumb_items(content, url, title):
+    """Lấy từ breadcrumb hiển thị (.phero__crumbs) nếu có; không có thì Trang chủ > tên trang."""
+    items = []
+    m = re.search(r'<nav class="phero__crumbs"[^>]*>(.*?)</nav>', content, re.S)
+    if m:
+        for href, label in re.findall(r'<a href="([^"]+)">(.*?)</a>', m.group(1)):
+            items.append((strip_tags(label), abs_url(href)))
+        last = re.findall(r"<span>(.*?)</span>", m.group(1))
+        if last:
+            items.append((strip_tags(last[-1]), url))
+    else:
+        items = [("Trang chủ", SITE_URL + "/"), (title, url)]
+    # Tên cuối "Bài viết" chung chung -> dùng tiêu đề thật cho Google hiển thị đẹp.
+    if items and items[-1][0] in ("Bài viết", ""):
+        items[-1] = (title, url)
+    return [{"@type": "ListItem", "position": i + 1, "name": n, "item": u} for i, (n, u) in enumerate(items)]
+
+
+def faq_entities(content):
+    out = []
+    for q, a in re.findall(r"<details><summary>(.*?)</summary><div class=\"faq__a\">(.*?)</div></details>", content, re.S):
+        out.append({"@type": "Question", "name": strip_tags(q),
+                    "acceptedAnswer": {"@type": "Answer", "text": strip_tags(a)}})
+    return out
+
+
+def org_node():
+    return {
+        "@type": "LocalBusiness", "@id": SITE_URL + "/#organization",
+        "name": ORG["name"], "legalName": ORG["legal_name"], "description": ORG["description"],
+        "url": SITE_URL + "/", "logo": abs_url(ORG["logo"]), "image": abs_url(ORG["default_image"]),
+        "telephone": ORG["telephone"], "email": ORG["email"],
+        "address": {"@type": "PostalAddress", "streetAddress": ORG["street"],
+                    "addressLocality": ORG["district"], "addressRegion": ORG["city"], "addressCountry": "VN"},
+        "openingHoursSpecification": [{"@type": "OpeningHoursSpecification",
+                                       "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+                                       "opens": "08:00", "closes": "17:30"}],
+        "contactPoint": [{"@type": "ContactPoint", "telephone": ORG["telephone"], "email": ORG["email"],
+                          "contactType": "customer service", "areaServed": "VN", "availableLanguage": ["vi"]}],
+    }
+
+
+def seo_block(content, url, article=None):
+    """Khối SEO trong <head>: canonical + robots + Open Graph + Twitter + JSON-LD (@graph).
+    article = bản ghi tin tức (data/news.json) nếu là trang bài viết."""
+    title = head_text(content, r"<title>(.*?)</title>")
+    desc = head_text(content, r'<meta name="description" content="([^"]*)"')
+    h1 = strip_tags(head_text(content, r'<h1[^>]*>(.*?)(?:<span|</h1>)')) or title.split(" — ")[0]
+    image = abs_url(article["cover"]) if article else page_image(content)
+    is_home = url == SITE_URL + "/"
+
+    tags = [
+        f'<link rel="canonical" href="{esc(url)}">',
+        '<meta name="robots" content="index, follow, max-image-preview:large">',
+        f'<meta property="og:type" content="{"article" if article else "website"}">',
+        f'<meta property="og:site_name" content="{esc(ORG["name"])}">',
+        '<meta property="og:locale" content="vi_VN">',
+        f'<meta property="og:url" content="{esc(url)}">',
+        f'<meta property="og:title" content="{esc(title)}">',
+        f'<meta property="og:description" content="{esc(desc)}">',
+        f'<meta property="og:image" content="{esc(image)}">',
+        f'<meta property="og:image:alt" content="{esc(h1)}">',
+        '<meta name="twitter:card" content="summary_large_image">',
+        f'<meta name="twitter:title" content="{esc(title)}">',
+        f'<meta name="twitter:description" content="{esc(desc)}">',
+        f'<meta name="twitter:image" content="{esc(image)}">',
+        '<meta name="theme-color" content="#0057c2">',
+    ]
+    if article:
+        tags += [f'<meta property="article:published_time" content="{esc(article.get("date", ""))}">',
+                 f'<meta property="article:modified_time" content="{esc(str(article.get("updated_at") or article.get("date", ""))[:10])}">']
+
+    org_ref = {"@id": SITE_URL + "/#organization"}
+    graph = [org_node(), {
+        "@type": "WebSite", "@id": SITE_URL + "/#website", "url": SITE_URL + "/",
+        "name": ORG["name"], "inLanguage": "vi", "publisher": org_ref,
+    }]
+    slug = url[len(SITE_URL) + 1:].strip("/").split("/")[0] if not is_home else ""
+    page = {
+        "@type": PAGE_TYPES.get(slug, "WebPage") if url.count("/") <= 4 or slug != "tin-tuc" else "WebPage",
+        "@id": url + "#webpage", "url": url, "name": title, "description": desc, "inLanguage": "vi",
+        "isPartOf": {"@id": SITE_URL + "/#website"}, "about": org_ref,
+        "primaryImageOfPage": {"@type": "ImageObject", "url": image},
+    }
+    if not is_home:
+        graph.append({"@type": "BreadcrumbList", "@id": url + "#breadcrumb",
+                      "itemListElement": breadcrumb_items(content, url, h1)})
+        page["breadcrumb"] = {"@id": url + "#breadcrumb"}
+    if page["@type"] == "FAQPage":
+        faqs = faq_entities(content)
+        if faqs:
+            page["mainEntity"] = faqs
+        else:
+            page["@type"] = "WebPage"
+    graph.append(page)
+    if article:
+        graph.append({
+            "@type": "BlogPosting", "@id": url + "#article", "mainEntityOfPage": {"@id": url + "#webpage"},
+            "headline": article.get("title", ""), "description": article.get("description", ""),
+            "image": [image], "datePublished": article.get("date", ""),
+            "dateModified": str(article.get("updated_at") or article.get("date", ""))[:10],
+            "author": org_ref, "publisher": org_ref, "inLanguage": "vi",
+        })
+    data = json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False, indent=1)
+    data = data.replace("</", "<\\/")  # không để chuỗi nội dung đóng nhầm thẻ <script>
+    return ("<!-- seo:start -->\n" + "\n".join(tags) +
+            '\n<script type="application/ld+json">\n' + data + "\n</script>\n<!-- seo:end -->\n")
+
+
+def with_seo(content, url, article=None):
+    """Thay (hoặc chèn) khối SEO; gỡ canonical đứng lẻ cũ để không bị trùng. Idempotent."""
+    content = SEO_BLOCK_RE.sub("", content)
+    content = CANONICAL_RE.sub("", content)
+    block = seo_block(content, url, article)
     m = re.search(r'<meta\s+name="description"[^>]*>\n?', content, re.I)
     if m:
-        return content[:m.end()] + ("" if m.group(0).endswith("\n") else "\n") + tag + "\n" + content[m.end():]
-    return content.replace("</head>", tag + "\n</head>", 1)
+        cut = m.end() if m.group(0).endswith("\n") else m.end()
+        sep = "" if m.group(0).endswith("\n") else "\n"
+        return content[:cut] + sep + block + content[cut:]
+    return content.replace("</head>", block + "</head>", 1)
 
 
 def build_sitemap(news, legacy):
-    """Gắn canonical cho từng trang + sinh sitemap. Quét mọi html/**/index.html (kể cả trang viết tay thêm sau này) — không cần khai báo
+    """Gắn khối SEO (canonical, OG, JSON-LD) cho từng trang + sinh sitemap. Quét mọi html/**/index.html (kể cả trang viết tay thêm sau này) — không cần khai báo
     tay. Bỏ qua thư mục kỹ thuật và trang tự khai noindex (vd /admin/, /nguon-anh/).
     lastmod chỉ ghi cho tin tức (có ngày thật trong data/); trang viết tay không có nguồn ngày
     tin cậy trong CI (checkout nông) nên bỏ trống thay vì ghi ngày build sai mỗi lần."""
     lastmod = {}
+    articles = {f'{SITE_URL}/tin-tuc/{n["slug"]}/': n for n in news}
     for n in legacy:
         if n.get("url", "").startswith("/") and not n["url"].startswith("/lien-he/"):
             lastmod[SITE_URL + n["url"]] = str(n.get("date") or "")[:10]
@@ -383,7 +532,7 @@ def build_sitemap(news, legacy):
         if is_noindex(content):
             continue
         url = page_url(page)
-        write_if_changed(page, with_canonical(content, url))
+        write_if_changed(page, with_seo(content, url, articles.get(url)))
         urls.append(url)
     # Trang chủ trước, còn lại theo thứ tự chữ cái -> output ổn định, build lại không sinh diff.
     urls.sort(key=lambda u: (u != SITE_URL + "/", u))
