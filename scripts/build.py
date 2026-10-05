@@ -10,6 +10,9 @@ phần còn lại của file giữ nguyên (trang viết tay):
                                       cms:news-list        danh sách tin (CMS + bài viết tay cũ)
 Sinh mới từ template:
   html/tin-tuc/<slug>/index.html      templates/news-detail.html (mang dấu GENERATED_MARKER)
+Sinh toàn bộ (không sửa tay):
+  html/sitemap.xml                    mọi trang */index.html, trừ trang noindex + thư mục kỹ thuật
+  html/robots.txt                     cho phép tất cả + trỏ tới sitemap
 
 Không tìm thấy mốc = DỪNG build với lỗi rõ ràng (không im lặng bỏ qua — ai đó sửa tay trang mà
 lỡ xoá mốc thì CMS sẽ "lưu mà không thấy gì đổi").
@@ -31,6 +34,11 @@ SITE = ROOT / "html"
 TEMPLATES = ROOT / "templates"
 
 GENERATED_MARKER = "<!-- build.py:generated -->"
+
+# Domain chính thức (Cloudflare). Đổi domain thì sửa đúng 1 dòng này.
+SITE_URL = "https://cameramienbac.com.vn"
+# Thư mục không phải trang nội dung — không bao giờ vào sitemap.
+SITEMAP_SKIP_DIRS = {"admin", "partials", "docs", "vendor", "assets"}
 
 # ---- Danh sách CỐ ĐỊNH — PHẢI KHỚP y hệt hằng số cùng tên trong gas/Code.js ----------------
 # (gas/ không nằm trong git nên 2 chỗ không tự đồng bộ: sửa 1 bên thì sửa luôn bên kia.)
@@ -294,6 +302,7 @@ def build_news(news, legacy, categories):
             "{{COVER}}": esc(post.get("cover")),
             "{{COVER_ALT}}": esc(post.get("cover_alt") or post.get("title")),
             "{{RELATED}}": related_html,
+            "{{CANONICAL}}": esc(f"{SITE_URL}/tin-tuc/{slug}/"),
             # Nội dung là HTML do CMS soạn — chèn nguyên văn, đã thêm lazy cho ảnh.
             "{{CONTENT}}": lazy_images(post.get("content_html") or ""),
         }
@@ -322,6 +331,74 @@ def clean_orphan_news(keep):
         print("  xoá trang mồ côi", page.parent.relative_to(ROOT))
 
 
+# ---------------------------------------------------------------------------- sitemap + robots
+
+def page_url(index_path):
+    rel = index_path.parent.relative_to(SITE).as_posix()
+    return SITE_URL + "/" if rel == "." else f"{SITE_URL}/{rel}/"
+
+
+def is_noindex(content):
+    m = re.search(r'<meta\s+name="robots"\s+content="([^"]*)"', content, re.I)
+    return bool(m and "noindex" in m.group(1).lower())
+
+
+CANONICAL_RE = re.compile(r'<link\s+rel="canonical"\s+href="[^"]*"\s*/?>', re.I)
+
+
+def with_canonical(content, url):
+    """Đặt <link rel="canonical"> trỏ đúng URL chính thức (domain .com.vn). Có rồi thì sửa
+    href, chưa có thì chèn ngay sau meta description (hoặc trước </head>). Idempotent."""
+    tag = f'<link rel="canonical" href="{esc(url)}">'
+    if CANONICAL_RE.search(content):
+        return CANONICAL_RE.sub(tag, content, count=1)
+    m = re.search(r'<meta\s+name="description"[^>]*>\n?', content, re.I)
+    if m:
+        return content[:m.end()] + ("" if m.group(0).endswith("\n") else "\n") + tag + "\n" + content[m.end():]
+    return content.replace("</head>", tag + "\n</head>", 1)
+
+
+def build_sitemap(news, legacy):
+    """Gắn canonical cho từng trang + sinh sitemap. Quét mọi html/**/index.html (kể cả trang viết tay thêm sau này) — không cần khai báo
+    tay. Bỏ qua thư mục kỹ thuật và trang tự khai noindex (vd /admin/, /nguon-anh/).
+    lastmod chỉ ghi cho tin tức (có ngày thật trong data/); trang viết tay không có nguồn ngày
+    tin cậy trong CI (checkout nông) nên bỏ trống thay vì ghi ngày build sai mỗi lần."""
+    lastmod = {}
+    for n in legacy:
+        if n.get("url", "").startswith("/") and not n["url"].startswith("/lien-he/"):
+            lastmod[SITE_URL + n["url"]] = str(n.get("date") or "")[:10]
+    for n in news:
+        lastmod[f'{SITE_URL}/tin-tuc/{n["slug"]}/'] = str(n.get("updated_at") or n.get("date") or "")[:10]
+
+    urls = []
+    for page in SITE.rglob("index.html"):
+        parts = page.relative_to(SITE).parts
+        if parts[0] in SITEMAP_SKIP_DIRS:
+            continue
+        content = read(page)
+        if is_noindex(content):
+            continue
+        url = page_url(page)
+        write_if_changed(page, with_canonical(content, url))
+        urls.append(url)
+    # Trang chủ trước, còn lại theo thứ tự chữ cái -> output ổn định, build lại không sinh diff.
+    urls.sort(key=lambda u: (u != SITE_URL + "/", u))
+
+    lines = ['<?xml version="1.0" encoding="UTF-8"?>',
+             '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+    for u in urls:
+        lm = lastmod.get(u)
+        lines.append(f"  <url><loc>{esc(u)}</loc>" + (f"<lastmod>{lm}</lastmod>" if lm else "") + "</url>")
+    lines.append("</urlset>")
+    write_if_changed(SITE / "sitemap.xml", "\n".join(lines) + "\n")
+
+    # KHÔNG khai Disallow cho /admin/: robots.txt công khai, khai ra là tự quảng cáo đường dẫn
+    # quản trị; trang đó đã tự chặn bằng meta noindex (static-site-build.md mục 6b).
+    write_if_changed(SITE / "robots.txt",
+                     "User-agent: *\nAllow: /\n\nSitemap: " + SITE_URL + "/sitemap.xml\n")
+    return len(urls)
+
+
 # ---------------------------------------------------------------------------- main
 
 def main():
@@ -333,7 +410,8 @@ def main():
           f"{len(categories)} danh mục tin")
     build_products(products)
     build_news(news, legacy, categories)
-    print("xong.")
+    count = build_sitemap(news, legacy)
+    print(f"xong. sitemap: {count} URL")
 
 
 if __name__ == "__main__":

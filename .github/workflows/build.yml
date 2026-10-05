@@ -19,6 +19,10 @@ on:
       - "data/legacy-news.json"
       - "templates/**"
       - "scripts/build.py"
+      # Thêm/sửa tay 1 trang (vd thêm noindex) -> sitemap.xml phải sinh lại. Không lặp vô hạn:
+      # commit của CI đẩy bằng GITHUB_TOKEN không kích hoạt workflow khác.
+      - "html/**/index.html"
+      - "html/index.html"
   workflow_dispatch: {}
 
 permissions:

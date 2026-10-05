@@ -165,6 +165,10 @@ Xem mục I.4. Tab "Người dùng" chỉ hiện với admin/root; server chặn
   (lưới "Sản phẩm tiêu biểu"), `html/tin-tuc/index.html` (nút lọc + danh sách); và sinh
   `html/tin-tuc/<slug>/index.html` từ `templates/news-detail.html` (có dấu
   `<!-- build.py:generated -->`, trang mồ côi tự bị xoá). Xoá mốc = build báo lỗi, không im lặng.
+- `scripts/build.py` cũng sinh lại toàn bộ `html/sitemap.xml` (quét mọi `*/index.html`, bỏ
+  `admin/ partials/ docs/ vendor/ assets/` và trang có meta `noindex`; `lastmod` chỉ cho tin tức)
+  và `html/robots.txt` (Allow all + Sitemap; CỐ Ý không `Disallow: /admin/`). Domain ở hằng
+  `SITE_URL` đầu file build.py (`https://cameramienbac.com.vn`).
 - Độ trễ Lưu → lên site: ~1–2 phút (CI build + hosting deploy). Nội dung AI: tức thì.
 
 ## IX. Bug đã gặp ở dự án này
@@ -175,7 +179,7 @@ Xem mục I.4. Tab "Người dùng" chỉ hiện với admin/root; server chặn
 
 - `GITHUB_TOKEN`, `GITHUB_OWNER` (`tranquanghuy-rightsvn`), `GITHUB_REPO` (`cameramienbac`),
   `GITHUB_BRANCH` (`master`) — bắt buộc.
-- `SITE_URL` — domain thật của site, không có `/` cuối (vd `https://cameramienbac.vn`). Dùng để
+- `SITE_URL` — domain thật của site, không có `/` cuối (`https://cameramienbac.com.vn`). Dùng để
   tải TinyMCE tự host. Chưa có domain thì để trống: CMS tạm tải TinyMCE từ CDN.
 - `GEMINI_API_KEY` — key Gemini cho trợ lý chat. Trống = chat dùng câu trả lời mẫu.
 - `GEMINI_MODEL` — tuỳ chọn, mặc định `gemini-3.5-flash-lite`.
