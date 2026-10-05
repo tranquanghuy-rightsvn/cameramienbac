@@ -9,6 +9,7 @@ phần còn lại của file giữ nguyên (trang viết tay):
   html/tin-tuc/index.html             cms:news-filter      nút lọc theo danh mục tin
                                       cms:news-list        danh sách tin (CMS + bài viết tay cũ)
   html/index.html                     cms:home-news        3 tin mới nhất ở trang chủ
+  html/trung-tam-ai/index.html        cms:ai-news          3 tin chủ đề AI ở trang Trung tâm AI
 Sinh mới từ template:
   html/tin-tuc/<slug>/index.html      templates/news-detail.html (mang dấu GENERATED_MARKER)
 Sinh toàn bộ (không sửa tay):
@@ -269,6 +270,28 @@ def news_card(item, cat_name, featured):
     ])
 
 
+# Chủ đề tin hiện ở khối "Tin tức & sự kiện" trang /trung-tam-ai/ (theo slug danh mục tin).
+AI_NEWS_CATEGORIES = {"cong-nghe", "giao-duc", "an-ninh", "giai-phap"}
+
+
+def news_card_compact(item, cat_name):
+    """Thẻ tin dạng gọn của trang /trung-tam-ai/ (chỉ có thời gian đọc, thụt lề sâu hơn 1 cấp)."""
+    url = esc(item["url"])
+    return "\n".join([
+        '          <article class="news">',
+        f'            <a class="news__media" href="{url}" tabindex="-1" aria-hidden="true">'
+        f'<img src="/{esc(item["image"])}" alt="" loading="lazy" width="1280" height="720" '
+        f'decoding="async"><span class="news__tag">{esc(cat_name)}</span></a>',
+        '            <div class="news__body">',
+        f'              <p class="news__meta"><span>{CLOCK_SVG}{esc(item["read_min"])} phút đọc</span></p>',
+        f'              <h3 class="news__title"><a href="{url}">{esc(item["title"])}</a></h3>',
+        f'              <p class="news__text">{esc(item["description"])}</p>',
+        f'              <span class="news__more">Đọc tiếp {ARROW_SVG}</span>',
+        '            </div>',
+        '          </article>',
+    ])
+
+
 def build_news(news, legacy, categories):
     cat_name = {c["slug"]: c["name"] for c in categories}
     cats = sorted(categories, key=lambda c: int(c.get("order") or 0))
@@ -283,6 +306,11 @@ def build_news(news, legacy, categories):
     # Trang chủ: 3 bài mới nhất, thẻ thường (không có thẻ nổi bật như trang /tin-tuc/).
     home_cards = "\n".join(news_card(it, cat_name.get(it["category"], ""), False) for it in items[:3])
     patch_file(SITE / "index.html", [("home-news", home_cards)])
+    # Trang Trung tâm AI: 3 bài mới nhất thuộc các chủ đề gần AI (không đủ thì lấy bài mới nhất).
+    ai_items = [it for it in items if it["category"] in AI_NEWS_CATEGORIES]
+    ai_items += [it for it in items if it not in ai_items]
+    ai_cards = "\n".join(news_card_compact(it, cat_name.get(it["category"], "")) for it in ai_items[:3])
+    patch_file(SITE / "trung-tam-ai" / "index.html", [("ai-news", ai_cards)])
 
     tpl = read(TEMPLATES / "news-detail.html")
     generated = set()
@@ -296,7 +324,8 @@ def build_news(news, legacy, categories):
         related = [it for it in items if it.get("slug") != slug]
         related.sort(key=lambda it: it.get("category") != post.get("category"))  # cùng danh mục trước
         related_html = "\n".join(
-            f'            <li><a href="{esc(it["url"])}">{esc(it["title"])}</a></li>' for it in related[:3])
+            f'            <li><a href="{esc(it["url"])}"><img src="/{esc(it["image"])}" alt="" loading="lazy" '
+            f'width="96" height="64" decoding="async"><span>{esc(it["title"])}</span></a></li>' for it in related[:3])
         mapping = {
             "{{TITLE}}": esc(post.get("title")),
             "{{DESCRIPTION}}": esc(post.get("description")),

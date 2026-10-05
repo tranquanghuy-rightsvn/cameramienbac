@@ -2,13 +2,14 @@
   {
     "slug": "5-dau-hieu-camera-loi-thoi",
     "title": "5 dấu hiệu cho thấy hệ thống camera của bạn đã lỗi thời",
-    "description": "Hình ảnh mờ ban đêm, không tìm được cảnh quay cũ, không có cảnh báo chủ động… Đây là lúc nên cân nhắc nâng cấp lên camera AI.",
+    "description": "Hình ảnh mờ ban đêm, không tìm được cảnh quay cũ, không có cảnh báo chủ động… 5 dấu hiệu cho thấy đã đến lúc nâng cấp hệ thống camera lên camera AI.",
     "category": "giai-phap",
     "date": "2025-09-12",
-    "read_min": 6,
+    "read_min": 12,
     "cover": "assets/images/news-1.webp",
     "cover_alt": "5 dấu hiệu cho thấy hệ thống camera của bạn đã lỗi thời",
-    "updated_at": "2026-10-06T00:00:00Z"
+    "updated_at": "2026-10-06T10:00:00Z",
+    "smart": true
   },
   {
     "slug": "nhan-dien-khuon-mat-hoat-dong-the-nao-trong-thuc-te",

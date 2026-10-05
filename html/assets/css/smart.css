@@ -375,3 +375,118 @@
 /* Cột bài viết trong lưới .doc là ô lưới: mặc định min-width:auto khiến bảng/dải ảnh rộng đẩy
    cả trang tràn ngang trên mobile. Cho phép co lại để khối tự cuộn bên trong. */
 .doc > .prose{min-width:0}
+
+/* ======================================================================================
+   Khối riêng cameramienbac (sáng tạo thêm, không có ở bộ khối gốc)
+   ====================================================================================== */
+
+/* ---------- Hero số liệu đầu bài (tv-hero-strip): 3-4 ô nổi bật ---------- */
+.tv-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:22px 0 28px}
+.tv-strip-item{position:relative;padding:18px 16px 16px;border-radius:16px;background:linear-gradient(145deg,#011b58,#0057c2);color:#fff;overflow:hidden;box-shadow:0 12px 28px rgba(1,27,88,.18)}
+.tv-strip-item::after{content:"";position:absolute;right:-30px;top:-30px;width:110px;height:110px;border-radius:50%;background:radial-gradient(circle,rgba(41,216,255,.35),transparent 70%)}
+.prose .tv-strip-num{display:block;margin:0;font-size:34px;line-height:1;font-weight:800;letter-spacing:-.02em;color:#4ae6ff}
+.prose .tv-strip-item p{margin:8px 0 0;font-size:14px;line-height:1.45;color:rgba(255,255,255,.9)}
+
+/* ---------- Thẻ dấu hiệu (tv-signs): ảnh + số lớn + triệu chứng / nguyên nhân / cách khắc phục ---------- */
+.prose ol.tv-signs{list-style:none;padding:0;margin:20px 0 32px;display:flex;flex-direction:column;gap:22px;counter-reset:none}
+.prose ol.tv-signs>li{margin:0;padding:0}
+.tv-sign{display:grid;grid-template-columns:minmax(0,42%) minmax(0,1fr);border-radius:20px;overflow:hidden;background:#fff;border:1px solid rgba(0,87,194,.14);box-shadow:0 12px 30px rgba(1,27,88,.08)}
+.tv-sign:nth-child(even) .tv-sign-media{order:2}
+.tv-sign-media{position:relative;min-height:260px;background:#dce7f4;overflow:hidden}
+.tv-sign-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:0!important;transition:transform .6s ease}
+.tv-sign:hover .tv-sign-media img{transform:scale(1.05)}
+.tv-sign-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,19,54,0) 45%,rgba(0,19,54,.75))}
+.tv-sign-no{position:absolute;z-index:2;left:16px;bottom:10px;font-size:64px;line-height:1;font-weight:800;color:#fff;letter-spacing:-.04em;text-shadow:0 4px 18px rgba(0,0,0,.35)}
+.tv-sign-no small{display:block;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#4ae6ff;margin-bottom:2px;text-shadow:none}
+.tv-sign-body{padding:22px 24px}
+.prose .tv-sign-body h3{margin:0 0 12px;font-size:20px;line-height:1.3;color:var(--color-primary-dark)}
+.tv-sign-rows{display:grid;gap:10px}
+.prose .tv-sign-row{display:grid;grid-template-columns:30px 1fr;gap:10px;align-items:start;margin:0;font-size:15px;line-height:1.6}
+.tv-sign-row i{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;font-style:normal}
+.tv-sign-row i svg{width:17px;height:17px}
+.tv-sign-row b{display:block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:1px}
+.tv-sign-row--bad i{background:#fde3de;color:#b3261e}.tv-sign-row--bad b{color:#b3261e}
+.tv-sign-row--why i{background:#fff3d6;color:#a86200}.tv-sign-row--why b{color:#a86200}
+.tv-sign-row--fix i{background:#dff6e8;color:#11804a}.tv-sign-row--fix b{color:#11804a}
+@media (max-width:640px){
+  .tv-sign{grid-template-columns:1fr}.tv-sign:nth-child(even) .tv-sign-media{order:0}
+  .tv-sign-media{min-height:0;aspect-ratio:16/10}.tv-sign-no{font-size:48px}
+  .tv-sign-body{padding:18px}.prose .tv-sign-body h3{font-size:18px}
+}
+
+/* ---------- Tự kiểm tra (tv-check): tick dấu hiệu -> thanh mức độ + lời khuyên (js/smart.js) ---------- */
+.tv-check{margin:22px 0 32px;border-radius:22px;overflow:hidden;border:1.5px solid rgba(0,87,194,.2);background:#fff;box-shadow:0 16px 38px rgba(1,27,88,.1)}
+.tv-check-head{display:flex;align-items:center;gap:14px;padding:18px 22px;background:linear-gradient(135deg,#011b58,#0057c2);color:#fff}
+.tv-check-head svg{flex:none;width:36px;height:36px;color:#4ae6ff}
+.prose .tv-check-head p{margin:0;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#4ae6ff}
+.prose .tv-check-head h3{margin:2px 0 0;font-size:19px;color:#fff}
+.tv-check-list{list-style:none;margin:0!important;padding:10px 14px!important;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.prose .tv-check-list>li{margin:0}
+.tv-check-list label{display:flex;align-items:flex-start;gap:12px;padding:12px 14px;border-radius:12px;border:1.5px solid #e3ecf7;cursor:pointer;font-size:15px;line-height:1.45;transition:border-color .2s,background .2s}
+.tv-check-list label:hover{border-color:var(--color-primary-light)}
+.tv-check-list input{position:absolute;opacity:0;pointer-events:none}
+.tv-check-box{flex:none;width:24px;height:24px;border-radius:7px;border:2px solid #9bb4d6;display:grid;place-items:center;transition:.2s;background:#fff}
+.tv-check-box svg{width:15px;height:15px;color:#fff;opacity:0}
+.tv-check-list input:checked+.tv-check-box{background:var(--color-primary);border-color:var(--color-primary)}
+.tv-check-list input:checked+.tv-check-box svg{opacity:1}
+.tv-check-list input:focus-visible+.tv-check-box{outline:3px solid var(--color-primary-light);outline-offset:2px}
+.tv-check-list label:has(input:checked){border-color:var(--color-primary);background:#f3f8ff}
+.tv-check-result{padding:16px 22px 20px;border-top:1px solid #e3ecf7;background:#f8fbfe}
+.tv-check-meter{position:relative;height:12px;border-radius:99px;background:linear-gradient(90deg,#1aa260,#f5b400 50%,#e3262f);overflow:hidden}
+.tv-check-meter span{position:absolute;inset:0 0 0 auto;width:100%;background:#e3ecf7;transition:width .45s ease}
+.prose .tv-check-level{margin:12px 0 4px;font-size:17px;font-weight:800;color:var(--color-primary-dark)}
+.prose .tv-check-advice{margin:0;font-size:15px;line-height:1.6;color:var(--color-text-muted)}
+.tv-check-cta{display:inline-flex;margin-top:12px;padding:10px 18px;border-radius:999px;background:var(--color-primary);color:#fff!important;font-weight:700;font-size:14.5px;text-decoration:none!important}
+.tv-check[data-level="0"] .tv-check-cta{display:none}
+@media (max-width:640px){.tv-check-list{grid-template-columns:1fr}.tv-check-head{padding:16px}}
+
+/* ---------- So sánh 2 cột (tv-vs): camera thường vs camera AI ---------- */
+.tv-vs{display:grid;grid-template-columns:1fr auto 1fr;gap:0;margin:20px 0 30px;align-items:stretch}
+.tv-vs-col{border-radius:20px;padding:20px 22px;border:1.5px solid}
+.tv-vs-col--old{background:#fbf6f5;border-color:#f0d7d2}
+.tv-vs-col--new{background:linear-gradient(160deg,#f1f7ff,#e6f6ff);border-color:#b9d6fb;box-shadow:0 14px 32px rgba(0,87,194,.12)}
+.tv-vs-badge{display:inline-block;padding:4px 12px;border-radius:999px;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+.tv-vs-col--old .tv-vs-badge{background:#fde3de;color:#b3261e}
+.tv-vs-col--new .tv-vs-badge{background:var(--color-primary);color:#fff}
+.prose .tv-vs-col h3{margin:10px 0 12px;font-size:19px;color:var(--color-primary-dark)}
+.prose .tv-vs-col ul{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.prose .tv-vs-col li{margin:0;display:grid;grid-template-columns:22px 1fr;gap:8px;font-size:15px;line-height:1.55}
+.tv-vs-col li::before{content:"";width:20px;height:20px;margin-top:2px;border-radius:50%;background:center/12px no-repeat}
+.tv-vs-col--old li::before{background-color:#f6c9c1;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23b3261e' stroke-width='3.2' stroke-linecap='round'%3E%3Cpath d='M18 6 6 18M6 6l12 12'/%3E%3C/svg%3E")}
+.tv-vs-col--new li::before{background-color:var(--color-primary);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m5 12 5 5L20 7'/%3E%3C/svg%3E")}
+.tv-vs-mid{display:grid;place-items:center;padding:0 10px}
+.tv-vs-mid span{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:#fff;border:2px solid #e3ecf7;font-weight:800;color:var(--color-primary);box-shadow:0 6px 16px rgba(1,27,88,.1)}
+@media (max-width:640px){.tv-vs{grid-template-columns:1fr}.tv-vs-mid{padding:10px 0}.tv-vs-col{padding:18px}}
+
+/* ---------- Phương án (tv-options): thẻ lựa chọn có mức chi phí / thời gian ---------- */
+.tv-options{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0 30px}
+.tv-option{position:relative;display:flex;flex-direction:column;border-radius:20px;overflow:hidden;background:#fff;border:1.5px solid rgba(0,87,194,.14);box-shadow:0 10px 26px rgba(1,27,88,.07);transition:transform .25s,box-shadow .25s}
+.tv-option:hover{transform:translateY(-4px);box-shadow:0 18px 38px rgba(1,27,88,.14)}
+.tv-option--hot{border-color:var(--color-primary);box-shadow:0 16px 36px rgba(0,87,194,.18)}
+.tv-option-flag{position:absolute;z-index:2;top:12px;right:12px;padding:4px 10px;border-radius:999px;background:#e3262f;color:#fff;font-size:11.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+.tv-option-media{aspect-ratio:16/10;overflow:hidden;background:#dce7f4}
+.tv-option-media img{width:100%;height:100%;object-fit:cover;border-radius:0!important}
+.tv-option-body{flex:1;display:flex;flex-direction:column;padding:16px 18px 18px}
+.prose .tv-option-body h3{margin:0 0 8px;font-size:17.5px;line-height:1.3;color:var(--color-primary-dark)}
+.prose .tv-option-body p{margin:0 0 12px;font-size:14.5px;line-height:1.6}
+.tv-option-meta{margin-top:auto;display:grid;gap:6px;padding-top:10px;border-top:1px dashed #d4e2f3}
+.prose .tv-option-meta p{margin:0;display:flex;justify-content:space-between;gap:8px;font-size:13.5px}
+.tv-option-meta b{color:var(--color-text-muted);font-weight:600}
+.tv-dots{display:inline-flex;gap:3px;align-items:center}
+.tv-dots i{width:9px;height:9px;border-radius:50%;background:#d4e2f3}
+.tv-dots i.on{background:var(--color-primary)}
+@media (max-width:900px){.tv-options{grid-template-columns:1fr}}
+
+/* ---------- Trích dẫn kinh nghiệm (tv-quote) ---------- */
+.tv-quote{position:relative;margin:24px 0 28px;padding:22px 24px 22px 70px;border-radius:18px;background:#011b58;color:#fff;box-shadow:0 14px 32px rgba(1,27,88,.2)}
+.tv-quote::before{content:"“";position:absolute;left:18px;top:6px;font-size:76px;line-height:1;font-family:Georgia,serif;color:#29d8ff}
+.prose .tv-quote p{margin:0;font-size:17px;line-height:1.65;font-style:italic;color:#fff}
+.prose .tv-quote cite{display:block;margin-top:10px;font-size:13.5px;font-style:normal;font-weight:700;color:#4ae6ff;letter-spacing:.04em}
+@media (max-width:640px){.tv-quote{padding:56px 18px 18px}.tv-quote::before{top:0}}
+/* Chặn style mặc định của .prose (ul chấm đầu dòng, blockquote nền nhạt, p cỡ chữ) đè lên khối */
+.prose ul.tv-check-list{list-style:none}
+.prose blockquote.tv-quote{border:0;border-radius:18px;background:#011b58;font-style:normal;padding:22px 24px 22px 70px}
+@media (max-width:640px){.prose blockquote.tv-quote{padding:56px 18px 18px}}
+.prose .tv-strip-item .tv-strip-num{margin:0;font-size:34px;line-height:1;color:#4ae6ff}
+.prose .tv-option-meta p:last-child{display:grid;grid-template-columns:auto 1fr;gap:10px;text-align:right}
+.prose .tv-option-meta p:last-child span{font-weight:600;color:var(--color-primary-dark)}

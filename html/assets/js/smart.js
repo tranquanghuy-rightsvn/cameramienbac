@@ -180,3 +180,23 @@ document.querySelectorAll('[data-slider]').forEach((slider) => {
   });
 })();
 
+
+// Tự kiểm tra (tv-check): đếm số dấu hiệu được tick -> thanh mức độ + lời khuyên tương ứng.
+// Lời khuyên lấy từ data-advice-<n> trên khối (n = mức 0..3) để chữ nằm trong HTML bài viết.
+document.querySelectorAll('.tv-check').forEach((box) => {
+  const inputs = [...box.querySelectorAll('input[type="checkbox"]')];
+  const bar = box.querySelector('.tv-check-meter span');
+  const level = box.querySelector('.tv-check-level');
+  const advice = box.querySelector('.tv-check-advice');
+  const update = () => {
+    const n = inputs.filter((i) => i.checked).length;
+    const pct = inputs.length ? n / inputs.length : 0;
+    const lv = n === 0 ? 0 : pct <= 0.34 ? 1 : pct <= 0.67 ? 2 : 3;
+    box.dataset.level = String(lv);
+    if (bar) bar.style.width = (100 - pct * 100) + '%';
+    if (level) level.textContent = box.dataset['label' + lv] + ' (' + n + '/' + inputs.length + ' dấu hiệu)';
+    if (advice) advice.textContent = box.dataset['advice' + lv] || '';
+  };
+  inputs.forEach((i) => i.addEventListener('change', update));
+  update();
+});
