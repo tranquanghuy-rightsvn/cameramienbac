@@ -8,6 +8,7 @@ phần còn lại của file giữ nguyên (trang viết tay):
   html/hang-<hãng>/index.html         cms:brand-products   "Sản phẩm tiêu biểu" của hãng
   html/tin-tuc/index.html             cms:news-filter      nút lọc theo danh mục tin
                                       cms:news-list        danh sách tin (CMS + bài viết tay cũ)
+  html/index.html                     cms:home-news        3 tin mới nhất ở trang chủ
 Sinh mới từ template:
   html/tin-tuc/<slug>/index.html      templates/news-detail.html (mang dấu GENERATED_MARKER)
 Sinh toàn bộ (không sửa tay):
@@ -279,6 +280,9 @@ def build_news(news, legacy, categories):
                       for i, it in enumerate(items))
     patch_file(SITE / "tin-tuc" / "index.html",
                [("news-filter", "        " + buttons), ("news-list", cards)])
+    # Trang chủ: 3 bài mới nhất, thẻ thường (không có thẻ nổi bật như trang /tin-tuc/).
+    home_cards = "\n".join(news_card(it, cat_name.get(it["category"], ""), False) for it in items[:3])
+    patch_file(SITE / "index.html", [("home-news", home_cards)])
 
     tpl = read(TEMPLATES / "news-detail.html")
     generated = set()

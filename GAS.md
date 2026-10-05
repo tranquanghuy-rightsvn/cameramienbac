@@ -88,9 +88,12 @@ Mỗi sản phẩm = 1 thẻ `.pitem` ("dòng sản phẩm" kèm model tiêu bi�
    `html/assets/images/news/<slug>-content-<N>.jpg` (đánh số bất biến). Trong `content_html`
    lưu đường dẫn TUYỆT ĐỐI theo domain `/assets/images/news/...` (site dùng đường dẫn tuyệt
    đối từ gốc ở mọi nơi). Trong editor hiển thị qua raw.githubusercontent.com.
-5. Bài viết tay có sẵn (`/tin-tuc-5-dau-hieu-camera-loi-thoi/` + 5 thẻ mẫu) nằm ở
-   `data/legacy-news.json` — CMS KHÔNG sửa/xoá; build chỉ liệt kê chúng trong danh sách, không
-   build lại trang chi tiết. Muốn bỏ 5 thẻ mẫu (đang trỏ `/lien-he/`) thì xoá tay trong file đó.
+5. 6 bài có sẵn từ trước (bài thật `5-dau-hieu-camera-loi-thoi` + 5 bài mẫu) ĐÃ chuyển vào CMS
+   ngày 06/10/2026 — admin thấy và sửa/xoá được như bài thường. URL cũ
+   `/tin-tuc-5-dau-hieu-camera-loi-thoi/` chuyển hướng 301 qua `html/_redirects`. 5 bài mẫu mới
+   chỉ có 1 đoạn mô tả làm nội dung — cần viết thêm hoặc xoá. Bài chuyển vào giữ ảnh bìa có sẵn
+   (`assets/images/news-N.webp`) cho tới khi tải ảnh bìa mới. `data/legacy-news.json` giờ rỗng
+   (build vẫn hỗ trợ nếu sau này cần).
 6. Sửa: slug khoá cả server (throw) lẫn client (disabled; nhớ bật lại khi tạo mới).
 7. Xoá: xoá `data/news/<slug>.json` + ảnh bìa + ảnh nội dung của bài (an toàn vì ảnh 1-1) +
    gỡ khỏi index (ghi SAU CÙNG). Có popup xác nhận.
@@ -162,7 +165,7 @@ Xem mục I.4. Tab "Người dùng" chỉ hiện với admin/root; server chặn
 - `data/products.json` (84 bản ghi crawl thô) KHÔNG thuộc CMS, CMS không đọc/ghi.
 - `scripts/build.py` ghi đè vùng giữa các mốc `<!-- cms:... -->`:
   `html/partials/catalog.html` (lưới sản phẩm), `html/hang-{hikvision,dahua,axis,hanwha}/index.html`
-  (lưới "Sản phẩm tiêu biểu"), `html/tin-tuc/index.html` (nút lọc + danh sách); và sinh
+  (lưới "Sản phẩm tiêu biểu"), `html/tin-tuc/index.html` (nút lọc + danh sách), `html/index.html` (3 tin mới nhất); và sinh
   `html/tin-tuc/<slug>/index.html` từ `templates/news-detail.html` (có dấu
   `<!-- build.py:generated -->`, trang mồ côi tự bị xoá). Xoá mốc = build báo lỗi, không im lặng.
 - `scripts/build.py` cũng sinh lại toàn bộ `html/sitemap.xml` (quét mọi `*/index.html`, bỏ
