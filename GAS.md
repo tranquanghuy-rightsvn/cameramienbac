@@ -98,6 +98,16 @@ Mỗi sản phẩm = 1 thẻ `.pitem` ("dòng sản phẩm" kèm model tiêu bi�
 7. Xoá: xoá `data/news/<slug>.json` + ảnh bìa + ảnh nội dung của bài (an toàn vì ảnh 1-1) +
    gỡ khỏi index (ghi SAU CÙNG). Có popup xác nhận.
 
+8. **Smart content** (áp dụng 06/10/2026 cho 5 bài mẫu đã viết dày): bài có cờ `smart: true` trong
+   `data/news.json` + `data/news/<slug>.json`, thân bài là HTML thiết kế sẵn bằng các khối `tv-`
+   (quy trình, slider, dải ảnh phóng to, thẻ cảnh báo, bảng, hỏi đáp, thẻ liên hệ).
+   - CMS: sửa được Tiêu đề, Mô tả, Danh mục, Ảnh bìa; KHÔNG sửa được thân bài (server giữ nguyên
+     `content_html` cũ dù client gửi gì), KHÔNG xoá được; danh sách hiện nhãn 🔒 Smart content.
+   - Site: `build.py` tự nạp `html/assets/css/smart.css` + `html/assets/js/smart.js` cho bài có
+     `class="tv-`; bài thường không nạp gì thêm.
+   - Sửa nội dung bài smart = sửa trực tiếp `content_html` trong `data/news/<slug>.json` (bên kỹ
+     thuật), pull repo trước vì CMS có thể vừa đổi tiêu đề/mô tả/ảnh bìa.
+
 ## IV. Danh mục tin tức
 
 1. Field: **Tên** (hiện ở nút lọc + nhãn trên ảnh), **slug** (tự sinh, bất biến, là khoá tham

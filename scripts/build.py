@@ -312,11 +312,21 @@ def build_news(news, legacy, categories):
         out = tpl
         for key, value in mapping.items():
             out = out.replace(key, value)
+        out = inject_smart_assets(out)
         # Gắn khối SEO ngay lúc render (không đợi bước sitemap) để file chỉ ghi khi thật sự đổi.
         out = with_seo(out, f"{SITE_URL}/tin-tuc/{slug}/", meta)
         write_if_changed(SITE / "tin-tuc" / slug / "index.html", out)
         generated.add(slug)
     clean_orphan_news(generated)
+
+
+def inject_smart_assets(page):
+    """Bài Smart content (thân bài có khối class="tv-...") -> nạp CSS/JS khối. Bài thường không
+    nạp gì thêm, output giữ nguyên như trước khi có tính năng này."""
+    if 'class="tv-' not in page:
+        return page
+    page = page.replace("</head>", '<link rel="stylesheet" href="/assets/css/smart.css">\n</head>', 1)
+    return page.replace("</body>", '<script src="/assets/js/smart.js" defer></script>\n</body>', 1)
 
 
 def lazy_images(content):

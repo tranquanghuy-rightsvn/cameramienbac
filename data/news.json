@@ -13,56 +13,61 @@
   {
     "slug": "nhan-dien-khuon-mat-hoat-dong-the-nao-trong-thuc-te",
     "title": "Nhận diện khuôn mặt hoạt động thế nào trong thực tế?",
-    "description": "Từ khâu thu hình, trích đặc trưng đến so khớp, và vì sao ánh sáng, góc đặt camera quyết định phần lớn độ chính xác.",
+    "description": "Từ khâu thu hình, trích đặc trưng đến so khớp, và vì sao ánh sáng, góc đặt camera quyết định phần lớn độ chính xác của hệ thống nhận diện khuôn mặt.",
     "category": "cong-nghe",
     "date": "2025-09-02",
-    "read_min": 5,
+    "read_min": 11,
     "cover": "assets/images/news-2.webp",
     "cover_alt": "Nhận diện khuôn mặt hoạt động thế nào trong thực tế?",
-    "updated_at": "2026-10-06T00:00:00Z"
+    "updated_at": "2026-10-06T09:00:00Z",
+    "smart": true
   },
   {
     "slug": "ban-giao-he-thong-300-camera-cho-nha-may-tai-bac-ninh",
     "title": "Bàn giao hệ thống 300 camera cho nhà máy tại Bắc Ninh",
-    "description": "Toàn bộ nhà xưởng, cổng ra vào và kho vận được giám sát tập trung, tích hợp kiểm soát nhân sự theo ca.",
+    "description": "Cách Cameramienbac triển khai 300 camera cho nhà máy tại Bắc Ninh: khảo sát, thiết kế mạng, lắp đặt theo khu vực, giám sát tập trung, kiểm soát ca.",
     "category": "du-an",
     "date": "2025-08-25",
-    "read_min": 4,
+    "read_min": 10,
     "cover": "assets/images/news-3.webp",
     "cover_alt": "Bàn giao hệ thống 300 camera cho nhà máy tại Bắc Ninh",
-    "updated_at": "2026-10-06T00:00:00Z"
+    "updated_at": "2026-10-06T09:00:00Z",
+    "smart": true
   },
   {
     "slug": "diem-danh-bang-ai-truong-hoc-tiet-kiem-duoc-bao-nhieu-thoi-gian",
     "title": "Điểm danh bằng AI: trường học tiết kiệm được bao nhiêu thời gian?",
-    "description": "Cách tính thời gian điểm danh mỗi ngày và lợi ích thực tế khi nhà trường chuyển sang điểm danh tự động.",
+    "description": "Cách tính thời gian điểm danh mỗi ngày, lợi ích thực tế khi trường học chuyển sang điểm danh tự động bằng AI, và những lưu ý khi triển khai cho học sinh.",
     "category": "giao-duc",
     "date": "2025-08-14",
-    "read_min": 4,
+    "read_min": 8,
     "cover": "assets/images/news-4.webp",
     "cover_alt": "Điểm danh bằng AI: trường học tiết kiệm được bao nhiêu thời gian?",
-    "updated_at": "2026-10-06T00:00:00Z"
+    "updated_at": "2026-10-06T09:00:00Z",
+    "smart": true
   },
   {
     "slug": "chon-o-cung-cho-dau-ghi-bao-nhieu-tb-la-du",
     "title": "Chọn ổ cứng cho đầu ghi: bao nhiêu TB là đủ?",
-    "description": "Công thức tính dung lượng theo số camera, độ phân giải, số ngày lưu trữ, kèm bảng tra nhanh cho các cấu hình phổ biến.",
+    "description": "Công thức tính dung lượng ổ cứng cho đầu ghi theo số camera, độ phân giải, chuẩn nén và số ngày lưu trữ, kèm bảng tra nhanh và cách chọn ổ cứng chuyên dụng.",
     "category": "huong-dan",
     "date": "2025-08-05",
-    "read_min": 7,
+    "read_min": 8,
     "cover": "assets/images/news-5.webp",
     "cover_alt": "Chọn ổ cứng cho đầu ghi: bao nhiêu TB là đủ?",
-    "updated_at": "2026-10-06T00:00:00Z"
+    "updated_at": "2026-10-06T09:00:00Z",
+    "smart": true
   },
   {
     "slug": "phong-chong-trom-cap-tai-kho-hang-bang-canh-bao-chu-dong",
     "title": "Phòng chống trộm cắp tại kho hàng bằng cảnh báo chủ động",
-    "description": "Kết hợp camera AI với cảm biến và đèn còi để xử lý sự cố ngay khi phát hiện, thay vì chỉ xem lại sau khi mất.",
+    "description": "Kết hợp camera AI với cảm biến, đèn và còi cảnh báo để phát hiện, răn đe và xử lý trộm cắp tại kho hàng ngay khi xảy ra, thay vì chỉ xem lại sau khi đã mất.",
     "category": "an-ninh",
     "date": "2025-07-28",
-    "read_min": 5,
+    "read_min": 9,
     "cover": "assets/images/news-6.webp",
     "cover_alt": "Phòng chống trộm cắp tại kho hàng bằng cảnh báo chủ động",
-    "updated_at": "2026-10-06T00:00:00Z"
+    "updated_at": "2026-10-06T09:00:00Z",
+    "smart": true
   }
 ]
