@@ -179,10 +179,14 @@
           <label class="check"><input type="checkbox" name="cat" value="khac"><i><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4.6 12.6 4.8 4.8 10-10.8"/></svg></i>Khác</label>
             <h4>Tỉnh/Thành phố</h4>
             <p class="field field--select"><label class="sr-only" for="f-city">Tỉnh/Thành phố</label>
-              <select id="f-city"><option>Tất cả</option><option>Hà Nội</option><option>Hưng Yên</option><option>Bắc Ninh</option></select></p>
+              <!-- cms:project-cities:start -->
+              <select id="f-city"><option>Tất cả</option><option>Bắc Ninh</option><option>Hà Nội</option><option>Hưng Yên</option></select>
+              <!-- cms:project-cities:end --></p>
             <h4>Năm triển khai</h4>
             <p class="field field--select"><label class="sr-only" for="f-year">Năm triển khai</label>
-              <select id="f-year"><option>Tất cả</option><option>2023</option><option>2022</option><option>2021</option><option>2020</option><option>2019</option></select></p>
+              <!-- cms:project-years:start -->
+              <select id="f-year"><option>Tất cả</option><option>2023</option><option>2022</option><option>2021</option><option>2020</option><option>2019</option></select>
+              <!-- cms:project-years:end --></p>
             <button class="btn btn--solid" type="button"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.6"/><path d="m16 16 4.4 4.4"/></svg>Tìm kiếm</button>
           </div>
           <div class="aside-card promo">
@@ -196,11 +200,14 @@
             <h2 class="psec__title"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1L3.2 9.5l6.1-.9L12 3Z"/></svg>Dự án nổi bật</h2>
             <a class="link-more" href="/lien-he/">Tư vấn dự án tương tự <i><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></i></a>
           </div>
+          <!-- cms:project-count:start -->
           <p class="psec__lead" id="prj-count">9 dự án tiêu biểu trong hơn 500 dự án Cameramienbac đã triển khai trên toàn miền Bắc.</p>
+          <!-- cms:project-count:end -->
           <div class="grid grid--3" id="prj-grid">
+          <!-- cms:project-list:start -->
           <article class="prj" data-category="chung-cu" data-city="Hà Nội" data-year="2023">
             <div class="prj__media">
-              <img src="/assets/images/prj-1.webp" alt="Tòa nhà Thông Minh Vinhomes Ocean Park" loading="lazy" width="988" height="400" decoding="async">
+              <img src="/assets/images/prj-1.webp" alt="Tòa nhà Thông Minh Vinhomes Ocean Park" loading="lazy" width="1280" height="720" decoding="async">
               <span class="prj__tag"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4.4" y="3.4" width="15.2" height="17.2" rx="1.4"/><path d="M8 7.4h2.6M13.4 7.4H16M8 11.4h2.6M13.4 11.4H16M8 15.4h2.6M13.4 15.4H16"/></svg>Chung cư</span>
             </div>
             <div class="prj__body">
@@ -217,7 +224,7 @@
           </article>
           <article class="prj" data-category="van-phong" data-city="Hà Nội" data-year="2023">
             <div class="prj__media">
-              <img src="/assets/images/prj-2.webp" alt="Trụ sở Tập đoàn FPT" loading="lazy" width="992" height="400" decoding="async">
+              <img src="/assets/images/prj-2.webp" alt="Trụ sở Tập đoàn FPT" loading="lazy" width="1280" height="720" decoding="async">
               <span class="prj__tag"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4.4" y="3.4" width="15.2" height="17.2" rx="1.4"/><path d="M8 7.4h2.4M13.6 7.4H16M8 11.4h2.4M13.6 11.4H16M8 15.4h2.4M13.6 15.4H16"/></svg>Văn phòng</span>
             </div>
             <div class="prj__body">
@@ -234,24 +241,24 @@
           </article>
           <article class="prj" data-category="nha-may" data-city="Hà Nội" data-year="2022">
             <div class="prj__media">
-              <img src="/assets/images/prj-3.webp" alt="KCN Bắc Thăng Long" loading="lazy" width="996" height="400" decoding="async">
+              <img src="/assets/images/prj-3.webp" alt="KCN Bắc Thăng Long" loading="lazy" width="1280" height="720" decoding="async">
               <span class="prj__tag"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.8 20.6V10l6 3.6V10l6 3.6V6.4h6.4v14.2H2.8Z"/></svg>Nhà máy - KCN</span>
             </div>
             <div class="prj__body">
-              <h3 class="prj__title"><a href="/du-an-kcn-bac-thang-long/">KCN Bắc Thăng Long</a></h3>
+              <h3 class="prj__title"><a href="/du-an/kcn-bac-thang-long/">KCN Bắc Thăng Long</a></h3>
               <p class="prj__loc"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21.4s7-6 7-11a7 7 0 1 0-14 0c0 5 7 11 7 11Z"/><circle cx="12" cy="10.2" r="2.6"/></svg>Đông Anh, Hà Nội</p>
-              <p class="prj__text">Lắp đặt hệ thống camera giám sát toàn khu, đảm bảo an ninh 24/7.</p>
+              <p class="prj__text">Hệ thống 150 camera giám sát toàn khu, cảnh báo xâm nhập và quản lý tập trung tại phòng điều hành.</p>
               <ul class="prj__stats">
                 <li><i><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.6" y="7" width="13" height="10" rx="2.2"/><path d="m16 11.2 5-2.6v7l-5-2.6z"/></svg></i><span><b>150</b>camera</span></li>
                 <li><i><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 8.4V5.4a2 2 0 0 1 2-2h3M15.6 3.4h3a2 2 0 0 1 2 2v3M20.6 15.6v3a2 2 0 0 1-2 2h-3M8.4 20.6h-3a2 2 0 0 1-2-2v-3"/><circle cx="12" cy="10.4" r="2.4"/><path d="M8 16.6a4.6 4.6 0 0 1 8 0"/></svg></i><span><b>AI</b>nhận diện</span></li>
                 <li><i><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 6.8V12l3.4 2"/></svg></i><span><b>2022</b>hoàn thành</span></li>
               </ul>
-              <a class="btn" href="/du-an-kcn-bac-thang-long/">Xem chi tiết <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></a>
+              <a class="btn" href="/du-an/kcn-bac-thang-long/">Xem chi tiết <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></a>
             </div>
           </article>
           <article class="prj" data-category="truong-hoc" data-city="Hà Nội" data-year="2022">
             <div class="prj__media">
-              <img src="/assets/images/prj-4.webp" alt="Trường THPT Chuyên Hà Nội – Amsterdam" loading="lazy" width="988" height="400" decoding="async">
+              <img src="/assets/images/prj-4.webp" alt="Trường THPT Chuyên Hà Nội – Amsterdam" loading="lazy" width="1280" height="720" decoding="async">
               <span class="prj__tag"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.4 1.8 8.2 12 13l10.2-4.8L12 3.4Z"/><path d="M5.6 10.6v4.8c0 1.9 2.9 3.4 6.4 3.4s6.4-1.5 6.4-3.4v-4.8"/></svg>Trường học</span>
             </div>
             <div class="prj__body">
@@ -268,7 +275,7 @@
           </article>
           <article class="prj" data-category="do-thi" data-city="Hưng Yên" data-year="2021">
             <div class="prj__media">
-              <img src="/assets/images/prj-5.webp" alt="Khu đô thị Ecopark" loading="lazy" width="921" height="371" decoding="async">
+              <img src="/assets/images/prj-5.webp" alt="Khu đô thị Ecopark" loading="lazy" width="1280" height="720" decoding="async">
               <span class="prj__tag"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.8 20.6h18.4"/><rect x="3.8" y="9.4" width="5" height="11.2"/><rect x="9.8" y="4.4" width="5" height="16.2"/><rect x="15.8" y="12.4" width="4.4" height="8.2"/></svg>Khu đô thị</span>
             </div>
             <div class="prj__body">
@@ -285,7 +292,7 @@
           </article>
           <article class="prj" data-category="ngan-hang" data-city="Hà Nội" data-year="2019">
             <div class="prj__media">
-              <img src="/assets/images/prj-6.webp" alt="Ngân hàng BIDV – Chi nhánh Thái Hà" loading="lazy" width="996" height="400" decoding="async">
+              <img src="/assets/images/prj-6.webp" alt="Ngân hàng BIDV – Chi nhánh Thái Hà" loading="lazy" width="1280" height="720" decoding="async">
               <span class="prj__tag"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.2 9.4 12 4.2l8.8 5.2"/><path d="M5.4 9.4v9.2M9.8 9.4v9.2M14.2 9.4v9.2M18.6 9.4v9.2M2.8 20.6h18.4"/></svg>Ngân hàng</span>
             </div>
             <div class="prj__body">
@@ -302,7 +309,7 @@
           </article>
           <article class="prj" data-category="benh-vien" data-city="Hà Nội" data-year="2020">
             <div class="prj__media">
-              <img src="/assets/images/prj-7.webp" alt="Bệnh viện Bạch Mai" loading="lazy" width="988" height="400" decoding="async">
+              <img src="/assets/images/prj-7.webp" alt="Bệnh viện Bạch Mai" loading="lazy" width="1280" height="720" decoding="async">
               <span class="prj__tag"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4.4" width="16" height="16.2" rx="2"/><path d="M12 8.6v7.4M8.3 12.3h7.4"/></svg>Bệnh viện</span>
             </div>
             <div class="prj__body">
@@ -319,7 +326,7 @@
           </article>
           <article class="prj" data-category="truong-hoc" data-city="Hà Nội" data-year="2020">
             <div class="prj__media">
-              <img src="/assets/images/prj-8.webp" alt="Đại học Quốc gia Hà Nội" loading="lazy" width="992" height="400" decoding="async">
+              <img src="/assets/images/prj-8.webp" alt="Đại học Quốc gia Hà Nội" loading="lazy" width="1280" height="720" decoding="async">
               <span class="prj__tag"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.4 1.8 8.2 12 13l10.2-4.8L12 3.4Z"/><path d="M5.6 10.6v4.8c0 1.9 2.9 3.4 6.4 3.4s6.4-1.5 6.4-3.4v-4.8"/></svg>Trường học</span>
             </div>
             <div class="prj__body">
@@ -336,7 +343,7 @@
           </article>
           <article class="prj" data-category="nha-may" data-city="Bắc Ninh" data-year="2019">
             <div class="prj__media">
-              <img src="/assets/images/prj-9.webp" alt="Nhà máy Samsung Bắc Ninh" loading="lazy" width="996" height="400" decoding="async">
+              <img src="/assets/images/prj-9.webp" alt="Nhà máy Samsung Bắc Ninh" loading="lazy" width="1280" height="720" decoding="async">
               <span class="prj__tag"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.8 20.6V10l6 3.6V10l6 3.6V6.4h6.4v14.2H2.8Z"/></svg>Nhà máy - KCN</span>
             </div>
             <div class="prj__body">
@@ -351,6 +358,7 @@
               <a class="btn" href="/lien-he/">Nhận tư vấn <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></a>
             </div>
           </article>
+          <!-- cms:project-list:end -->
           </div>
           <p class="prj-empty" id="prj-empty" hidden>Không tìm thấy dự án phù hợp với bộ lọc đã chọn. Vui lòng <button type="button" class="prj-reset" data-prj-reset>xóa bộ lọc</button> hoặc <a href="/lien-he/">liên hệ trực tiếp</a> để được tư vấn.</p>
         </div>

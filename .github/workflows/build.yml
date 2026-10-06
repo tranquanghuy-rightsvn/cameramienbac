@@ -3,11 +3,12 @@ name: Build site tĩnh từ data/
 # Chỉ trigger ở đúng các file LUÔN là commit CHỐT của một thao tác trong trang quản trị — KHÔNG
 # trigger theo cả thư mục data/**. Một lần Lưu tin tức sinh nhiều commit liên tiếp (ảnh -> chi
 # tiết bài -> danh sách tổng); trigger theo thư mục sẽ build ngay từ commit ĐẦU (lúc danh sách
-# chưa cập nhật) và deploy nhầm trạng thái dở dang. Xem GAS.md mục VIII.
+# chưa cập nhật) và deploy nhầm trạng thái dở dang. Xem GAS.md mục IX.
 #   data/catalog.json          -> Lưu/Xoá sản phẩm (1 file, tự nó là chốt)
 #   data/news.json             -> Lưu/Xoá tin tức (Code.js ghi SAU CÙNG)
 #   data/news-categories.json  -> Lưu/Xoá danh mục tin
 #   data/legacy-news.json      -> sửa tay danh sách bài viết tay cũ
+#   data/projects.json         -> Lưu/Xoá dự án (1 file, tự nó là chốt)
 # data/chat-qa.json + data/ai-settings.json KHÔNG cần build: trợ lý AI đọc thẳng lúc chat.
 on:
   push:
@@ -17,6 +18,7 @@ on:
       - "data/news.json"
       - "data/news-categories.json"
       - "data/legacy-news.json"
+      - "data/projects.json"
       - "templates/**"
       - "scripts/build.py"
       # Thêm/sửa tay 1 trang (vd thêm noindex) -> sitemap.xml phải sinh lại. Không lặp vô hạn:

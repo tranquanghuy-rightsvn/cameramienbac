@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Build các phần động của site Cameramienbac từ data/*.json (CMS ghi) — Python stdlib, không
-cần cài gì. Quyết định nghiệp vụ chốt ở ../GAS.md mục VIII; đọc trước khi sửa.
+cần cài gì. Quyết định nghiệp vụ chốt ở ../GAS.md mục IX; đọc trước khi sửa.
 
 Ghi đè ĐÚNG các vùng nằm giữa 2 mốc `<!-- cms:<tên>:start -->` / `<!-- cms:<tên>:end -->`,
 phần còn lại của file giữ nguyên (trang viết tay):
@@ -10,8 +10,14 @@ phần còn lại của file giữ nguyên (trang viết tay):
                                       cms:news-list        danh sách tin (CMS + bài viết tay cũ)
   html/index.html                     cms:home-news        3 tin mới nhất ở trang chủ
   html/trung-tam-ai/index.html        cms:ai-news          3 tin chủ đề AI ở trang Trung tâm AI
+  html/du-an/index.html               cms:project-cities   ô lọc Tỉnh/Thành phố (lấy từ dữ liệu)
+                                      cms:project-years    ô lọc Năm triển khai (lấy từ dữ liệu)
+                                      cms:project-count    dòng đếm số dự án
+                                      cms:project-list     lưới dự án
+  html/index.html                     cms:home-projects    3 dự án tiêu biểu ở trang chủ
 Sinh mới từ template:
   html/tin-tuc/<slug>/index.html      templates/news-detail.html (mang dấu GENERATED_MARKER)
+  html/du-an/<slug>/index.html        templates/project-detail.html — CHỈ dự án có nội dung
 Sinh toàn bộ (không sửa tay):
   html/sitemap.xml                    mọi trang */index.html, trừ trang noindex + thư mục kỹ thuật
   html/robots.txt                     cho phép tất cả + trỏ tới sitemap
@@ -20,7 +26,8 @@ Không tìm thấy mốc = DỪNG build với lỗi rõ ràng (không im lặng 
 lỡ xoá mốc thì CMS sẽ "lưu mà không thấy gì đổi").
 
 Chạy: python3 scripts/build.py   (CI chạy khi data/catalog.json, data/news.json,
-data/news-categories.json, data/legacy-news.json, templates/** hoặc file này đổi.)
+data/news-categories.json, data/legacy-news.json, data/projects.json, templates/** hoặc file
+này đổi.)
 """
 
 import html
@@ -73,6 +80,28 @@ BRANDS = [
     ("nvidia", "NVIDIA", None),
     ("intel", "Intel", None),
 ]
+
+# Loại công trình của dự án: (slug, tên ở bộ lọc, nhãn trên ảnh, nét vẽ icon nhãn). Slug khớp các
+# ô lọc "Danh mục dự án" viết tay ở html/du-an/index.html.
+PROJECT_CATEGORIES = [
+    ("chung-cu", "Tòa nhà - Chung cư", "Chung cư",
+     '<rect x="4.4" y="3.4" width="15.2" height="17.2" rx="1.4"/><path d="M8 7.4h2.6M13.4 7.4H16M8 11.4h2.6M13.4 11.4H16M8 15.4h2.6M13.4 15.4H16"/>'),
+    ("do-thi", "Khu đô thị", "Khu đô thị",
+     '<path d="M2.8 20.6h18.4"/><rect x="3.8" y="9.4" width="5" height="11.2"/><rect x="9.8" y="4.4" width="5" height="16.2"/><rect x="15.8" y="12.4" width="4.4" height="8.2"/>'),
+    ("van-phong", "Văn phòng", "Văn phòng",
+     '<rect x="4.4" y="3.4" width="15.2" height="17.2" rx="1.4"/><path d="M8 7.4h2.4M13.6 7.4H16M8 11.4h2.4M13.6 11.4H16M8 15.4h2.4M13.6 15.4H16"/>'),
+    ("nha-may", "Nhà máy - KCN", "Nhà máy - KCN",
+     '<path d="M2.8 20.6V10l6 3.6V10l6 3.6V6.4h6.4v14.2H2.8Z"/>'),
+    ("truong-hoc", "Trường học", "Trường học",
+     '<path d="M12 3.4 1.8 8.2 12 13l10.2-4.8L12 3.4Z"/><path d="M5.6 10.6v4.8c0 1.9 2.9 3.4 6.4 3.4s6.4-1.5 6.4-3.4v-4.8"/>'),
+    ("ngan-hang", "Ngân hàng", "Ngân hàng",
+     '<path d="M3.2 9.4 12 4.2l8.8 5.2"/><path d="M5.4 9.4v9.2M9.8 9.4v9.2M14.2 9.4v9.2M18.6 9.4v9.2M2.8 20.6h18.4"/>'),
+    ("benh-vien", "Bệnh viện", "Bệnh viện",
+     '<rect x="4" y="4.4" width="16" height="16.2" rx="2"/><path d="M12 8.6v7.4M8.3 12.3h7.4"/>'),
+    ("khac", "Khác", "Công trình khác",
+     '<path d="M12 21.4s7-6 7-11a7 7 0 1 0-14 0c0 5 7 11 7 11Z"/><circle cx="12" cy="10.2" r="2.6"/>'),
+]
+PROJECT_CAT = {slug: (name, tag, icon) for slug, name, tag, icon in PROJECT_CATEGORIES}
 
 CAT_LABEL = dict(PRODUCT_CATEGORIES)
 CAT_ORDER = {slug: i for i, (slug, _) in enumerate(PRODUCT_CATEGORIES)}
@@ -346,7 +375,161 @@ def build_news(news, legacy, categories):
         out = with_seo(out, f"{SITE_URL}/tin-tuc/{slug}/", meta)
         write_if_changed(SITE / "tin-tuc" / slug / "index.html", out)
         generated.add(slug)
-    clean_orphan_news(generated)
+    clean_orphan_pages(SITE / "tin-tuc", generated)
+
+
+# ---------------------------------------------------------------------------- dự án
+
+def svg(paths, width="1.6"):
+    return (f'<svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="{width}" '
+            f'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{paths}</svg>')
+
+
+PIN_SVG = svg('<path d="M12 21.4s7-6 7-11a7 7 0 1 0-14 0c0 5 7 11 7 11Z"/><circle cx="12" cy="10.2" r="2.6"/>')
+CAM_SVG = svg('<rect x="2.6" y="7" width="13" height="10" rx="2.2"/><path d="m16 11.2 5-2.6v7l-5-2.6z"/>')
+AI_SVG = svg('<path d="M3.4 8.4V5.4a2 2 0 0 1 2-2h3M15.6 3.4h3a2 2 0 0 1 2 2v3M20.6 15.6v3a2 2 0 0 1-2 2h-3'
+             'M8.4 20.6h-3a2 2 0 0 1-2-2v-3"/><circle cx="12" cy="10.4" r="2.4"/><path d="M8 16.6a4.6 4.6 0 0 1 8 0"/>')
+CAM_BADGE_SVG = svg('<rect x="2.6" y="7" width="13" height="10" rx="2.4"/><path d="m16 11.2 5-2.6v7l-5-2.6z"/>'
+                    '<circle cx="8.4" cy="12" r="2.2"/>')
+CAL_BADGE_SVG = svg('<rect x="3.4" y="4.8" width="17.2" height="15.8" rx="1.8"/><path d="M3.4 9.6h17.2M8 2.8v4M16 2.8v4"/>')
+
+
+def sort_projects(projects):
+    return sorted(projects, key=lambda p: (int(p.get("order") or 0), p.get("slug", "")))
+
+
+def project_url(p):
+    """Dự án có nội dung -> có trang chi tiết riêng; không có thì thẻ dẫn về form tư vấn."""
+    return f'/du-an/{p["slug"]}/' if (p.get("content_html") or "").strip() else None
+
+
+def project_card(p):
+    url = project_url(p)
+    _, tag, icon = PROJECT_CAT.get(p.get("category"), PROJECT_CAT["khac"])
+    title = esc(p.get("title"))
+    stats = []
+    if int(p.get("cameras") or 0) > 0:
+        stats.append(f'<li><i>{CAM_SVG}</i><span><b>{esc(p["cameras"])}</b>camera</span></li>')
+    stats.append(f'<li><i>{AI_SVG}</i><span><b>AI</b>nhận diện</span></li>')
+    if p.get("year"):
+        stats.append(f'<li><i>{CLOCK_SVG}</i><span><b>{esc(p["year"])}</b>hoàn thành</span></li>')
+    lines = [
+        f'          <article class="prj" data-category="{esc(p.get("category"))}" data-city="{esc(p.get("city"))}" '
+        f'data-year="{esc(p.get("year") or "")}">',
+        '            <div class="prj__media">',
+        f'              <img src="/{esc(p.get("cover"))}" alt="{esc(p.get("cover_alt") or p.get("title"))}" '
+        'loading="lazy" width="1280" height="720" decoding="async">',
+        f'              <span class="prj__tag">{svg(icon)}{esc(tag)}</span>',
+        '            </div>',
+        '            <div class="prj__body">',
+        f'              <h3 class="prj__title">' + (f'<a href="{url}">{title}</a>' if url else title) + '</h3>',
+    ]
+    if p.get("location"):
+        lines.append(f'              <p class="prj__loc">{PIN_SVG}{esc(p["location"])}</p>')
+    if p.get("description"):
+        lines.append(f'              <p class="prj__text">{esc(p["description"])}</p>')
+    lines.append('              <ul class="prj__stats">')
+    lines += ["                " + s for s in stats]
+    lines.append('              </ul>')
+    if url:
+        lines.append(f'              <a class="btn" href="{url}">Xem chi tiết {ARROW_SVG}</a>')
+    else:
+        lines.append(f'              <a class="btn" href="/lien-he/">Nhận tư vấn {ARROW_SVG}</a>')
+    lines += ['            </div>', '          </article>']
+    return "\n".join(lines)
+
+
+def home_project_card(p):
+    url = project_url(p)
+    href = url or "/du-an/"
+    loc = " · ".join(x for x in [p.get("location") or "",
+                                 f'{p["cameras"]} camera' if int(p.get("cameras") or 0) > 0 else ""] if x)
+    more = "Xem chi tiết" if url else "Xem dự án"
+    return "\n".join([
+        '        <article class="hprj">',
+        f'          <a class="hprj__media" href="{href}" tabindex="-1" aria-hidden="true"><img src="/{esc(p.get("cover"))}" '
+        'alt="" loading="lazy" width="1280" height="720" decoding="async"></a>',
+        '          <div class="hprj__body">',
+        f'            <h3 class="hprj__title"><a href="{href}">{esc(p.get("title"))}</a></h3>',
+        f'            <p class="hprj__loc">{esc(loc)}</p>',
+        f'            <p class="hprj__text">{esc(p.get("description"))}</p>',
+        f'            <div class="hprj__foot"><a class="link-more" href="{href}"><i>{ARROW_SVG}</i>{more}</a></div>',
+        '          </div>',
+        '        </article>',
+    ])
+
+
+def project_facts(p):
+    name = PROJECT_CAT.get(p.get("category"), PROJECT_CAT["khac"])[0]
+    rows = [("Loại công trình", esc(name))]
+    if p.get("location"):
+        rows.append(("Địa điểm", esc(p["location"])))
+    if int(p.get("cameras") or 0) > 0:
+        rows.append(("Quy mô", f'{esc(p["cameras"])} camera'))
+    if p.get("solution"):
+        rows.append(("Giải pháp", esc(p["solution"])))
+    if p.get("year"):
+        rows.append(("Hoàn thành", esc(p["year"])))
+    out = [f"            <div><dt>{dt}</dt><dd>{dd}</dd></div>" for dt, dd in rows]
+    owner = (f'<dd>{esc(p["owner"])}</dd>' if p.get("owner")
+             else '<dd class="pending">Cập nhật khi được phép công bố</dd>')
+    out.append(f"            <div><dt>Chủ đầu tư</dt>{owner}</div>")
+    return "\n".join(out)
+
+
+def project_badges(p):
+    items = []
+    if p.get("location"):
+        items.append((PIN_SVG, esc(p["location"])))
+    if int(p.get("cameras") or 0) > 0:
+        items.append((CAM_BADGE_SVG, f'{esc(p["cameras"])} camera'))
+    if p.get("year"):
+        items.append((CAL_BADGE_SVG, f'Hoàn thành {esc(p["year"])}'))
+    return "".join(f'<li class="phero__badge"><i>{ico}</i><span>{text}</span></li>' for ico, text in items)
+
+
+def build_projects(projects):
+    projects = sort_projects(projects)
+    page = SITE / "du-an" / "index.html"
+    cities = sorted({p.get("city") for p in projects if p.get("city")})
+    years = sorted({int(p["year"]) for p in projects if p.get("year")}, reverse=True)
+    options = lambda values: "<option>Tất cả</option>" + "".join(f"<option>{esc(v)}</option>" for v in values)
+    count = (f"{len(projects)} dự án tiêu biểu trong hơn 500 dự án Cameramienbac đã triển khai trên toàn miền Bắc."
+             if projects else "Danh sách dự án đang được cập nhật.")
+    cards = "\n".join(project_card(p) for p in projects)
+    patch_file(page, [
+        ("project-cities", f'              <select id="f-city">{options(cities)}</select>'),
+        ("project-years", f'              <select id="f-year">{options(years)}</select>'),
+        ("project-count", f'          <p class="psec__lead" id="prj-count">{esc(count)}</p>'),
+        ("project-list", cards),
+    ])
+    # Trang chủ: dự án đánh dấu "hiện ở trang chủ" trước, thiếu thì lấy tiếp theo thứ tự -> luôn đủ 3.
+    home = [p for p in projects if p.get("featured")] + [p for p in projects if not p.get("featured")]
+    patch_file(SITE / "index.html", [("home-projects", "\n".join(home_project_card(p) for p in home[:3]))])
+
+    tpl = read(TEMPLATES / "project-detail.html")
+    generated = set()
+    for p in projects:
+        if not project_url(p):
+            continue
+        slug = p["slug"]
+        mapping = {
+            "{{TITLE}}": esc(p.get("title")),
+            "{{SUBTITLE}}": f'<span>{esc(p["subtitle"])}</span>' if p.get("subtitle") else "",
+            "{{DESCRIPTION}}": esc(p.get("description")),
+            "{{COVER}}": esc(p.get("cover")),
+            "{{COVER_ALT}}": esc(p.get("cover_alt") or p.get("title")),
+            "{{BADGES}}": project_badges(p),
+            "{{FACTS}}": project_facts(p),
+            "{{CONTENT}}": lazy_images(p.get("content_html") or ""),
+        }
+        out = tpl
+        for key, value in mapping.items():
+            out = out.replace(key, value)
+        out = with_seo(out, f"{SITE_URL}/du-an/{slug}/")
+        write_if_changed(SITE / "du-an" / slug / "index.html", out)
+        generated.add(slug)
+    clean_orphan_pages(SITE / "du-an", generated)
 
 
 def inject_smart_assets(page):
@@ -362,10 +545,10 @@ def lazy_images(content):
     return re.sub(r"<img(?![^>]*\bloading=)", '<img loading="lazy" decoding="async"', content)
 
 
-def clean_orphan_news(keep):
-    """Xoá trang tin đã bị xoá khỏi CMS. CHỈ đụng thư mục con của html/tin-tuc/ có index.html
-    mang GENERATED_MARKER — trang viết tay (không có dấu) không bao giờ bị xoá."""
-    for page in (SITE / "tin-tuc").glob("*/index.html"):
+def clean_orphan_pages(parent, keep):
+    """Xoá trang con đã bị xoá khỏi CMS (tin tức, dự án). CHỈ đụng thư mục con của `parent` có
+    index.html mang GENERATED_MARKER — trang viết tay (không có dấu) không bao giờ bị xoá."""
+    for page in parent.glob("*/index.html"):
         slug = page.parent.name
         if slug in keep:
             continue
@@ -506,7 +689,8 @@ def seo_block(content, url, article=None):
     }]
     slug = url[len(SITE_URL) + 1:].strip("/").split("/")[0] if not is_home else ""
     page = {
-        "@type": PAGE_TYPES.get(slug, "WebPage") if url.count("/") <= 4 or slug != "tin-tuc" else "WebPage",
+        # Trang con của tin tức/dự án (1 bài, 1 dự án) là WebPage, không phải trang danh sách.
+        "@type": PAGE_TYPES.get(slug, "WebPage") if url.count("/") <= 4 or slug not in ("tin-tuc", "du-an") else "WebPage",
         "@id": url + "#webpage", "url": url, "name": title, "description": desc, "inLanguage": "vi",
         "isPartOf": {"@id": SITE_URL + "/#website"}, "about": org_ref,
         "primaryImageOfPage": {"@type": "ImageObject", "url": image},
@@ -598,10 +782,12 @@ def main():
     news = load_json("news.json", [])
     legacy = load_json("legacy-news.json", [])
     categories = load_json("news-categories.json", [])
+    projects = load_json("projects.json", [])
     print(f"build: {len(products)} sản phẩm, {len(news)} tin CMS + {len(legacy)} tin cũ, "
-          f"{len(categories)} danh mục tin")
+          f"{len(categories)} danh mục tin, {len(projects)} dự án")
     build_products(products)
     build_news(news, legacy, categories)
+    build_projects(projects)
     count = build_sitemap(news, legacy)
     print(f"xong. sitemap: {count} URL")
 
