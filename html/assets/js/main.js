@@ -211,8 +211,7 @@
 
 
   // ---- lead source (landing page, referrer, UTM) --------------------------
-  // Ghi lại nguồn truy cập đầu tiên trong phiên để gắn vào mọi form lead.
-  // Chưa gửi đi đâu — sẵn sàng cho GA4/CRM khi nối backend.
+  // Ghi lại nguồn truy cập đầu tiên trong phiên để gắn vào mọi form lead (gửi kèm lên GAS).
   function leadSource() {
     var KEY = "cmb_src";
     var data = null;
@@ -231,11 +230,43 @@
     return data;
   }
 
-  function requestCode() {
-    var d = new Date();
-    var pad = function (n) { return (n < 10 ? "0" : "") + n; };
-    var rnd = Math.random().toString(36).slice(2, 6).toUpperCase();
-    return "CMB-" + String(d.getFullYear()).slice(2) + pad(d.getMonth() + 1) + pad(d.getDate()) + "-" + rnd;
+  // Gửi form tư vấn lên GAS (doPost action "lead"): GAS lưu Sheet "Leads", gửi email báo tới
+  // NOTIFY_EMAIL và trả mã yêu cầu. text/plain để né CORS preflight (GAS không xử lý OPTIONS).
+  function submitLead(form, src) {
+    var fields = {};
+    Array.prototype.forEach.call(form.elements, function (el) {
+      if (!el.name || el.name === "nguon") return;
+      fields[el.name] = el.type === "checkbox" ? el.checked : el.value;
+    });
+    return fetch(CHAT_ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify({ action: "lead", fields: fields, source: Object.assign({ page: location.pathname }, src) })
+    }).then(function (res) { return res.json(); });
+  }
+
+  // Ô bẫy bot (honeypot) — người thật không thấy, bot tự điền -> GAS âm thầm bỏ qua. Ẩn bằng
+  // style INLINE ngay tại đây (không phụ thuộc rule CSS ở file khác có thể bị mất khi sửa CSS).
+  function addHoneypot(form) {
+    if (form.querySelector('[name="_hp"]')) return;
+    var wrap = document.createElement("div");
+    wrap.setAttribute("aria-hidden", "true");
+    wrap.style.cssText = "position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden";
+    wrap.innerHTML = '<label>Website<input type="text" name="_hp" tabindex="-1" autocomplete="off"></label>';
+    form.appendChild(wrap);
+  }
+
+  function showLeadError(form, message) {
+    var box = form.querySelector(".lead-form__error");
+    if (!box) {
+      box = document.createElement("p");
+      box.className = "lead-form__error";
+      box.setAttribute("role", "alert");
+      var actions = form.querySelector(".lead-form__actions");
+      form.insertBefore(box, actions || null);
+    }
+    box.textContent = message || "";
+    box.hidden = !message;
   }
 
   function initLeadForms(root) {
@@ -258,15 +289,22 @@
         Array.prototype.forEach.call(sel.options, function (o) { if (/cấu hình/i.test(o.text)) sel.value = o.value || o.text; });
       }
 
+      addHoneypot(form);
       var done = form.parentNode.querySelector(".lead-done");
       var button = form.querySelector('button[type="submit"]');
       form.addEventListener("submit", function (event) {
         event.preventDefault();
         if (!form.checkValidity()) { form.reportValidity(); return; }
+        if (button && button.disabled) return;
+        showLeadError(form, "");
         if (button) { button.disabled = true; button.classList.add("is-loading"); }
-        window.setTimeout(function () {
+        var failMsg = "Chưa gửi được yêu cầu (lỗi kết nối). Vui lòng thử lại hoặc gọi hotline 0978 406 868.";
+        var send = CHAT_ENDPOINT && window.fetch ? submitLead(form, src) : Promise.reject(new Error("no_fetch"));
+        send.then(function (res) {
           if (button) { button.disabled = false; button.classList.remove("is-loading"); }
-          var code = requestCode();
+          // Chỉ hiện "message" (câu tiếng Việt máy chủ soạn sẵn), không bao giờ in mã lỗi kỹ thuật.
+          if (!res || !res.ok) { showLeadError(form, (res && res.message) || failMsg); return; }
+          var code = res.code;
           if (done) {
             var nameField = form.querySelector('[name="ten"]');
             done.querySelectorAll("[data-code]").forEach(function (el) { el.textContent = code; });
@@ -280,7 +318,11 @@
           }
           form.reset();
           if (srcField) srcField.value = JSON.stringify(Object.assign({ page: location.pathname }, src));
-        }, 700);
+        }).catch(function () {
+          // Không bao giờ báo "đã gửi" khi chưa gửi được — giữ nguyên nội dung khách đã điền.
+          if (button) { button.disabled = false; button.classList.remove("is-loading"); }
+          showLeadError(form, failMsg);
+        });
       });
       if (done) {
         var again = done.querySelector(".lead-done__again");

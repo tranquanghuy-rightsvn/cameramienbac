@@ -4167,3 +4167,7 @@ h1, h2, h3, .phero__title span { text-wrap: balance; }
 .doc-cta__phone:hover b { color: var(--cyan-300); }
 @media (max-width: 1023px) { .doc__aside { position: static; } }
 .doc__related ol { padding-left: 0; margin: 0; list-style: none; }
+
+/* Lỗi gửi form tư vấn (main.js -> showLeadError) */
+.lead-form__error { grid-column: 1 / -1; margin: 4px 0 0; padding: 10px 12px; border-radius: 8px; background: #fdecee; color: #a50d16; font-size: 14px; line-height: 1.5; }
+.lead-form__error[hidden] { display: none; }

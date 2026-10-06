@@ -22,8 +22,10 @@
 6. **Nội dung AI** — kiến thức nạp cho trợ lý chat ở góc phải website (ghi chú chung + cặp
    hỏi đáp), tham khảo tab "Hỏi đáp AI" của khtcard.
 
-KHÔNG thuộc phạm vi: form liên hệ/khảo sát (`form[data-lead]` hiện chưa gửi đi đâu), trang giải
-pháp, phần còn lại của trang chủ, khối "dự án" minh hoạ ở trang `/toa-nha-thong-minh/` và các
+Ngoài 6 mục trên, GAS còn nhận **form tư vấn** trên website (mục VI-b) — không có ô quản lý
+trong CMS, dữ liệu xem trong sheet `Leads` + email báo.
+
+KHÔNG thuộc phạm vi: trang giải pháp, phần còn lại của trang chủ, khối "dự án" minh hoạ ở trang `/toa-nha-thong-minh/` và các
 lời chứng thực (vẫn viết tay). Không tự thêm.
 
 ## I. Đăng nhập & phân quyền
@@ -189,6 +191,30 @@ thêm `has_content`), nội dung lấy riêng bằng `getProject` lúc mở form
      đầu, có ô tìm trong nội dung; trả tối đa 300 cuộc gần nhất. Không tải lúc boot, chỉ tải khi
      mở tab. Muốn xoá nhật ký cũ: xoá dòng trực tiếp trong sheet `ChatLogs`.
 
+## VI-b. Form tư vấn trên website (`form[data-lead]`, 22 trang)
+
+Thêm 06/10/2026 — trước đó form CHỈ GIẢ LẬP gửi (đợi 0,7 giây rồi báo thành công), mọi yêu cầu
+của khách đều bị mất.
+1. `main.js` gửi `fetch` tới cùng URL `/exec` của khung chat, `{action:"lead", fields, source}`,
+   `Content-Type: text/plain;charset=utf-8` (né CORS preflight). Chỉ hiện "Đã ghi nhận" khi máy
+   chủ trả `ok`; lỗi thì hiện `message` (câu tiếng Việt máy chủ soạn) hoặc câu chung kèm hotline,
+   GIỮ nguyên nội dung khách đã điền. Mã yêu cầu `CMB-yyMMdd-XXXX` do MÁY CHỦ sinh (trùng mã
+   trong email).
+2. Chống spam: honeypot `_hp` (main.js tự chèn, ẩn bằng style INLINE — không phụ thuộc rule CSS,
+   tránh gotcha #27; có giá trị = âm thầm bỏ qua nhưng vẫn trả `ok`), trần 20 lượt/phút toàn
+   endpoint, mỗi số điện thoại 1 lượt/60 giây. Kiểm tra server: họ tên, SĐT 9–15 số, ô đồng ý.
+3. Lưu TRƯỚC vào sheet `Leads` (tự tạo; cột `code, submitted_at, status` + các ô form + `page,
+   landing, referrer, utm, email_sent`), có `LockService`. Dữ liệu khách CHỈ nằm trong Sheet,
+   không bao giờ ghi vào repo công khai.
+4. Gửi SAU email HTML (mẫu `gas/email-lead.html`: logo + tên Cameramienbac, mã yêu cầu, nút Gọi /
+   Zalo, bảng thông tin, nguồn truy cập, chân thư thông tin công ty) tới Script Property
+   `NOTIFY_EMAIL` (nhiều địa chỉ cách nhau dấu phẩy). Chưa khai/gửi lỗi → vẫn lưu Sheet, cột
+   `email_sent` = "CHƯA gửi", khách vẫn nhận thành công. Hàm `debugLeadEmail` (chạy tay) gửi 1
+   email mẫu để xem giao diện.
+5. ⚠️ Lệch khỏi playbook theo yêu cầu khách: playbook khuyên báo qua Telegram để giữ quota Gmail
+   (~100 mail/ngày, DÙNG CHUNG với OTP đăng nhập). Khách chọn email. Nếu có ngày lượng yêu cầu
+   lớn làm OTP không gửi được → chuyển kênh báo sang Telegram.
+
 ## VII. Người dùng
 
 Xem mục I.4. Tab "Người dùng" chỉ hiện với admin/root; server chặn lại bằng `requireRole_`.
@@ -259,4 +285,7 @@ Xem mục I.4. Tab "Người dùng" chỉ hiện với admin/root; server chặn
   tải TinyMCE tự host. Chưa có domain thì để trống: CMS tạm tải TinyMCE từ CDN.
 - `GEMINI_API_KEY` — key Gemini cho trợ lý chat. Trống = chat dùng câu trả lời mẫu.
 - `GEMINI_MODEL` — tuỳ chọn, mặc định `gemini-3.5-flash-lite`.
+- `NOTIFY_EMAIL` — email nhận báo "Yêu cầu tư vấn mới" từ form trên website (mục VI-b), nhiều
+  địa chỉ cách nhau dấu phẩy. Không có giá trị mặc định trong code; trống = không gửi mail
+  (yêu cầu vẫn lưu sheet `Leads`).
 - `SPREADSHEET_ID` — KHÔNG cần điền, code tự tạo lần đầu.
