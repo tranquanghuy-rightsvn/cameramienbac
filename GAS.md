@@ -178,7 +178,16 @@ thêm `has_content`), nội dung lấy riêng bằng `getProject` lúc mở form
 5. Chống lạm dụng endpoint công khai: trần 30 lượt/phút toàn endpoint + 10 lượt/phút mỗi cuộc
    trò chuyện, tối đa 10 tin gần nhất, mỗi tin ≤ 1000 ký tự.
 6. Tab có ô **"Thử trợ lý"** để admin hỏi thử ngay trong CMS (cùng prompt với website).
-7. Không ghi nhật ký hội thoại (chưa yêu cầu).
+7. **Nhật ký hội thoại** (thêm 06/10/2026, cơ chế lấy từ khtcard): mỗi lượt khách chat trên
+   website ghi 2 dòng (`user` + `model`) vào sheet `ChatLogs` (cột `conversation_id`,
+   `submitted_at`, `role`, `message`, `page`; tự tạo ở lượt đầu, có `LockService` chống ghi đè).
+   - Ghi trong `handleChat_` SAU khi có câu trả lời (site không có Worker như khtcard) — thêm vài
+     trăm ms mỗi lượt; lỗi ghi chỉ vào log máy chủ, KHÔNG làm hỏng câu trả lời cho khách.
+   - AI lỗi vẫn ghi câu hỏi kèm ghi chú lỗi (khách nhận câu trả lời mẫu ở site). Lượt bị chặn vì
+     quá nhiều tin và ô "Thử trợ lý" trong CMS KHÔNG ghi.
+   - Tab **"Hội thoại AI"** (editor trở lên, chỉ đọc): gom theo cuộc, cuộc có tin mới nhất lên
+     đầu, có ô tìm trong nội dung; trả tối đa 300 cuộc gần nhất. Không tải lúc boot, chỉ tải khi
+     mở tab. Muốn xoá nhật ký cũ: xoá dòng trực tiếp trong sheet `ChatLogs`.
 
 ## VII. Người dùng
 
@@ -201,7 +210,8 @@ Xem mục I.4. Tab "Người dùng" chỉ hiện với admin/root; server chặn
 
 ## IX. Kiến trúc lưu trữ
 
-- Google Sheet "Cameramienbac CMS Data" (tự tạo lần đầu): sheet `Users` (cột `email`, `role`).
+- Google Sheet "Cameramienbac CMS Data" (tự tạo lần đầu): sheet `Users` (cột `email`, `role`) +
+  sheet `ChatLogs` (nhật ký chat — mục VI.7, tự tạo ở lượt chat đầu tiên).
 - GitHub (Contents API) — đường dẫn cố định, đổi phải sửa cả `scripts/build.py` + CI:
   | Đường dẫn | Vai trò | Trigger CI |
   |---|---|---|
