@@ -241,7 +241,7 @@ Thay toàn bộ nội dung file bằng:
         </svg>
         <div>
           <span class="footer__label">Tư vấn &amp; Hỗ trợ (Quốc Việt, Cầu Giấy, Hà Nội)</span>
-          <a class="footer__phone" href="tel:0979406868">0979 406 868</a>
+          <a class="footer__phone" href="tel:0978406868">0978 406 868</a>
         </div>
       </div>
 
@@ -250,7 +250,7 @@ Thay toàn bộ nội dung file bằng:
           <rect x="2.6" y="5" width="18.8" height="14" rx="1.4"/>
           <path d="m3.4 6.2 8.6 6.6 8.6-6.6"/>
         </svg>
-        <a class="footer__mail" href="mailto:cameramienbac@cmvn.vn">cameramienbac@cmvn.vn</a>
+        <a class="footer__mail" href="mailto:daotienhic@gmail.com">daotienhic@gmail.com</a>
       </div>
     </div>
 

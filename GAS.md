@@ -125,8 +125,8 @@ Mỗi sản phẩm = 1 thẻ `.pitem` ("dòng sản phẩm" kèm model tiêu bi�
    - **Cặp hỏi đáp** (`data/chat-qa.json`): câu hỏi + câu trả lời + trạng thái
      (`published` / `draft` = tạm tắt). Ưu tiên CAO NHẤT khi trợ lý trả lời.
 2. Trợ lý còn TỰ biết (không cần nạp): danh mục sản phẩm (`data/catalog.json`), danh sách
-   tin tức, thông tin liên hệ hard-code (hotline 0979 406 868, cameramienbac@cmvn.vn,
-   15 ngõ 36 Hoàng Quốc Việt, Cầu Giấy, Hà Nội, T2–T7 8:00–17:30).
+   tin tức, thông tin liên hệ hard-code (hotline 0978 406 868, daotienhic@gmail.com,
+   Số 15 ngõ 26 đường Hoàng Quốc Việt, Nghĩa Đô, Cầu Giấy, Hà Nội, T2–T7 8:00–17:30).
 3. Khác khtcard: site này KHÔNG có Cloudflare Worker. Khung chat (`html/assets/js/main.js`)
    gọi THẲNG `doPost` của GAS (`{action:"chat"}`, Content-Type `text/plain`), GAS ghép system
    prompt từ các file trên (cache 10 phút, tự xoá cache mỗi khi Lưu bất kỳ nội dung nào trong

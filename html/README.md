@@ -107,7 +107,7 @@ Cả hai đều được thêm **link chéo**: `/san-pham/` có khối giới th
   dùng chung nên bỏ để tránh lặp.
 
 Header/footer của mọi trang dùng chung một partial, nên thương hiệu thống nhất là
-**AI & SMART / 0979 406 868**, không theo biến thể *AI & FPT / 0973 406 668* xuất hiện trong
+**AI & SMART / 0978 406 868**, không theo biến thể *AI & FPT / 0973 406 668* xuất hiện trong
 vài file thiết kế.
 
 ## Khác biệt có chủ đích so với ảnh thiết kế
