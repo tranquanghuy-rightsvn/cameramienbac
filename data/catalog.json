@@ -1118,15 +1118,18 @@
     "category": "phan-mem",
     "apps": [
       "an-ninh",
-      "do-thi",
       "toa-nha",
-      "nha-may"
+      "truong-hoc",
+      "nha-may",
+      "do-thi"
     ],
     "brands": [
       "hikvision",
       "dahua",
       "axis",
-      "hanwha"
+      "hanwha",
+      "nvidia",
+      "intel"
     ],
     "description": "Giám sát tập trung, đa site, cảnh báo, tìm kiếm thông minh.",
     "model_brand": "",
@@ -1138,7 +1141,7 @@
     "cta_label": "",
     "cta_url": "",
     "order": 1,
-    "updated_at": "2026-10-03T00:00:00Z"
+    "updated_at": "2026-10-16T02:16:57Z"
   },
   {
     "id": "phan-mem-cham-cong-ra-vao",
