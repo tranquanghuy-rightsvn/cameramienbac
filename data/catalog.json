@@ -12,7 +12,7 @@
     "brands": [
       "tvt"
     ],
-    "description": "Thông số kỹ thuật\nCAMERA IP CẢM BIẾN NHIỆT THÂN TRỤ\n– Độ phân giải: 5.0MP (2592 × 1944) cảm biến 1/2.7 “CMOS\n– Độ phân giải ống kính nhiệt: 256 x 192\n– Độ nhạy nhiệt (NETD): 50mK(@25 C, F#=1.0)\n– Nhiệt độ khả dụng: -20°C~150°C\n– Ống kính cố định 4mm, ống kính nhiệt: 3,2mm, IR: 30m\n– Nhiều bảng màu: trắng nóng, đen nóng, đỏ oxit sắt…\n– Tích hợp khe cắm thẻ micro SD lên đến 256GB\n– Tích hợp loa\n– 1CH audio IN (3.5mm) 1CH audio OUT\n– 1CH alarm IN; 1CH alarm OUT\n– Chống ngược sáng: 120dB\n– Công nghệ vỏ bảo vệ: IP66\n* Tính năng thông minh:\n– Phát hiện xâm nhập, đếm đối tượng.\n– Cảnh báo nhiệt độ, phát hiện cháy, cảnh báo âm thanh và ánh sáng\n– Cảnh báo nhiệt độ quá cao hoặc quá thấp\n– Nguồn:12V/POE",
+    "description": "– Độ phân giải: 5.0MP (2592 × 1944) cảm biến 1/2.7 “CMOS\n– Độ phân giải ống kính nhiệt: 256 x 192\n– Độ nhạy nhiệt (NETD): 50mK(@25 C, F#=1.0)\n– Nhiệt độ khả dụng: -20°C~150°C\n– Ống kính cố định 4mm, ống kính nhiệt: 3,2mm, IR: 30m\n– Nhiều bảng màu: trắng nóng, đen nóng, đỏ oxit sắt…\n– Tích hợp khe cắm thẻ micro SD lên đến 256GB\n– Tích hợp loa\n– 1CH audio IN (3.5mm) 1CH audio OUT\n– 1CH alarm IN; 1CH alarm OUT\n– Chống ngược sáng: 120dB\n– Công nghệ vỏ bảo vệ: IP66\n* Tính năng thông minh:\n– Phát hiện xâm nhập, đếm đối tượng.\n– Cảnh báo nhiệt độ, phát hiện cháy, cảnh báo âm thanh và ánh sáng\n– Cảnh báo nhiệt độ quá cao hoặc quá thấp",
     "model_brand": "tvt",
     "model": "TD-5422E1-VT (3/PE)",
     "model_note": "Camera chuyên dụng",
@@ -22,7 +22,7 @@
     "cta_label": "",
     "cta_url": "",
     "order": 1,
-    "updated_at": "2026-11-03T05:54:45Z"
+    "updated_at": "2026-11-03T05:55:29Z"
   },
   {
     "id": "camera-ai-ban-cau-dome",
