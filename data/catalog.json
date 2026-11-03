@@ -1,33 +1,5 @@
 [
   {
-    "id": "camera-ai-than-tru-bullet",
-    "title": "Camera AI thân trụ (bullet)",
-    "category": "camera-ai",
-    "apps": [
-      "an-ninh",
-      "nha-may",
-      "toa-nha",
-      "do-thi"
-    ],
-    "brands": [
-      "hikvision",
-      "dahua",
-      "axis",
-      "hanwha"
-    ],
-    "description": "Giám sát ngoài trời, hàng rào, cổng; phát hiện xâm nhập, phân loại người/xe.",
-    "model_brand": "hikvision",
-    "model": "Hikvision DS-2CD2683G2-LIZS2UHUN",
-    "model_note": "8MP",
-    "price": 17000000,
-    "image": "assets/images/products/ds-2cd2683g2-lizs2uhun.jpg",
-    "image_alt": "Camera AI thân trụ Hikvision DS-2CD2683G2-LIZS2UHUN",
-    "cta_label": "",
-    "cta_url": "",
-    "order": 1,
-    "updated_at": "2026-10-03T00:00:00Z"
-  },
-  {
     "id": "camera-ip-cam-bien-nhiet-than-tru-tvt-dem-nguoi-bao-chay-td-5422e1-vt-3pe",
     "title": "CAMERA IP CẢM BIẾN NHIỆT THÂN TRỤ TVT ĐẾM NGƯỜI, BÁO CHÁY TD-5422E1-VT (3/PE)",
     "category": "camera-ai",
@@ -660,6 +632,34 @@
     "cta_url": "",
     "order": 26,
     "updated_at": "2026-10-03T00:00:00Z"
+  },
+  {
+    "id": "camera-ai-than-tru-bullet",
+    "title": "Camera AI thân trụ (bullet)",
+    "category": "camera-ai",
+    "apps": [
+      "an-ninh",
+      "toa-nha",
+      "nha-may",
+      "do-thi"
+    ],
+    "brands": [
+      "hikvision",
+      "dahua",
+      "axis",
+      "hanwha"
+    ],
+    "description": "Giám sát ngoài trời, hàng rào, cổng; phát hiện xâm nhập, phân loại người/xe.",
+    "model_brand": "hikvision",
+    "model": "Hikvision DS-2CD2683G2-LIZS2UHUN",
+    "model_note": "8MP",
+    "price": 17000000,
+    "image": "assets/images/products/ds-2cd2683g2-lizs2uhun.jpg",
+    "image_alt": "Camera AI thân trụ Hikvision DS-2CD2683G2-LIZS2UHUN",
+    "cta_label": "",
+    "cta_url": "",
+    "order": 27,
+    "updated_at": "2026-11-03T05:50:58Z"
   },
   {
     "id": "dau-ghi-nvr",
