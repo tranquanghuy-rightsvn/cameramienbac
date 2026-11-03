@@ -28,6 +28,31 @@
     "updated_at": "2026-10-03T00:00:00Z"
   },
   {
+    "id": "camera-ip-cam-bien-nhiet-than-tru-tvt-dem-nguoi-bao-chay-td-5422e1-vt-3pe",
+    "title": "CAMERA IP CẢM BIẾN NHIỆT THÂN TRỤ TVT ĐẾM NGƯỜI, BÁO CHÁY TD-5422E1-VT (3/PE)",
+    "category": "camera-ai",
+    "apps": [
+      "an-ninh",
+      "toa-nha",
+      "nha-may",
+      "do-thi"
+    ],
+    "brands": [
+      "tvt"
+    ],
+    "description": "Thông số kỹ thuật\nCAMERA IP CẢM BIẾN NHIỆT THÂN TRỤ\n– Độ phân giải: 5.0MP (2592 × 1944) cảm biến 1/2.7 “CMOS\n– Độ phân giải ống kính nhiệt: 256 x 192\n– Độ nhạy nhiệt (NETD): 50mK(@25 C, F#=1.0)\n– Nhiệt độ khả dụng: -20°C~150°C\n– Ống kính cố định 4mm, ống kính nhiệt: 3,2mm, IR: 30m\n– Nhiều bảng màu: trắng nóng, đen nóng, đỏ oxit sắt…\n– Tích hợp khe cắm thẻ micro SD lên đến 256GB\n– Tích hợp loa\n– 1CH audio IN (3.5mm) 1CH audio OUT\n– 1CH alarm IN; 1CH alarm OUT\n– Chống ngược sáng: 120dB\n– Công nghệ vỏ bảo vệ: IP66\n* Tính năng thông minh:\n– Phát hiện xâm nhập, đếm đối tượng.\n– Cảnh báo nhiệt độ, phát hiện cháy, cảnh báo âm thanh và ánh sáng\n– Cảnh báo nhiệt độ quá cao hoặc quá thấp\n– Nguồn:12V/POE",
+    "model_brand": "tvt",
+    "model": "TD-5422E1-VT (3/PE)",
+    "model_note": "Camera chuyên dụng",
+    "price": 31200000,
+    "image": "assets/images/products/camera-ip-cam-bien-nhiet-than-tru-tvt-dem-nguoi-bao-chay-td-5422e1-vt-3pe.jpg",
+    "image_alt": "CAMERA IP CẢM BIẾN NHIỆT THÂN TRỤ TVT ĐẾM NGƯỜI, BÁO CHÁY TD-5422E1-VT (3/PE) TD-5422E1-VT (3/PE)",
+    "cta_label": "– Độ phân giải: 5.0MP (2592 × 1944) cảm biến 1/2.7 “CMOS – Độ phân giải ống kính nhiệt: 256 x 192 – Độ nhạy nhiệt (NETD): 50mK(@25 C, F#=1.0) – Nhiệt độ khả dụng: -20°C~150°C – Ống kính cố định 4mm, ống kính nhiệt: 3,2mm, IR: 30m – Nhiều bảng màu: trắng nóng, đen nóng, đỏ oxit sắt… – Tích hợp khe cắm thẻ micro SD lên đến 256GB – Tích hợp loa – 1CH audio IN (3.5mm) 1CH audio OUT – 1CH alarm IN; 1CH alarm OUT – Chống ngược sáng: 120dB – Công nghệ vỏ bảo vệ: IP66 * Tính năng thông minh: – Phát hiện xâm nhập, đếm đối tượng. – Cảnh báo nhiệt độ, phát hiện cháy, cảnh báo âm thanh và ánh sáng – Cảnh báo nhiệt độ quá cao hoặc quá thấp – Nguồn:12V/POE",
+    "cta_url": "",
+    "order": 1,
+    "updated_at": "2026-11-03T05:49:46Z"
+  },
+  {
     "id": "camera-ai-ban-cau-dome",
     "title": "Camera AI bán cầu (dome)",
     "category": "camera-ai",
