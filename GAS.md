@@ -80,6 +80,15 @@ Mỗi sản phẩm = 1 thẻ `.pitem` ("dòng sản phẩm" kèm model tiêu bi�
    tất định `html/assets/images/products/<id>.jpg` (ghi đè khi đổi ảnh). Ảnh RIÊNG 1-1.
    Ảnh migrate (tên theo model, vd `ds-2ce72df0t-f.jpg`) giữ nguyên, CMS không đụng.
 5. Thứ tự hiển thị trên site: theo thứ tự nhóm trong `PRODUCT_CATEGORIES`, rồi `order`.
+6. **Trang chi tiết** (thêm 19/11/2026): MỌI thẻ catalog đều bấm được (ảnh, tên, nút "Xem chi tiết"):
+   - Model tiêu biểu khớp 1 model đã cào (`data/products.json`, so khớp bỏ dấu cách/gạch/ngoặc/"/") → trang
+     chi tiết model `/san-pham/<slug model>/`.
+   - Không khớp → `build.py` TỰ SINH trang `/san-pham/<id>/` cho chính dòng sản phẩm đó (template
+     product-detail): ảnh (chưa có ảnh thì khung biểu tượng nhóm), hãng, nhóm, giá tham khảo, ứng dụng,
+     JSON-LD Product (có `offers` khi có giá). Giới thiệu + tính năng lấy từ `data/catalog-extra.json`
+     (KHÔNG thuộc CMS, sửa tay theo id); chưa có thì dùng Mô tả ngắn của CMS. Thêm sản phẩm mới qua CMS =
+     tự có trang sau lần build kế; xoá sản phẩm = trang tự bị xoá.
+   - id trùng trang viết tay sẵn có (vd `aiot-platform`) → dẫn tới trang đó, không sinh trang.
 
 ## III. Tin tức
 

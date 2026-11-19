@@ -4267,3 +4267,8 @@ h1, h2, h3, .phero__title span { text-wrap: balance; }
 .pitem__foot { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; }
 .pitem__more { font-size: 14px; font-weight: 600; color: var(--blue-600); }
 .pitem__more:hover { text-decoration: underline; }
+/* Dòng sản phẩm chưa có ảnh: khung biểu tượng nhóm thay ảnh (build.py pd_ph) */
+.pd-ph { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; background: linear-gradient(145deg, #eef5fd, #f8fbfe); color: var(--blue-600); }
+.pd-ph svg { width: 38%; max-width: 160px; height: auto; }
+.pd-ph span { font-size: 15px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--ink-title); }
+.pd-card__media.pd-ph span { font-size: 12px; }

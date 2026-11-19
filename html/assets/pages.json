@@ -116,6 +116,14 @@
 "title": "Sản phẩm Camera AI"
 },
 {
+"url": "/san-pham/ai-box-edge-ai/",
+"title": "AI Box (Edge AI)"
+},
+{
+"url": "/san-pham/ai-server-gpu/",
+"title": "AI Server GPU"
+},
+{
 "url": "/san-pham/ai-server/",
 "title": "AI Server / AI Box"
 },
@@ -152,8 +160,36 @@
 "title": "Camera ảnh nhiệt AXIS Q1971-E ngoài trời"
 },
 {
+"url": "/san-pham/barrier-tu-dong/",
+"title": "Barrier tự động"
+},
+{
+"url": "/san-pham/bo-giai-ma-video-wall/",
+"title": "Bộ giải mã & video wall"
+},
+{
+"url": "/san-pham/cam-bien-an-toan/",
+"title": "Cảm biến an toàn"
+},
+{
+"url": "/san-pham/cam-bien-moi-truong/",
+"title": "Cảm biến môi trường"
+},
+{
 "url": "/san-pham/camera-ai/",
 "title": "Sản phẩm Camera AI"
+},
+{
+"url": "/san-pham/camera-ip-cam-bien-nhiet-than-tru-tvt-dem-nguoi-bao-chay-td-5422e1-vt-3pe/",
+"title": "Camera AI TVT TD-5422E1-VT (3/PE)"
+},
+{
+"url": "/san-pham/camera-nhan-dien-bien-so-anpr-2/",
+"title": "Camera nhận diện biển số (ANPR)"
+},
+{
+"url": "/san-pham/chuong-cua-man-hinh-video-intercom/",
+"title": "Chuông cửa màn hình (video intercom)"
 },
 {
 "url": "/san-pham/cisco-cp-dx80-k9/",
@@ -190,6 +226,10 @@
 {
 "url": "/san-pham/cisco-cts-sx20n-p40-k9/",
 "title": "Thiết bị hội nghị truyền hình Cisco CTS-SX20N-P40-K9"
+},
+{
+"url": "/san-pham/cong-xoay-cong-phan-lan/",
+"title": "Cổng xoay, cổng phân làn"
 },
 {
 "url": "/san-pham/dahua-dh-ipc-b1b20p-l/",
@@ -232,6 +272,14 @@
 "title": "Camera IP Dahua DH-IPC-T1B40P"
 },
 {
+"url": "/san-pham/dau-ghi-nvr/",
+"title": "Đầu ghi NVR"
+},
+{
+"url": "/san-pham/gateway-iot/",
+"title": "Gateway IoT"
+},
+{
 "url": "/san-pham/hanwha-xnb-a6004/",
 "title": "Camera thân hộp (Box) Hanwha Vision XNB-A6004"
 },
@@ -258,6 +306,10 @@
 {
 "url": "/san-pham/hanwha-xnv-a9084rs/",
 "title": "Camera IP Hanwha Vision XNV-A9084RS"
+},
+{
+"url": "/san-pham/he-thong-bai-xe-tron-goi/",
+"title": "Hệ thống bãi xe trọn gói"
 },
 {
 "url": "/san-pham/hikvision-ds-2cd2683g2-lizs2uhun/",
@@ -448,12 +500,36 @@
 "title": "IoT & Cảm biến"
 },
 {
+"url": "/san-pham/kiem-soat-cua/",
+"title": "Kiểm soát cửa"
+},
+{
 "url": "/san-pham/luu-tru/",
 "title": "NVR & Lưu trữ"
 },
 {
 "url": "/san-pham/mang/",
 "title": "Thiết bị mạng"
+},
+{
+"url": "/san-pham/may-cham-cong-khuon-mat/",
+"title": "Máy chấm công khuôn mặt"
+},
+{
+"url": "/san-pham/may-chu-luu-tru/",
+"title": "Máy chủ lưu trữ"
+},
+{
+"url": "/san-pham/nvr-tich-hop-ai/",
+"title": "NVR tích hợp AI"
+},
+{
+"url": "/san-pham/phan-mem-cham-cong-ra-vao/",
+"title": "Phần mềm chấm công & ra vào"
+},
+{
+"url": "/san-pham/phan-mem-quan-ly-video-vms/",
+"title": "Phần mềm quản lý video (VMS)"
 },
 {
 "url": "/san-pham/poly-g7500/",
@@ -478,6 +554,18 @@
 {
 "url": "/san-pham/ra-vao/",
 "title": "Kiểm soát ra vào"
+},
+{
+"url": "/san-pham/switch-poe/",
+"title": "Switch PoE"
+},
+{
+"url": "/san-pham/thiet-bi-quang-cap/",
+"title": "Thiết bị quang & cáp"
+},
+{
+"url": "/san-pham/ups-tu-rack/",
+"title": "UPS & tủ rack"
 },
 {
 "url": "/so-sanh-giai-phap/",

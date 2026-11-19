@@ -21,6 +21,7 @@ on:
       - "data/legacy-news.json"
       - "data/projects.json"
       - "data/products.json"
+      - "data/catalog-extra.json"
       - "templates/**"
       - "scripts/build.py"
       # Thêm/sửa tay 1 trang (vd thêm noindex) -> sitemap.xml phải sinh lại. Không lặp vô hạn:

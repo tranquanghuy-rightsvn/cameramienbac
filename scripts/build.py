@@ -48,8 +48,22 @@ SITE = ROOT / "html"
 TEMPLATES = ROOT / "templates"
 
 GENERATED_MARKER = "<!-- build.py:generated -->"
-# Model -> URL trang chi tiết sản phẩm (điền trong main() từ data/products.json).
+# Model (đã chuẩn hoá bằng model_key) -> URL trang chi tiết sản phẩm (điền trong main() từ data/products.json).
 PD_LINKS = {}
+# id dòng sản phẩm catalog CMS -> URL trang chi tiết riêng (sinh từ catalog hoặc trang viết tay sẵn có).
+CAT_LINKS = {}
+
+
+def model_key(text):
+    """Chuẩn hoá mã model để so khớp: bỏ dấu cách, gạch, ngoặc, '/' ("DS-2TD8167-150ZC4F/W" = "...ZC4FW")."""
+    return re.sub(r"[^A-Z0-9]", "", str(text or "").upper())
+
+
+def model_link(model):
+    mk = model_key(model)
+    if not mk:
+        return None
+    return next((u for m, u in sorted(PD_LINKS.items(), key=lambda kv: -len(kv[0])) if m and m in mk), None)
 
 # Domain chính thức (Cloudflare). Đổi domain thì sửa đúng 1 dòng này.
 SITE_URL = "https://cameramienbac.com.vn"
@@ -207,10 +221,7 @@ def product_inner(p, indent, with_filters):
     inner = " " * (indent + 2)
     title = p.get("title", "")
     # Trang chi tiết của model tiêu biểu (data/products.json) -> ảnh + tên + nút "Xem chi tiết" dẫn tới đó.
-    link = None
-    if p.get("model"):
-        link = next((u for m, u in sorted(PD_LINKS.items(), key=lambda kv: -len(kv[0]))
-                     if m and m in p["model"].upper()), None)
+    link = model_link(p.get("model")) or CAT_LINKS.get(p.get("id"))
     lines = []
     if with_filters:
         lines.append(f'{pad}<article class="pitem" data-cat="{esc(p.get("category"))}" '
@@ -598,7 +609,15 @@ def pd_type(p):
 
 
 def pd_brand(p):
+    if "brand_label" in p:  # trang của dòng sản phẩm catalog
+        return p["brand_label"], p.get("brand_page")
     return PD_BRANDS.get(p.get("brand"), (p.get("brand", "").title(), None))
+
+
+def pd_ph(p, cls):
+    """Khung biểu tượng nhóm thay cho ảnh (dòng sản phẩm catalog chưa có ảnh)."""
+    return (f'<div class="{cls}" role="img" aria-label="{esc(p["title"])}">{svg(p.get("icon") or "", "1.3")}'
+            f'<span>{esc(pd_type(p))}</span></div>')
 
 
 def pd_url(p):
@@ -645,13 +664,17 @@ def pd_meta_title(p):
 
 
 def pd_card(p, heading="h3"):
-    img = p["images"][0] if p.get("images") else ORG["default_image"]
     brand = pd_brand(p)[0]
-    return (f'<a class="pd-card" href="{pd_url(p)}"><div class="pd-card__media"><img src="{esc(img)}" '
-            f'alt="{esc(p["title"])}" loading="lazy" decoding="async" width="320" height="320"></div>'
+    if p.get("images"):
+        media = (f'<div class="pd-card__media"><img src="{esc(p["images"][0])}" alt="{esc(p["title"])}" '
+                 f'loading="lazy" decoding="async" width="320" height="320"></div>')
+    else:
+        media = pd_ph(p, "pd-card__media pd-ph")
+    model = (f'<p class="pd-card__model">Model: <strong>{esc(p["model"])}</strong></p>' if p.get("model")
+             else '<p class="pd-card__model">Xem chi tiết &rarr;</p>')
+    return (f'<a class="pd-card" href="{pd_url(p)}">{media}'
             f'<div class="pd-card__body"><p class="pd-card__brand">{esc(brand)} · {esc(pd_type(p))}</p>'
-            f'<{heading} class="pd-card__title">{esc(p["title"])}</{heading}>'
-            f'<p class="pd-card__model">Model: <strong>{esc(pd_model_label(p))}</strong></p></div></a>')
+            f'<{heading} class="pd-card__title">{esc(p["title"])}</{heading}>{model}</div></a>')
 
 
 def pd_specs_html(p):
@@ -677,6 +700,8 @@ def pd_related(p, products):
 def pd_crumbs(p):
     name, page = pd_brand(p)
     parts = ['<a href="/">Trang chủ</a>', '<a href="/san-pham/">Sản phẩm</a>']
+    if p.get("crumb"):
+        name, page = p["crumb"]
     if page:
         parts.append(f'<a href="{page}">{esc(name)}</a>')
     parts.append(f"<span>{esc(pd_model_label(p))}</span>")
@@ -696,8 +721,12 @@ def pd_page(p, products, tpl):
             f'aria-label="Xem ảnh {i + 1}"><img src="{esc(src)}" alt="{esc(p["title"])} — ảnh {i + 1}" '
             f'width="74" height="74" loading="lazy" decoding="async"></button></li>'
             for i, src in enumerate(images)) + "</ul>")
-    meta_rows = [("Hãng", f'<a href="{brand_page}">{esc(brand)}</a>' if brand_page else esc(brand)),
-                 ("Model", esc(model)), ("Loại thiết bị", esc(pd_type(p)))]
+    meta_rows = [("Hãng", f'<a href="{brand_page}">{esc(brand)}</a>' if brand_page else esc(brand))]
+    if p.get("model"):
+        meta_rows.append(("Model", esc(model)))
+    meta_rows.append(("Nhóm" if p.get("catalog") else "Loại thiết bị", esc(pd_type(p))))
+    if p.get("catalog"):
+        meta_rows.append(("Giá tham khảo", esc(price_display(p.get("price")) or "Liên hệ báo giá")))
     meta_html = "\n".join(f"            <div><dt>{k}</dt><dd>{v}</dd></div>" for k, v in meta_rows)
     hl = p.get("highlights") or []
     hl_html = ('          <ul class="pd-hl">' + "".join(f"<li>{esc(x)}</li>" for x in hl[:8]) + "</ul>") if hl else ""
@@ -715,7 +744,11 @@ def pd_page(p, products, tpl):
             body += lazy_images(content)
         sections.append(("gioi-thieu", f"Giới thiệu {model}", f'<div class="prose">{body}</div>'))
     specs = pd_specs_html(p)
-    if specs:
+    if specs and p.get("catalog"):
+        specs += ('<p class="pd-note">Model, cấu hình và số lượng cụ thể được Cameramienbac đề xuất sau khi khảo sát '
+                  'công trình; giá tham khảo có thể thay đổi theo thời điểm và cấu hình.</p>')
+        sections.append(("thong-so", "Thông tin sản phẩm", specs))
+    elif specs:
         specs += ('<p class="pd-note">Thông số theo tài liệu công bố của hãng ' + esc(brand) +
                   ', có thể thay đổi theo phiên bản phần cứng/firmware. Liên hệ Cameramienbac để được xác nhận '
                   'cấu hình và phụ kiện đi kèm trước khi đặt hàng.</p>')
@@ -737,7 +770,7 @@ def pd_page(p, products, tpl):
                          for sid, title, body in sections)
     tabs = "".join(f'<a href="#{sid}">{esc(title.replace(" " + model, ""))}</a>' for sid, title, _ in sections)
 
-    rel = pd_related(p, products)
+    rel = p["related"] if "related" in p else pd_related(p, products)
     related = ""
     if rel:
         related = ('  <section class="psec psec--tint psec--last">\n    <div class="container">\n'
@@ -758,6 +791,9 @@ def pd_page(p, products, tpl):
     out = tpl
     for key, value in mapping.items():
         out = out.replace(key, value)
+    if not p.get("images"):  # chưa có ảnh: khung biểu tượng nhóm, bỏ preload ảnh
+        out = re.sub(r'<figure class="pd-gallery__main">.*?</figure>', pd_ph(p, "pd-gallery__main pd-ph"), out, count=1, flags=re.S)
+        out = re.sub(r'<link rel="preload" as="image"[^>]*>\n', "", out, count=1)
     return out
 
 
@@ -778,12 +814,22 @@ def product_ld(p, url):
     }
     if p.get("model"):
         node["mpn"] = p["model"]
+    if p.get("catalog"):
+        if not p.get("brand_specific"):
+            node.pop("brand")
+        try:
+            price = int(p.get("price") or 0)
+        except (TypeError, ValueError):
+            price = 0
+        if price > 0:  # giá đang hiện công khai trên catalog
+            node["offers"] = {"@type": "Offer", "url": url, "price": price, "priceCurrency": "VND",
+                              "seller": {"@id": SITE_URL + "/#organization"}}
     if props:
         node["additionalProperty"] = props
     return node
 
 
-def build_product_pages(products):
+def build_product_pages(products, catalog_recs=()):
     """Sinh /san-pham/<slug>/ từ data/products.json (dữ liệu cào, không thuộc CMS) + lưới model ở
     /san-pham/ và trang hãng. Trả {url: bản ghi} để khối SEO gắn JSON-LD Product."""
     # title_vi (tên tiếng Việt viết tay) thay cho tên gốc của nguồn khi hiển thị.
@@ -796,6 +842,12 @@ def build_product_pages(products):
     tpl = read(TEMPLATES / "product-detail.html")
     by_url, keep = {}, set()
     for p in products:
+        url = SITE_URL + pd_url(p)
+        write_if_changed(SITE / "san-pham" / p["slug"] / "index.html",
+                         with_seo(pd_page(p, products, tpl), url, product=p))
+        by_url[url] = p
+        keep.add(p["slug"])
+    for p in catalog_recs:
         url = SITE_URL + pd_url(p)
         write_if_changed(SITE / "san-pham" / p["slug"] / "index.html",
                          with_seo(pd_page(p, products, tpl), url, product=p))
@@ -826,9 +878,80 @@ def build_product_pages(products):
     return by_url
 
 
+CAT_ICONS = {
+    "camera-ai": '<rect x="2.6" y="7" width="13" height="10" rx="2.2"/><path d="m16 11.2 5-2.6v7l-5-2.6z"/><circle cx="9" cy="12" r="2.2"/>',
+    "luu-tru": '<rect x="3.4" y="3.6" width="17.2" height="5.4" rx="1.2"/><rect x="3.4" y="10.6" width="17.2" height="5.4" rx="1.2"/><path d="M7 6.3h.01M7 13.3h.01M6 20.4h12"/>',
+    "ai-server": '<rect x="6" y="6" width="12" height="12" rx="1.6"/><path d="M9.4 9.4h5.2v5.2H9.4zM9 2.8V6M15 2.8V6M9 18v3.2M15 18v3.2M2.8 9H6M2.8 15H6M18 9h3.2M18 15h3.2"/>',
+    "ra-vao": '<path d="M5 21V4.6A1.6 1.6 0 0 1 6.6 3h8.8A1.6 1.6 0 0 1 17 4.6V21M3 21h18"/><circle cx="13.4" cy="12.4" r=".9"/>',
+    "anpr": '<path d="M4 16.4V12l1.8-4.6A2 2 0 0 1 7.7 6h8.6a2 2 0 0 1 1.9 1.4L20 12v4.4"/><rect x="2.8" y="12" width="18.4" height="5" rx="1.4"/><path d="M6.4 19.6v-2.6M17.6 19.6v-2.6M9 14.5h6"/>',
+    "iot": '<circle cx="12" cy="12" r="2.6"/><path d="M7.6 7.6a6.2 6.2 0 0 0 0 8.8M16.4 16.4a6.2 6.2 0 0 0 0-8.8M4.6 4.6a10.4 10.4 0 0 0 0 14.8M19.4 19.4a10.4 10.4 0 0 0 0-14.8"/>',
+    "mang": '<rect x="9" y="2.8" width="6" height="5" rx="1"/><rect x="2.8" y="16.2" width="6" height="5" rx="1"/><rect x="15.2" y="16.2" width="6" height="5" rx="1"/><path d="M12 7.8v4.2M5.8 16.2V12h12.4v4.2"/>',
+    "phan-mem": '<rect x="2.8" y="4" width="18.4" height="13.4" rx="1.6"/><path d="M2.8 8h18.4M8.4 21h7.2M12 17.4V21"/>',
+}
+
+
+def catalog_records(catalog, crawled):
+    """Dòng sản phẩm catalog CMS CHƯA có trang chi tiết model (data/products.json) -> bản ghi trang
+    /san-pham/<id>/ (GAS.md II.6). Trùng trang viết tay sẵn có (vd aiot-platform) thì dẫn tới trang đó.
+    Nội dung bổ sung (giới thiệu, tính năng) ở data/catalog-extra.json (không thuộc CMS)."""
+    extra = load_json("catalog-extra.json", {})
+    slugs = {p.get("slug") for p in crawled}
+    recs = []
+    for c in sort_products(catalog):
+        cid = c.get("id") or ""
+        if not cid or model_link(c.get("model")):
+            continue
+        page = SITE / "san-pham" / cid / "index.html"
+        if page.exists() and GENERATED_MARKER not in read(page):
+            CAT_LINKS[cid] = f"/san-pham/{cid}/"
+            continue
+        if cid in slugs or cid in PD_SKIP_DIRS:
+            print(f"  CẢNH BÁO: id catalog '{cid}' trùng trang khác — không sinh trang riêng")
+            continue
+        CAT_LINKS[cid] = f"/san-pham/{cid}/"
+        x = extra.get(cid, {})
+        cat = c.get("category", "")
+        brands = [BRAND_LABEL.get(b, b) for b in c.get("brands") or []]
+        mb = c.get("model_brand") or ""
+        brand_page = next((f"/{pg}/" for slug, _, pg in BRANDS if slug == mb and pg), None)
+        if mb:
+            brand_label = BRAND_LABEL.get(mb, mb)
+        elif len(brands) == 1:
+            brand_label = brands[0]
+        else:
+            brand_label = "Nhiều hãng" if brands else "Theo dự án"
+        items = [["Nhóm sản phẩm", CAT_LABEL.get(cat, cat)]]
+        if c.get("apps"):
+            items.append(["Ứng dụng", ", ".join(APP_LABEL.get(a, a) for a in c["apps"])])
+        items.append(["Hãng cung cấp", ", ".join(brands) if brands else "Theo dự án (đề xuất sau khảo sát)"])
+        if c.get("model"):
+            items.append(["Model tiêu biểu", c["model"] + (f' ({c["model_note"]})' if c.get("model_note") else "")])
+        items.append(["Giá tham khảo", price_display(c.get("price")) or "Liên hệ báo giá"])
+        desc = (c.get("description") or "").strip()
+        recs.append({
+            "catalog": True, "slug": cid, "title": c.get("title", ""), "type": CAT_LABEL.get(cat, cat),
+            "category": cat, "model": c.get("model") or "", "brand": "_cat", "brand_label": brand_label,
+            "brand_page": brand_page, "brand_specific": bool(mb or len(brands) == 1),
+            "crumb": (CAT_LABEL.get(cat, cat), f"/san-pham/{cat}/") if (SITE / "san-pham" / cat / "index.html").exists() else None,
+            "images": ["/" + c["image"].lstrip("/")] if c.get("image") else [], "image_size": [1000, 1000],
+            "icon": CAT_ICONS.get(cat, CAT_ICONS["camera-ai"]),
+            "intro": x.get("intro") or desc,
+            "highlights": x.get("features") or ([desc] if desc and x.get("intro") else []),
+            "specs": [{"group": "Thông tin sản phẩm", "items": items}],
+            "price": c.get("price"), "brands": c.get("brands") or [],
+            "crawled_at": str(c.get("updated_at") or "")[:10],
+        })
+    # Liên quan: dòng cùng nhóm trước, rồi model chi tiết của các hãng mà dòng này cung cấp.
+    for r in recs:
+        same = [o for o in recs if o is not r and o["category"] == r["category"]]
+        models = [m for m in crawled if m.get("slug") and m.get("brand") in r["brands"]]
+        r["related"] = (same + [dict(m, title=m.get("title_vi") or m["title"]) for m in models])[:4]
+    return recs
+
+
 def product_link_index(products):
     """Model (chữ hoa) -> URL trang chi tiết, để thẻ catalog CMS tự gắn link "Model tiêu biểu"."""
-    return {p["model"].upper(): pd_url(p) for p in products if p.get("model") and p.get("slug")}
+    return {model_key(p["model"]): pd_url(p) for p in products if p.get("model") and p.get("slug")}
 
 
 def inject_smart_assets(page):
@@ -1103,13 +1226,14 @@ def main():
     projects = load_json("projects.json", [])
     crawled = load_json("products.json", [])
     PD_LINKS.update(product_link_index(crawled))
+    cat_recs = catalog_records(products, crawled)  # điền CAT_LINKS trước khi vẽ thẻ catalog
     print(f"build: {len(products)} sản phẩm, {len(news)} tin CMS + {len(legacy)} tin cũ, "
           f"{len(categories)} danh mục tin, {len(projects)} dự án")
     build_products(products)
     build_news(news, legacy, categories)
     build_projects(projects)
-    pd_pages = build_product_pages(crawled)
-    print(f"  {len(pd_pages)} trang chi tiết sản phẩm")
+    pd_pages = build_product_pages(crawled, cat_recs)
+    print(f"  {len(pd_pages)} trang chi tiết sản phẩm ({len(cat_recs)} trang dòng sản phẩm catalog)")
     count = build_sitemap(news, legacy, pd_pages)
     print(f"xong. sitemap: {count} URL")
 
