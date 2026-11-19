@@ -206,6 +206,11 @@ def product_inner(p, indent, with_filters):
     pad = " " * indent
     inner = " " * (indent + 2)
     title = p.get("title", "")
+    # Trang chi tiết của model tiêu biểu (data/products.json) -> ảnh + tên + nút "Xem chi tiết" dẫn tới đó.
+    link = None
+    if p.get("model"):
+        link = next((u for m, u in sorted(PD_LINKS.items(), key=lambda kv: -len(kv[0]))
+                     if m and m in p["model"].upper()), None)
     lines = []
     if with_filters:
         lines.append(f'{pad}<article class="pitem" data-cat="{esc(p.get("category"))}" '
@@ -214,19 +219,20 @@ def product_inner(p, indent, with_filters):
     else:
         lines.append(f'{pad}<article class="pitem">')
     if p.get("image"):
-        lines.append(f'{inner}<div class="pitem__media"><img src="/{esc(p["image"])}" '
-                     f'alt="{esc(p.get("image_alt") or title)}" loading="lazy" width="320" '
-                     f'height="320" decoding="async"></div>')
+        img = (f'<img src="/{esc(p["image"])}" alt="{esc(p.get("image_alt") or title)}" loading="lazy" '
+               f'width="320" height="320" decoding="async">')
+        if link:
+            img = f'<a href="{link}" tabindex="-1" aria-hidden="true">{img}</a>'
+        lines.append(f'{inner}<div class="pitem__media">{img}</div>')
     lines.append(f'{inner}<p class="pitem__cat">{esc(CAT_LABEL.get(p.get("category"), ""))}</p>')
-    lines.append(f'{inner}<h3 class="pitem__title">{esc(title)}</h3>')
+    title_html = f'<a href="{link}">{esc(title)}</a>' if link else esc(title)
+    lines.append(f'{inner}<h3 class="pitem__title">{title_html}</h3>')
     if p.get("description"):
         lines.append(f'{inner}<p class="pitem__text">{esc(p["description"])}</p>')
     price = price_display(p.get("price"))
     if p.get("model"):
         note = f' ({esc(p["model_note"])})' if p.get("model_note") else ""
         model_html = esc(p["model"])
-        link = next((u for m, u in sorted(PD_LINKS.items(), key=lambda kv: -len(kv[0]))
-                     if m and m in p["model"].upper()), None)
         if link:
             model_html = f'<a href="{link}">{model_html}</a>'
         lines.append(f'{inner}<p class="pitem__model">Model tiêu biểu: <strong>{model_html}'
@@ -246,7 +252,8 @@ def product_inner(p, indent, with_filters):
         lines.append(f'{inner}<div class="pitem__row">{brands}</div>')
     cta_url = p.get("cta_url") or f'/lien-he/?sp={contact_query(title)}#tu-van'
     cta_label = p.get("cta_label") or "Yêu cầu cấu hình"
-    lines.append(f'{inner}<div class="pitem__foot"><a class="btn btn--solid btn--xs" '
+    detail = f'<a class="pitem__more" href="{link}">Xem chi tiết</a>' if link else ""
+    lines.append(f'{inner}<div class="pitem__foot">{detail}<a class="btn btn--solid btn--xs" '
                  f'href="{esc(cta_url)}">{esc(cta_label)} {ARROW_SVG}</a></div>')
     lines.append(f"{pad}</article>")
     return "\n".join(lines)

@@ -135,6 +135,10 @@ Mỗi sản phẩm = 1 thẻ `.pitem` ("dòng sản phẩm" kèm model tiêu bi�
      `content_html` là bản gốc, KHÔNG bị đụng — "Bỏ Smart content" + Lưu là quay về nó. Build:
      có `smart_html` thì trang dùng nó thay `content_html` (tự nạp smart.css/js). Danh sách có badge
      "✨ Smart content" (cờ `smart_ai`). Sửa nội dung gốc sau khi tạo → thanh Smart content báo cần Thiết kế lại.
+   - **Bài 🔒 Smart content viết tay** (sửa 19/11/2026): KHÔNG có Viết bài AI / Chuyển Smart content (không có bản
+     gốc), nhưng SỬA được bằng trình thiết kế (tab Góp ý → Nhờ AI sửa). Client chỉ gửi `smart_html` khi đã sửa;
+     server khi đó ghi đè `content_html` bằng bản đã làm sạch (giữ cờ `smart`), lưu `smart_versions` (bản đầu =
+     "Bản gốc trước khi sửa" để khôi phục). Làm sạch giữ `<input type="checkbox">` (khối tv-check), bỏ input khác.
    - **Viết bài AI SEO**: nút "✍️ Viết bằng AI" + độ dài ở đầu form. Bước 1 thông tin (Tiêu đề, từ khoá,
      ý chính thật, văn phong, độ dài, dùng nội dung đang có làm tư liệu) → Bước 2 dàn ý sửa được (hướng bài,
      mô tả SEO, các mục mở bài / thân bài / hỏi đáp / kết bài, số chữ, ý chính, H3; thêm/xoá/đổi thứ tự) →
