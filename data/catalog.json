@@ -687,6 +687,32 @@
     "updated_at": "2026-11-03T05:50:58Z"
   },
   {
+    "id": "chan-de-cho-camera-pfa135",
+    "title": "Chân đế cho camera PFA135",
+    "category": "camera-ai",
+    "apps": [
+      "an-ninh",
+      "toa-nha",
+      "truong-hoc",
+      "van-phong",
+      "nha-may",
+      "bai-xe",
+      "do-thi"
+    ],
+    "brands": [],
+    "description": "dùng là chân đế phụ kiện camera AI Chất liệu : Nhôm Khả năng xoay : 360 độ",
+    "model_brand": "",
+    "model": "",
+    "model_note": "",
+    "price": 465000,
+    "image": "assets/images/products/chan-de-cho-camera-pfa135.jpg",
+    "image_alt": "Chân đế cho camera PFA135",
+    "cta_label": "",
+    "cta_url": "",
+    "order": 28,
+    "updated_at": "2026-11-19T10:53:20Z"
+  },
+  {
     "id": "dau-ghi-nvr",
     "title": "Đầu ghi NVR",
     "category": "luu-tru",
