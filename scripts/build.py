@@ -18,9 +18,9 @@ phần còn lại của file giữ nguyên (trang viết tay):
 Sinh mới từ template:
   html/tin-tuc/<slug>/index.html      templates/news-detail.html (mang dấu GENERATED_MARKER)
   html/du-an/<slug>/index.html        templates/project-detail.html — CHỈ dự án có nội dung
-  html/san-pham/<slug>/index.html     templates/product-detail.html — từ data/products.json (dữ liệu
-                                      cào bằng scripts/crawl_products.py, KHÔNG thuộc CMS)
-Lưới model sản phẩm (data/products.json):
+  html/san-pham/<id>/index.html       templates/product-detail.html — MỌI sản phẩm trong data/catalog.json
+                                      (CMS, nguồn duy nhất — GAS.md II.6-8)
+Lưới model chi tiết (sản phẩm in_catalog: false):
   html/san-pham/index.html            cms:product-models   toàn bộ model, nhóm theo hãng
   html/hang-<hãng>/index.html         cms:brand-models     model chi tiết của hãng
 Sinh toàn bộ (không sửa tay):
@@ -48,7 +48,7 @@ SITE = ROOT / "html"
 TEMPLATES = ROOT / "templates"
 
 GENERATED_MARKER = "<!-- build.py:generated -->"
-# Model (đã chuẩn hoá bằng model_key) -> URL trang chi tiết sản phẩm (điền trong main() từ data/products.json).
+# Model (đã chuẩn hoá bằng model_key) -> URL trang chi tiết sản phẩm (điền trong catalog_records từ sản phẩm in_catalog: false).
 PD_LINKS = {}
 # id dòng sản phẩm catalog CMS -> URL trang chi tiết riêng (sinh từ catalog hoặc trang viết tay sẵn có).
 CAT_LINKS = {}
@@ -100,6 +100,9 @@ BRANDS = [
     ("tvt", "TVT", None),
     ("nvidia", "NVIDIA", None),
     ("intel", "Intel", None),
+    ("cisco", "Cisco", None),
+    ("poly", "Poly", None),
+    ("allied-telesis", "Allied Telesis", None),
 ]
 
 # Loại công trình của dự án: (slug, tên ở bộ lọc, nhãn trên ảnh, nét vẽ icon nhãn). Slug khớp các
@@ -220,7 +223,7 @@ def product_inner(p, indent, with_filters):
     pad = " " * indent
     inner = " " * (indent + 2)
     title = p.get("title", "")
-    # Trang chi tiết của model tiêu biểu (data/products.json) -> ảnh + tên + nút "Xem chi tiết" dẫn tới đó.
+    # Trang chi tiết của model tiêu biểu (sản phẩm in_catalog: false) -> ảnh + tên + nút "Xem chi tiết" dẫn tới đó.
     # Trang riêng của dòng sản phẩm (có Nội dung chi tiết viết trong CMS / chưa có model chi tiết) ưu tiên
     # hơn trang của model tiêu biểu.
     link = CAT_LINKS.get(p.get("id")) or model_link(p.get("model"))
@@ -273,7 +276,8 @@ def product_inner(p, indent, with_filters):
 
 
 def build_products(products):
-    products = sort_products(products)
+    # Model chi tiết (in_catalog: false) chỉ hiện ở mục "Model chi tiết" + trang hãng, không vào lưới catalog.
+    products = [p for p in sort_products(products) if p.get("in_catalog") is not False]
     catalog = "\n".join(product_inner(p, 10, True) for p in products)
     patch_file(SITE / "partials" / "catalog.html", [("catalog", catalog)])
 
@@ -568,7 +572,7 @@ def build_projects(projects):
 
 # ---------------------------------------------------------------------------- trang chi tiết sản phẩm
 
-# Hãng của sản phẩm cào (data/products.json): slug -> (tên hiển thị, trang hãng hoặc None).
+# Hãng (dùng cho dữ liệu cào cũ + script chuyển dữ liệu): slug -> (tên hiển thị, trang hãng hoặc None).
 PD_BRANDS = {
     "hikvision": ("Hikvision", "/hang-hikvision/"), "dahua": ("Dahua", "/hang-dahua/"),
     "axis": ("Axis", "/hang-axis/"), "hanwha": ("Hanwha Vision", "/hang-hanwha/"),
@@ -831,52 +835,40 @@ def product_ld(p, url):
     return node
 
 
-def build_product_pages(products, catalog_recs=()):
-    """Sinh /san-pham/<slug>/ từ data/products.json (dữ liệu cào, không thuộc CMS) + lưới model ở
-    /san-pham/ và trang hãng. Trả {url: bản ghi} để khối SEO gắn JSON-LD Product."""
-    # title_vi (tên tiếng Việt viết tay) thay cho tên gốc của nguồn khi hiển thị.
-    products = [dict(p, title=p.get("title_vi") or p["title"]) for p in products if p.get("slug") and p.get("title")]
-    bad = [p["slug"] for p in products if p["slug"] in PD_SKIP_DIRS]
-    if bad:
-        sys.exit(f"LỖI: slug sản phẩm trùng thư mục nhóm có sẵn: {bad}")
-    products.sort(key=lambda p: (PD_BRAND_ORDER.index(p["brand"]) if p["brand"] in PD_BRAND_ORDER else 99,
-                                 pd_type(p), pd_model_label(p)))
+def build_product_pages(recs):
+    """Sinh /san-pham/<id>/ cho mọi bản ghi catalog_records + lưới "Model chi tiết" ở /san-pham/ và trang hãng.
+    Trả {url: bản ghi} để khối SEO gắn JSON-LD Product."""
     tpl = read(TEMPLATES / "product-detail.html")
     by_url, keep = {}, set()
-    for p in products:
+    for p in recs:
         url = SITE_URL + pd_url(p)
         write_if_changed(SITE / "san-pham" / p["slug"] / "index.html",
-                         with_seo(pd_page(p, products, tpl), url, product=p))
-        by_url[url] = p
-        keep.add(p["slug"])
-    for p in catalog_recs:
-        url = SITE_URL + pd_url(p)
-        write_if_changed(SITE / "san-pham" / p["slug"] / "index.html",
-                         with_seo(inject_smart_assets(pd_page(p, products, tpl)), url, product=p))
+                         with_seo(inject_smart_assets(pd_page(p, recs, tpl)), url, product=p))
         by_url[url] = p
         keep.add(p["slug"])
     clean_orphan_pages(SITE / "san-pham", keep | PD_SKIP_DIRS)
 
-    # Lưới model ở /san-pham/ (nhóm theo hãng, có nút nhảy tới từng hãng).
+    models = [p for p in recs if p["is_model"]]
+    order = [slug for slug, _, _ in BRANDS]
     groups = []
-    for b in PD_BRAND_ORDER:
-        mine = [p for p in products if p["brand"] == b]
+    for b in order + sorted({m["brand_slug"] for m in models} - set(order)):
+        mine = sorted([m for m in models if m["brand_slug"] == b], key=lambda m: (m["type"], m["model"] or m["title"]))
         if mine:
-            groups.append((b, mine))
-    chips = "".join(f'<a href="#model-{b}">{esc(PD_BRANDS[b][0])} ({len(m)})</a>' for b, m in groups)
+            groups.append((b, BRAND_LABEL.get(b, b or "Khác"), mine))
+    chips = "".join(f'<a href="#model-{b or "khac"}">{esc(lbl)} ({len(m)})</a>' for b, lbl, m in groups)
     blocks = "\n".join(
-        f'        <div class="pd-group"><h3 class="pd-group__title" id="model-{b}">{esc(PD_BRANDS[b][0])} '
+        f'        <div class="pd-group"><h3 class="pd-group__title" id="model-{b or "khac"}">{esc(lbl)} '
         f'<small>{len(m)} model</small></h3><div class="pd-cards">' + "".join(pd_card(p, "h4") for p in m) + "</div></div>"
-        for b, m in groups)
+        for b, lbl, m in groups) or '        <p class="psec__lead">Đang cập nhật.</p>'
     patch_file(SITE / "san-pham" / "index.html",
                [("product-models", f'        <div class="pd-brands">{chips}</div>\n{blocks}')])
-    for b, (name, page) in PD_BRANDS.items():
+    for slug, label, page in BRANDS:
         if not page:
             continue
-        mine = [p for p in products if p["brand"] == b]
+        mine = [p for p in models if p["brand_slug"] == slug]
         inner = ('        <div class="pd-cards">' + "".join(pd_card(p) for p in mine) + "</div>") if mine else (
             '        <p class="psec__lead">Đang cập nhật model chi tiết.</p>')
-        patch_file(SITE / page.strip("/") / "index.html", [("brand-models", inner)])
+        patch_file(SITE / page / "index.html", [("brand-models", inner)])
     return by_url
 
 
@@ -892,19 +884,25 @@ CAT_ICONS = {
 }
 
 
-def catalog_records(catalog, crawled):
-    """Dòng sản phẩm catalog CMS CHƯA có trang chi tiết model (data/products.json) -> bản ghi trang
-    /san-pham/<id>/ (GAS.md II.6). Trùng trang viết tay sẵn có (vd aiot-platform) thì dẫn tới trang đó.
-    Nội dung bổ sung (giới thiệu, tính năng) ở data/catalog-extra.json (không thuộc CMS)."""
-    extra = load_json("catalog-extra.json", {})
-    slugs = {p.get("slug") for p in crawled}
+def catalog_records(catalog):
+    """MỌI trang /san-pham/<id>/ sinh từ data/catalog.json (CMS là nguồn duy nhất — GAS.md II.6-8).
+    - Model chi tiết (in_catalog: false): luôn có trang.
+    - Dòng sản phẩm (hiện ở lưới catalog): có trang riêng, TRỪ khi chưa có Nội dung chi tiết mà model tiêu biểu
+      đã có trang model -> thẻ dẫn thẳng trang model. id trùng trang viết tay (vd aiot-platform) -> dẫn tới đó."""
+    for c in catalog:
+        if c.get("in_catalog") is False and c.get("model") and c.get("id"):
+            PD_LINKS[model_key(c["model"])] = f'/san-pham/{c["id"]}/'
     recs = []
     for c in sort_products(catalog):
         cid = c.get("id") or ""
+        if not cid:
+            continue
+        is_model = c.get("in_catalog") is False
         cms_content = (c.get("smart_html") or c.get("content_html") or "").strip()
         mlink = model_link(c.get("model"))
-        # Có model chi tiết và KHÔNG có nội dung viết trong CMS -> thẻ dẫn thẳng trang model.
-        if not cid or (mlink and not cms_content):
+        if mlink == f"/san-pham/{cid}/":
+            mlink = None
+        if not is_model and mlink and not cms_content:
             continue
         page = SITE / "san-pham" / cid / "index.html"
         if page.exists() and GENERATED_MARKER not in read(page):
@@ -912,11 +910,10 @@ def catalog_records(catalog, crawled):
             if cms_content:
                 print(f"  CẢNH BÁO: '{cid}' trùng trang viết tay — Nội dung chi tiết trong CMS không được hiển thị")
             continue
-        if cid in slugs or cid in PD_SKIP_DIRS:
-            print(f"  CẢNH BÁO: id catalog '{cid}' trùng trang khác — không sinh trang riêng")
+        if cid in PD_SKIP_DIRS:
+            print(f"  CẢNH BÁO: mã sản phẩm '{cid}' trùng thư mục nhóm — không sinh trang riêng")
             continue
         CAT_LINKS[cid] = f"/san-pham/{cid}/"
-        x = extra.get(cid, {})
         cat = c.get("category", "")
         brands = [BRAND_LABEL.get(b, b) for b in c.get("brands") or []]
         mb = c.get("model_brand") or ""
@@ -932,34 +929,42 @@ def catalog_records(catalog, crawled):
             items.append(["Ứng dụng", ", ".join(APP_LABEL.get(a, a) for a in c["apps"])])
         items.append(["Hãng cung cấp", ", ".join(brands) if brands else "Theo dự án (đề xuất sau khảo sát)"])
         if c.get("model"):
-            items.append(["Model tiêu biểu", c["model"] + (f' ({c["model_note"]})' if c.get("model_note") else "")])
+            items.append(["Model" if is_model else "Model tiêu biểu",
+                          c["model"] + (f' ({c["model_note"]})' if c.get("model_note") else "")])
         items.append(["Giá tham khảo", price_display(c.get("price")) or "Liên hệ báo giá"])
         desc = (c.get("description") or "").strip()
+        imgs = ([c["image"]] + list(c.get("gallery") or [])) if c.get("image") else []
+        if is_model and brand_page:
+            crumb = (BRAND_LABEL.get(mb, mb), brand_page)
+        elif (SITE / "san-pham" / cat / "index.html").exists():
+            crumb = (CAT_LABEL.get(cat, cat), f"/san-pham/{cat}/")
+        else:
+            crumb = None
         recs.append({
-            "catalog": True, "slug": cid, "title": c.get("title", ""), "type": CAT_LABEL.get(cat, cat),
-            "category": cat, "model": c.get("model") or "", "brand": "_cat", "brand_label": brand_label,
-            "brand_page": brand_page, "brand_specific": bool(mb or len(brands) == 1),
-            "crumb": (CAT_LABEL.get(cat, cat), f"/san-pham/{cat}/") if (SITE / "san-pham" / cat / "index.html").exists() else None,
-            "images": ["/" + c["image"].lstrip("/")] if c.get("image") else [], "image_size": [1000, 1000],
+            "catalog": True, "is_model": is_model, "slug": cid, "title": c.get("title", ""),
+            "type": c.get("type") or CAT_LABEL.get(cat, cat), "category": cat, "model": c.get("model") or "",
+            "brand": "_cat", "brand_slug": mb, "brand_label": brand_label, "brand_page": brand_page,
+            "brand_specific": bool(mb or len(brands) == 1), "crumb": crumb,
+            "images": ["/" + str(i).lstrip("/") for i in imgs], "image_size": [1000, 1000],
             "icon": CAT_ICONS.get(cat, CAT_ICONS["camera-ai"]),
-            # Nội dung viết trong CMS (TinyMCE / Smart content) thay cho phần giới thiệu mặc định.
-            "content_html": cms_content,
-            "intro": "" if cms_content else (x.get("intro") or desc),
-            "model_url": mlink,
-            "highlights": x.get("features") or ([desc] if desc and x.get("intro") else []),
-            "specs": [{"group": "Thông tin sản phẩm", "items": items}],
+            "content_html": cms_content, "intro": "" if cms_content else desc, "model_url": mlink,
+            "highlights": c.get("features") or [], "specs": [{"group": "Thông tin sản phẩm", "items": items}],
             "price": c.get("price"), "brands": c.get("brands") or [],
             "crawled_at": str(c.get("updated_at") or "")[:10],
         })
-    # Liên quan: dòng cùng nhóm trước, rồi model chi tiết của các hãng mà dòng này cung cấp.
     for r in recs:
-        same = [o for o in recs if o is not r and o["category"] == r["category"]]
-        models = [m for m in crawled if m.get("slug") and m.get("brand") in r["brands"]]
-        first = [m for m in models if r["model_url"] and pd_url(m) == r["model_url"]]
-        models = first + [m for m in models if m not in first]
-        r["related"] = (first[:1] and [dict(first[0], title=first[0].get("title_vi") or first[0]["title"])] or [])
-        r["related"] += same + [dict(m, title=m.get("title_vi") or m["title"]) for m in models if m not in first]
-        r["related"] = r["related"][:4]
+        if r["is_model"]:
+            pool = ([o for o in recs if o is not r and o["is_model"] and o["brand_slug"] == r["brand_slug"] and o["type"] == r["type"]] +
+                    [o for o in recs if o is not r and o["is_model"] and o["brand_slug"] == r["brand_slug"]] +
+                    [o for o in recs if o is not r and o["is_model"] and o["type"] == r["type"]])
+        else:
+            pool = ([o for o in recs if o is not r and not o["is_model"] and o["category"] == r["category"]] +
+                    [o for o in recs if o["is_model"] and (r["model_url"] == pd_url(o) or o["brand_slug"] in r["brands"])])
+        out = []
+        for o in pool:
+            if o not in out:
+                out.append(o)
+        r["related"] = out[:4]
     return recs
 
 
@@ -1238,16 +1243,15 @@ def main():
     legacy = load_json("legacy-news.json", [])
     categories = load_json("news-categories.json", [])
     projects = load_json("projects.json", [])
-    crawled = load_json("products.json", [])
-    PD_LINKS.update(product_link_index(crawled))
-    cat_recs = catalog_records(products, crawled)  # điền CAT_LINKS trước khi vẽ thẻ catalog
+    cat_recs = catalog_records(products)  # điền PD_LINKS + CAT_LINKS trước khi vẽ thẻ catalog
     print(f"build: {len(products)} sản phẩm, {len(news)} tin CMS + {len(legacy)} tin cũ, "
           f"{len(categories)} danh mục tin, {len(projects)} dự án")
     build_products(products)
     build_news(news, legacy, categories)
     build_projects(projects)
-    pd_pages = build_product_pages(crawled, cat_recs)
-    print(f"  {len(pd_pages)} trang chi tiết sản phẩm ({len(cat_recs)} trang dòng sản phẩm catalog)")
+    pd_pages = build_product_pages(cat_recs)
+    print(f"  {len(pd_pages)} trang chi tiết sản phẩm "
+          f"({sum(1 for r in cat_recs if r['is_model'])} model chi tiết + {sum(1 for r in cat_recs if not r['is_model'])} dòng sản phẩm)")
     count = build_sitemap(news, legacy, pd_pages)
     print(f"xong. sitemap: {count} URL")
 

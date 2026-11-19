@@ -89,6 +89,14 @@ Mỗi sản phẩm = 1 thẻ `.pitem` ("dòng sản phẩm" kèm model tiêu bi�
      (KHÔNG thuộc CMS, sửa tay theo id); chưa có thì dùng Mô tả ngắn của CMS. Thêm sản phẩm mới qua CMS =
      tự có trang sau lần build kế; xoá sản phẩm = trang tự bị xoá.
    - id trùng trang viết tay sẵn có (vd `aiot-platform`) → dẫn tới trang đó, không sinh trang.
+8. **CMS là nguồn DUY NHẤT của mọi trang sản phẩm** (chốt 19/11/2026 theo yêu cầu khách — mọi nội dung hiện
+   trên trang phải sửa được trong CMS): 83 model đã cào ĐÃ chuyển vào `data/catalog.json`
+   (`scripts/migrate_products_to_cms.py`, chạy 1 lần) — mô tả + bảng thông số nằm trong Nội dung chi tiết
+   (sửa bằng TinyMCE), ý chính → "Tính năng nổi bật" (`features`), `in_catalog: false` (bỏ tick "Hiện ở lưới
+   catalog": chỉ hiện ở mục Model chi tiết + trang hãng), ảnh phụ ở `gallery` (không có ô nhập, Lưu giữ nguyên,
+   cùng `type`, `source`, `source_url`). Nội dung mặc định của 22 dòng sản phẩm cũng đã vào Nội dung chi tiết +
+   Tính năng. `data/products.json` (dữ liệu cào thô) và `scripts/crawl_products.py` giờ chỉ là nguồn nhập ban đầu
+   — build KHÔNG đọc; `data/catalog-extra.json` đã bỏ. Hãng thêm: Cisco, Poly, Allied Telesis (không có trang hãng).
 7. **Nội dung chi tiết** (thêm 19/11/2026): form Sản phẩm có ô TinyMCE `content_html` (chèn ảnh nhanh →
    `html/assets/images/products/<id>-content-<N>.jpg`, xoá cùng sản phẩm), Từ khoá chính/phụ, bộ chấm điểm SEO,
    Viết bài AI và Smart content (`smart_html`) — như Tin tức/Dự án (mục III.9). Lưu trong `data/catalog.json`;

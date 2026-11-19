@@ -4272,3 +4272,7 @@ h1, h2, h3, .phero__title span { text-wrap: balance; }
 .pd-ph svg { width: 38%; max-width: 160px; height: auto; }
 .pd-ph span { font-size: 15px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--ink-title); }
 .pd-card__media.pd-ph span { font-size: 12px; }
+/* Bảng trong Nội dung chi tiết sản phẩm (vd bảng thông số): đều độ rộng, cột nhãn căn trái */
+.pd-main .prose table { width: 100%; table-layout: fixed; }
+.pd-main .prose th { width: 38%; text-align: left; font-weight: 600; color: var(--ink-muted); background: #f8fbfe; }
+.pd-main .prose td { word-break: break-word; }
