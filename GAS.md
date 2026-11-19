@@ -22,7 +22,7 @@
 6. **Nội dung AI** — kiến thức nạp cho trợ lý chat ở góc phải website (ghi chú chung + cặp
    hỏi đáp), tham khảo tab "Hỏi đáp AI" của khtcard.
 7. **Công cụ SEO & AI cho nội dung** (thêm 19/11/2026, mục III.9) — Rank Math SEO, Smart content SEO,
-   Viết bài AI SEO ở form Tin tức + Dự án; chọn AI Gemini / Claude / ChatGPT.
+   Viết bài AI SEO ở form Tin tức + Dự án + Sản phẩm; chọn AI Gemini / Claude / ChatGPT.
 
 Ngoài 6 mục trên, GAS còn nhận **form tư vấn** trên website (mục VI-b) — không có ô quản lý
 trong CMS, dữ liệu xem trong sheet `Leads` + email báo.
@@ -89,6 +89,13 @@ Mỗi sản phẩm = 1 thẻ `.pitem` ("dòng sản phẩm" kèm model tiêu bi�
      (KHÔNG thuộc CMS, sửa tay theo id); chưa có thì dùng Mô tả ngắn của CMS. Thêm sản phẩm mới qua CMS =
      tự có trang sau lần build kế; xoá sản phẩm = trang tự bị xoá.
    - id trùng trang viết tay sẵn có (vd `aiot-platform`) → dẫn tới trang đó, không sinh trang.
+7. **Nội dung chi tiết** (thêm 19/11/2026): form Sản phẩm có ô TinyMCE `content_html` (chèn ảnh nhanh →
+   `html/assets/images/products/<id>-content-<N>.jpg`, xoá cùng sản phẩm), Từ khoá chính/phụ, bộ chấm điểm SEO,
+   Viết bài AI và Smart content (`smart_html`) — như Tin tức/Dự án (mục III.9). Lưu trong `data/catalog.json`;
+   `boot()`/Lưu chỉ trả bản nhẹ (`productsLite_`: bỏ nội dung, thêm `has_content`, `smart_ai`), nội dung tải
+   riêng bằng `getProduct` khi mở form. Có nội dung → dòng sản phẩm LUÔN có trang riêng `/san-pham/<id>/`
+   hiển thị nội dung đó (kể cả khi model tiêu biểu đã có trang chi tiết — ô Model dẫn link sang trang model);
+   thẻ catalog trỏ vào trang riêng. Xoá hết nội dung → quay về hành vi mục 6.
 
 ## III. Tin tức
 

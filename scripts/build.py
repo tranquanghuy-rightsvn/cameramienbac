@@ -221,7 +221,9 @@ def product_inner(p, indent, with_filters):
     inner = " " * (indent + 2)
     title = p.get("title", "")
     # Trang chi tiết của model tiêu biểu (data/products.json) -> ảnh + tên + nút "Xem chi tiết" dẫn tới đó.
-    link = model_link(p.get("model")) or CAT_LINKS.get(p.get("id"))
+    # Trang riêng của dòng sản phẩm (có Nội dung chi tiết viết trong CMS / chưa có model chi tiết) ưu tiên
+    # hơn trang của model tiêu biểu.
+    link = CAT_LINKS.get(p.get("id")) or model_link(p.get("model"))
     lines = []
     if with_filters:
         lines.append(f'{pad}<article class="pitem" data-cat="{esc(p.get("category"))}" '
@@ -723,7 +725,7 @@ def pd_page(p, products, tpl):
             for i, src in enumerate(images)) + "</ul>")
     meta_rows = [("Hãng", f'<a href="{brand_page}">{esc(brand)}</a>' if brand_page else esc(brand))]
     if p.get("model"):
-        meta_rows.append(("Model", esc(model)))
+        meta_rows.append(("Model", f'<a href="{p["model_url"]}">{esc(model)}</a>' if p.get("model_url") else esc(model)))
     meta_rows.append(("Nhóm" if p.get("catalog") else "Loại thiết bị", esc(pd_type(p))))
     if p.get("catalog"):
         meta_rows.append(("Giá tham khảo", esc(price_display(p.get("price")) or "Liên hệ báo giá")))
@@ -850,7 +852,7 @@ def build_product_pages(products, catalog_recs=()):
     for p in catalog_recs:
         url = SITE_URL + pd_url(p)
         write_if_changed(SITE / "san-pham" / p["slug"] / "index.html",
-                         with_seo(pd_page(p, products, tpl), url, product=p))
+                         with_seo(inject_smart_assets(pd_page(p, products, tpl)), url, product=p))
         by_url[url] = p
         keep.add(p["slug"])
     clean_orphan_pages(SITE / "san-pham", keep | PD_SKIP_DIRS)
@@ -899,11 +901,16 @@ def catalog_records(catalog, crawled):
     recs = []
     for c in sort_products(catalog):
         cid = c.get("id") or ""
-        if not cid or model_link(c.get("model")):
+        cms_content = (c.get("smart_html") or c.get("content_html") or "").strip()
+        mlink = model_link(c.get("model"))
+        # Có model chi tiết và KHÔNG có nội dung viết trong CMS -> thẻ dẫn thẳng trang model.
+        if not cid or (mlink and not cms_content):
             continue
         page = SITE / "san-pham" / cid / "index.html"
         if page.exists() and GENERATED_MARKER not in read(page):
             CAT_LINKS[cid] = f"/san-pham/{cid}/"
+            if cms_content:
+                print(f"  CẢNH BÁO: '{cid}' trùng trang viết tay — Nội dung chi tiết trong CMS không được hiển thị")
             continue
         if cid in slugs or cid in PD_SKIP_DIRS:
             print(f"  CẢNH BÁO: id catalog '{cid}' trùng trang khác — không sinh trang riêng")
@@ -935,7 +942,10 @@ def catalog_records(catalog, crawled):
             "crumb": (CAT_LABEL.get(cat, cat), f"/san-pham/{cat}/") if (SITE / "san-pham" / cat / "index.html").exists() else None,
             "images": ["/" + c["image"].lstrip("/")] if c.get("image") else [], "image_size": [1000, 1000],
             "icon": CAT_ICONS.get(cat, CAT_ICONS["camera-ai"]),
-            "intro": x.get("intro") or desc,
+            # Nội dung viết trong CMS (TinyMCE / Smart content) thay cho phần giới thiệu mặc định.
+            "content_html": cms_content,
+            "intro": "" if cms_content else (x.get("intro") or desc),
+            "model_url": mlink,
             "highlights": x.get("features") or ([desc] if desc and x.get("intro") else []),
             "specs": [{"group": "Thông tin sản phẩm", "items": items}],
             "price": c.get("price"), "brands": c.get("brands") or [],
@@ -945,7 +955,11 @@ def catalog_records(catalog, crawled):
     for r in recs:
         same = [o for o in recs if o is not r and o["category"] == r["category"]]
         models = [m for m in crawled if m.get("slug") and m.get("brand") in r["brands"]]
-        r["related"] = (same + [dict(m, title=m.get("title_vi") or m["title"]) for m in models])[:4]
+        first = [m for m in models if r["model_url"] and pd_url(m) == r["model_url"]]
+        models = first + [m for m in models if m not in first]
+        r["related"] = (first[:1] and [dict(first[0], title=first[0].get("title_vi") or first[0]["title"])] or [])
+        r["related"] += same + [dict(m, title=m.get("title_vi") or m["title"]) for m in models if m not in first]
+        r["related"] = r["related"][:4]
     return recs
 
 
