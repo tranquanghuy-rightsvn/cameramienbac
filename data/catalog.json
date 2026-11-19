@@ -81,6 +81,31 @@
     "updated_at": "2026-10-03T00:00:00Z"
   },
   {
+    "id": "cong-xoay-cong-phan-lan",
+    "title": "Phụ kiện chuyên dụng",
+    "category": "camera-ai",
+    "apps": [
+      "toa-nha",
+      "truong-hoc",
+      "nha-may"
+    ],
+    "brands": [
+      "hikvision",
+      "dahua"
+    ],
+    "description": "Phụ kiện chuyên dụng cho camera AI",
+    "model_brand": "",
+    "model": "",
+    "model_note": "",
+    "price": 0,
+    "image": "",
+    "image_alt": "",
+    "cta_label": "",
+    "cta_url": "",
+    "order": 3,
+    "updated_at": "2026-11-19T10:49:52Z"
+  },
+  {
     "id": "camera-nhan-dien-khuon-mat",
     "title": "Camera nhận diện khuôn mặt",
     "category": "camera-ai",
@@ -868,31 +893,6 @@
     "cta_label": "",
     "cta_url": "",
     "order": 2,
-    "updated_at": "2026-10-03T00:00:00Z"
-  },
-  {
-    "id": "cong-xoay-cong-phan-lan",
-    "title": "Cổng xoay, cổng phân làn",
-    "category": "ra-vao",
-    "apps": [
-      "toa-nha",
-      "truong-hoc",
-      "nha-may"
-    ],
-    "brands": [
-      "hikvision",
-      "dahua"
-    ],
-    "description": "Kiểm soát từng người qua cổng, tích hợp nhận diện khuôn mặt/thẻ.",
-    "model_brand": "",
-    "model": "",
-    "model_note": "",
-    "price": 0,
-    "image": "",
-    "image_alt": "",
-    "cta_label": "",
-    "cta_url": "",
-    "order": 3,
     "updated_at": "2026-10-03T00:00:00Z"
   },
   {
