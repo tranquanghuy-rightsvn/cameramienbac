@@ -9,6 +9,7 @@ name: Build site tĩnh từ data/
 #   data/news-categories.json  -> Lưu/Xoá danh mục tin
 #   data/legacy-news.json      -> sửa tay danh sách bài viết tay cũ
 #   data/projects.json         -> Lưu/Xoá dự án (1 file, tự nó là chốt)
+#   data/products.json         -> chạy lại scripts/crawl_products.py (trang chi tiết sản phẩm)
 # data/chat-qa.json + data/ai-settings.json KHÔNG cần build: trợ lý AI đọc thẳng lúc chat.
 on:
   push:
@@ -19,6 +20,7 @@ on:
       - "data/news-categories.json"
       - "data/legacy-news.json"
       - "data/projects.json"
+      - "data/products.json"
       - "templates/**"
       - "scripts/build.py"
       # Thêm/sửa tay 1 trang (vd thêm noindex) -> sitemap.xml phải sinh lại. Không lặp vô hạn:

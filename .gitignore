@@ -10,3 +10,4 @@ draft
 
 # GAS CMS backend: deploy bằng clasp, KHÔNG track git (logic phân quyền, cấu trúc Sheet).
 gas/
+.cache/

@@ -8,7 +8,7 @@
 > ⚠️ Các mục đánh dấu **[ĐỀ XUẤT]** là do bên kỹ thuật suy ra từ cấu trúc site hiện có, CHƯA
 > được khách xác nhận. Khách đổi ý thì sửa code + sửa file này trong CÙNG 1 lượt.
 
-## 0. Phạm vi — ĐÚNG 6 mục, không làm rộng hơn
+## 0. Phạm vi — ĐÚNG 7 mục, không làm rộng hơn
 
 1. **Sản phẩm** — danh mục thiết bị ở `/san-pham/` (+ 8 trang nhóm `/san-pham/<nhóm>/`, cùng
    dùng partial `partials/catalog.html`) và khối "Sản phẩm tiêu biểu" ở 4 trang hãng
@@ -21,6 +21,8 @@
 5. **Người dùng** — tài khoản được phép đăng nhập CMS.
 6. **Nội dung AI** — kiến thức nạp cho trợ lý chat ở góc phải website (ghi chú chung + cặp
    hỏi đáp), tham khảo tab "Hỏi đáp AI" của khtcard.
+7. **Công cụ SEO & AI cho nội dung** (thêm 19/11/2026, mục III.9) — Rank Math SEO, Smart content SEO,
+   Viết bài AI SEO ở form Tin tức + Dự án; chọn AI Gemini / Claude / ChatGPT.
 
 Ngoài 6 mục trên, GAS còn nhận **form tư vấn** trên website (mục VI-b) — không có ô quản lý
 trong CMS, dữ liệu xem trong sheet `Leads` + email báo.
@@ -112,6 +114,44 @@ Mỗi sản phẩm = 1 thẻ `.pitem` ("dòng sản phẩm" kèm model tiêu bi�
      `class="tv-`; bài thường không nạp gì thêm.
    - Sửa nội dung bài smart = sửa trực tiếp `content_html` trong `data/news/<slug>.json` (bên kỹ
      thuật), pull repo trước vì CMS có thể vừa đổi tiêu đề/mô tả/ảnh bìa.
+
+9. **Công cụ SEO & AI** (thêm 19/11/2026 theo yêu cầu khách, tham khảo dự án adzo) — có ở form Tin tức
+   VÀ form Dự án; bài Smart content viết tay (mục 8, `smart: true`) KHÔNG dùng (ẩn công cụ).
+   - **Rank Math SEO** (`gas/seo-js.html`, port từ adzo): nút nổi "Điểm SEO" + panel chấm 0-100 theo 4 nhóm
+     (Bắt buộc / Tiêu đề & mô tả / Nội dung & khả năng đọc / Hình ảnh & liên kết), bộ đếm ký tự dưới Tiêu đề,
+     Mô tả, Từ khoá, Nội dung. Chạy hoàn toàn ở trình duyệt, không chặn Lưu. Tiêu đề SEO tính cả hậu tố
+     `<title>` của template (tin: " — Cameramienbac", dự án: " — Dự án camera AI | Cameramienbac").
+     Field mới: `keyword` (từ khoá chính), `keywords` (từ khoá phụ, phân cách dấu phẩy) — chỉ lưu dữ liệu,
+     build KHÔNG in ra trang (không có meta keywords).
+   - **Smart content SEO**: AI dàn trang nội dung gốc bằng **bộ khối `tv-` có sẵn** của site (cùng CSS/JS
+     với 6 bài Smart content viết tay) — AI chỉ viết HTML, không viết CSS. Thư viện khối cho AI =
+     `gas/smart-blocks.js`, SINH bằng `python3 scripts/smart_blocks_prompt.py` (mẫu thật từ các bài viết tay).
+     Trình thiết kế: xem trước bằng CSS thật của website (Máy tính / Tablet / Điện thoại); tab Thiết kế
+     ("Giữ nguyên, chỉ dàn trang" hoặc "Cho phép viết lại cho chuẩn SEO" + yêu cầu thêm); tab Góp ý (bấm
+     chọn khối trong bản xem trước → ghi góp ý → "Nhờ AI sửa": AI trả các chỗ thay thế find/replace, áp hết
+     hoặc không gì, thử lại 1 lần); tab Phiên bản (5 bản gần nhất, lưu cùng bài, khôi phục được).
+     AI đề xuất luôn Mô tả SEO 120-160 ký tự (ô Mô tả trống thì tự điền, có rồi thì hiện nút "Dùng mô tả này").
+     Lưu: `smart_html` (+ `smart_versions`) trong `data/news/<slug>.json` / `data/projects.json`;
+     `content_html` là bản gốc, KHÔNG bị đụng — "Bỏ Smart content" + Lưu là quay về nó. Build:
+     có `smart_html` thì trang dùng nó thay `content_html` (tự nạp smart.css/js). Danh sách có badge
+     "✨ Smart content" (cờ `smart_ai`). Sửa nội dung gốc sau khi tạo → thanh Smart content báo cần Thiết kế lại.
+   - **Viết bài AI SEO**: nút "✍️ Viết bằng AI" + độ dài ở đầu form. Bước 1 thông tin (Tiêu đề, từ khoá,
+     ý chính thật, văn phong, độ dài, dùng nội dung đang có làm tư liệu) → Bước 2 dàn ý sửa được (hướng bài,
+     mô tả SEO, các mục mở bài / thân bài / hỏi đáp / kết bài, số chữ, ý chính, H3; thêm/xoá/đổi thứ tự) →
+     Bước 3 viết TỪNG MỤC (mỗi mục 1 lần gọi máy chủ — tránh giới hạn 6 phút; mục lỗi thì "Viết tiếp").
+     Xong thì thay nội dung ô soạn thảo (hỏi trước nếu đang có nội dung; không đồng ý thì chèn xuống cuối),
+     điền Từ khoá / Mô tả nếu đang trống. KHÔNG tự Lưu. Ảnh: chỉ ảnh người viết đã chèn trong bài (AI xếp
+     vào mục phù hợp, giữ chú thích gốc); không dùng ảnh ngoài.
+   - **Quy tắc chung cho AI** (`gas/ai-tools.js`): không bịa giá, số liệu, tên khách hàng, model, thông số;
+     link nội bộ CHỈ lấy từ `html/assets/pages.json` (build.py sinh: mọi trang công khai + tiêu đề) — server
+     chọn ≤ 15 trang gần chủ đề, bắt buộc ≥ 2 link nội bộ (AI chèn thiếu thì server thêm dòng
+     `<p class="tv-more">Xem thêm: …</p>`); link tới trang không có trên site bị gỡ (giữ chữ); ảnh không có
+     trong nội dung gốc bị gỡ; bỏ script/style/iframe/on*/style="".
+   - **Chọn AI**: tab Nội dung AI → thẻ "Mô hình AI cho công cụ viết bài" (admin trở lên sửa; editor xem):
+     Gemini / Claude / ChatGPT, mỗi nhà cung cấp 1 ô model (mặc định `gemini-3.5-flash`, `claude-sonnet-5-5`,
+     `gpt-5`) + ô API key (gọi thử trước khi lưu, chỉ hiện dạng che). AI đang chọn lỗi → tự dùng AI khác đã có
+     key (ghi rõ ở dòng "AI: …" trong cửa sổ công cụ). Không tính phí/hạn mức (khác adzo) — chi phí theo tài
+     khoản API của khách.
 
 ## IV. Danh mục tin tức
 
@@ -246,12 +286,25 @@ Xem mục I.4. Tab "Người dùng" chỉ hiện với admin/root; server chặn
   | `data/news/<slug>.json` | chi tiết 1 bài | — |
   | `data/news-categories.json` | danh mục tin | ✔ |
   | `data/legacy-news.json` | bài viết tay cũ (CMS không ghi) | ✔ |
-  | `data/projects.json` | toàn bộ dự án (kể cả nội dung) | ✔ |
+  | `data/projects.json` | toàn bộ dự án (kể cả nội dung, `smart_html`) | ✔ |
+  | `html/assets/pages.json` | danh sách trang cho AI chèn link nội bộ (build.py sinh, GAS chỉ đọc) | — |
   | `data/chat-qa.json`, `data/ai-settings.json` | Nội dung AI (GAS đọc lúc chat) | — |
   | `html/assets/images/products/<id>.jpg` | ảnh sản phẩm CMS | — |
   | `html/assets/images/news/*` | ảnh tin tức | — |
   | `html/assets/images/projects/*` | ảnh dự án CMS | — |
-- `data/products.json` (84 bản ghi crawl thô) KHÔNG thuộc CMS, CMS không đọc/ghi.
+- `data/products.json` KHÔNG thuộc CMS, CMS không đọc/ghi. Từ 19/11/2026 là dữ liệu sản phẩm cào
+  ĐẦY ĐỦ (83 model: hikvision.vn, dahua.vn, cnttshop.vn, axis.com, hanwhavision.com) bằng
+  `scripts/crawl_products.py` (tên, model, hãng, ý chính, mô tả HTML đã làm sạch — bỏ mọi câu nhắc
+  shop nguồn/hotline, bảng thông số theo nhóm, ảnh nén WebP ≤1000px ở
+  `html/assets/images/sp/<slug>/`). Chạy lại script = cào lại theo `url` có sẵn; GIỮ NGUYÊN các
+  field viết tay `slug` (bất biến), `title_vi`, `intro`, `type`, `category`, `apps`. Thêm sản phẩm
+  = thêm `{"url", "source"}` rồi chạy script. KHÔNG hiển thị giá (theo yêu cầu khách), JSON-LD
+  Product không có `offers`.
+- `build.py` sinh `/san-pham/<slug>/` từ `templates/product-detail.html` (ảnh + thư viện ảnh, ý chính,
+  giới thiệu, bảng thông số, tư vấn, sản phẩm liên quan; JSON-LD Product + ItemPage +
+  BreadcrumbList; og:type product), lưới model ở `/san-pham/#model` (`cms:product-models`) và trang
+  hãng (`cms:brand-models`); thẻ catalog CMS tự gắn link "Model tiêu biểu" nếu trùng model.
+  Sitemap có `lastmod` (ngày cào) + `image:image` cho trang sản phẩm.
 - `scripts/build.py` ghi đè vùng giữa các mốc `<!-- cms:... -->`:
   `html/partials/catalog.html` (lưới sản phẩm), `html/hang-{hikvision,dahua,axis,hanwha}/index.html`
   (lưới "Sản phẩm tiêu biểu"), `html/tin-tuc/index.html` (nút lọc + danh sách), `html/index.html` (3 tin mới nhất + 3 dự án),
@@ -285,6 +338,9 @@ Xem mục I.4. Tab "Người dùng" chỉ hiện với admin/root; server chặn
   tải TinyMCE tự host. Chưa có domain thì để trống: CMS tạm tải TinyMCE từ CDN.
 - `GEMINI_API_KEY` — key Gemini cho trợ lý chat. Trống = chat dùng câu trả lời mẫu.
 - `GEMINI_MODEL` — tuỳ chọn, mặc định `gemini-3.5-flash-lite`.
+- `AI_PROVIDER` (`gemini` | `claude` | `openai`), `CLAUDE_API_KEY`, `OPENAI_API_KEY`, `AI_MODEL_GEMINI`,
+  `AI_MODEL_CLAUDE`, `AI_MODEL_OPENAI` — công cụ AI viết bài (mục III.9). KHÔNG điền tay: nhập ở tab Nội dung AI
+  (key được gọi thử rồi mới lưu). `GEMINI_API_KEY` dùng chung với trợ lý chat (đổi ở thẻ này = đổi cả chat).
 - `NOTIFY_EMAIL` — email nhận báo "Yêu cầu tư vấn mới" từ form trên website (mục VI-b), nhiều
   địa chỉ cách nhau dấu phẩy. Không có giá trị mặc định trong code; trống = không gửi mail
   (yêu cầu vẫn lưu sheet `Leads`).

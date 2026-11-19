@@ -1,0 +1,530 @@
+[
+{
+"url": "/",
+"title": "Cameramienbac"
+},
+{
+"url": "/ai-attendance/",
+"title": "AI Attendance"
+},
+{
+"url": "/ai-exam/",
+"title": "AI Exam"
+},
+{
+"url": "/ai-security/",
+"title": "AI Security"
+},
+{
+"url": "/bai-xe-kiem-soat-ra-vao/",
+"title": "Bãi xe & kiểm soát ra vào"
+},
+{
+"url": "/cau-hoi-thuong-gap/",
+"title": "Câu hỏi thường gặp"
+},
+{
+"url": "/chinh-sach-bao-mat/",
+"title": "Chính sách bảo mật"
+},
+{
+"url": "/dao-tao-ai/",
+"title": "Đào tạo & Workshop AI"
+},
+{
+"url": "/dieu-khoan-su-dung/",
+"title": "Điều khoản sử dụng"
+},
+{
+"url": "/doanh-nghiep-co-quan/",
+"title": "Doanh nghiệp & cơ quan"
+},
+{
+"url": "/du-an/",
+"title": "Dự án tiêu biểu"
+},
+{
+"url": "/du-an/benh-vien-bach-mai/",
+"title": "Bệnh viện Bạch Mai"
+},
+{
+"url": "/du-an/dai-hoc-quoc-gia-ha-noi/",
+"title": "Đại học Quốc gia Hà Nội"
+},
+{
+"url": "/du-an/kcn-bac-thang-long/",
+"title": "KCN Bắc Thăng Long"
+},
+{
+"url": "/du-an/khu-do-thi-ecopark/",
+"title": "Khu đô thị Ecopark"
+},
+{
+"url": "/du-an/ngan-hang-bidv-chi-nhanh-thai-ha/",
+"title": "Ngân hàng BIDV – Chi nhánh Thái Hà"
+},
+{
+"url": "/du-an/nha-may-samsung-bac-ninh/",
+"title": "Nhà máy Samsung Bắc Ninh"
+},
+{
+"url": "/du-an/toa-nha-thong-minh-vinhomes-ocean-park/",
+"title": "Tòa nhà Thông Minh Vinhomes Ocean Park"
+},
+{
+"url": "/du-an/tru-so-tap-doan-fpt/",
+"title": "Trụ sở Tập đoàn FPT"
+},
+{
+"url": "/du-an/truong-thpt-chuyen-ha-noi-amsterdam/",
+"title": "Trường THPT Chuyên Hà Nội – Amsterdam"
+},
+{
+"url": "/giai-phap-toan-dien/",
+"title": "Giải pháp toàn diện"
+},
+{
+"url": "/giai-phap/",
+"title": "Giải pháp camera AI & an ninh thông minh"
+},
+{
+"url": "/hang-axis/",
+"title": "Thiết bị Axis"
+},
+{
+"url": "/hang-dahua/",
+"title": "Thiết bị Dahua"
+},
+{
+"url": "/hang-hanwha/",
+"title": "Thiết bị Hanwha Vision"
+},
+{
+"url": "/hang-hikvision/",
+"title": "Thiết bị Hikvision"
+},
+{
+"url": "/ky-tuc-xa-thong-minh/",
+"title": "Ký túc xá thông minh"
+},
+{
+"url": "/lien-he/",
+"title": "Liên hệ"
+},
+{
+"url": "/san-pham/",
+"title": "Sản phẩm Camera AI"
+},
+{
+"url": "/san-pham/ai-server/",
+"title": "AI Server / AI Box"
+},
+{
+"url": "/san-pham/aiot-platform/",
+"title": "AIoT Platform"
+},
+{
+"url": "/san-pham/allied-telesis-at-pc2000-sp-60/",
+"title": "Camera IP Allied Telesis AT-PC2000/SP-60"
+},
+{
+"url": "/san-pham/anpr/",
+"title": "Barrier & ANPR"
+},
+{
+"url": "/san-pham/axis-m2036-le/",
+"title": "Camera AXIS M2036-LE thân trụ 4MP AI hồng ngoại"
+},
+{
+"url": "/san-pham/axis-m3086-v/",
+"title": "Camera AXIS M3086-V dome mini 4MP AI trong nhà"
+},
+{
+"url": "/san-pham/axis-m5075/",
+"title": "Camera AXIS M5075 PTZ mini zoom 5x"
+},
+{
+"url": "/san-pham/axis-p1388/",
+"title": "Camera AXIS P1388 dạng hộp 4K ống kính rời"
+},
+{
+"url": "/san-pham/axis-q1971-e/",
+"title": "Camera ảnh nhiệt AXIS Q1971-E ngoài trời"
+},
+{
+"url": "/san-pham/camera-ai/",
+"title": "Sản phẩm Camera AI"
+},
+{
+"url": "/san-pham/cisco-cp-dx80-k9/",
+"title": "Thiết bị hội nghị để bàn Cisco Webex DX80 CP-DX80-K9"
+},
+{
+"url": "/san-pham/cisco-cs-board55s-g-k9/",
+"title": "Thiết bị hội nghị truyền hình Cisco CS-BOARD55S-G-K9"
+},
+{
+"url": "/san-pham/cisco-cs-board70-k9/",
+"title": "Màn hình cộng tác Cisco Webex Board 70 CS-BOARD70-K9"
+},
+{
+"url": "/san-pham/cisco-cs-cam-ptz4k/",
+"title": "Camera hội nghị Cisco Webex PTZ 4K CS-CAM-PTZ4K="
+},
+{
+"url": "/san-pham/cisco-cs-kit-mini-k9/",
+"title": "Thiết bị hội nghị truyền hình Cisco CS-KIT-MINI-K9"
+},
+{
+"url": "/san-pham/cisco-cs-kitpro-k9/",
+"title": "Thiết bị hội nghị truyền hình Cisco CS-KITPRO-K9"
+},
+{
+"url": "/san-pham/cisco-cts-sx10n-k9/",
+"title": "Thiết bị hội nghị truyền hình Cisco CTS-SX10N-K9"
+},
+{
+"url": "/san-pham/cisco-cts-sx20n-12x-k9/",
+"title": "Thiết bị hội nghị truyền hình Cisco CTS-SX20N-12X-K9"
+},
+{
+"url": "/san-pham/cisco-cts-sx20n-p40-k9/",
+"title": "Thiết bị hội nghị truyền hình Cisco CTS-SX20N-P40-K9"
+},
+{
+"url": "/san-pham/dahua-dh-ipc-b1b20p-l/",
+"title": "Camera IP Dahua DH-IPC-B1B20P-L"
+},
+{
+"url": "/san-pham/dahua-dh-ipc-b1b20p/",
+"title": "Camera IP Dahua DH-IPC-B1B20P"
+},
+{
+"url": "/san-pham/dahua-dh-ipc-b1b40p/",
+"title": "Camera IP Dahua DH-IPC-B1B40P"
+},
+{
+"url": "/san-pham/dahua-dh-ipc-d1b20p-l/",
+"title": "Camera IP Dahua DH-IPC-D1B20P-L"
+},
+{
+"url": "/san-pham/dahua-dh-ipc-d1b20p/",
+"title": "Camera IP Dahua DH-IPC-D1B20P"
+},
+{
+"url": "/san-pham/dahua-dh-ipc-d2b20p-l/",
+"title": "Camera IP Dahua DH-IPC-D2B20P-L"
+},
+{
+"url": "/san-pham/dahua-dh-ipc-d2b20p/",
+"title": "Camera IP Dahua DH-IPC-D2B20P"
+},
+{
+"url": "/san-pham/dahua-dh-ipc-t1b20p-l/",
+"title": "Camera IP Dahua DH-IPC-T1B20P-L"
+},
+{
+"url": "/san-pham/dahua-dh-ipc-t1b20p/",
+"title": "Camera IP Dahua DH-IPC-T1B20P"
+},
+{
+"url": "/san-pham/dahua-dh-ipc-t1b40p/",
+"title": "Camera IP Dahua DH-IPC-T1B40P"
+},
+{
+"url": "/san-pham/hanwha-xnb-a6004/",
+"title": "Camera thân hộp (Box) Hanwha Vision XNB-A6004"
+},
+{
+"url": "/san-pham/hanwha-xnb-a8004/",
+"title": "Camera thân hộp (Box) Hanwha Vision XNB-A8004"
+},
+{
+"url": "/san-pham/hanwha-xnb-a9004/",
+"title": "Camera thân hộp (Box) Hanwha Vision XNB-A9004"
+},
+{
+"url": "/san-pham/hanwha-xnf-a8014r/",
+"title": "Camera mắt cá (Fisheye) Hanwha Vision XNF-A8014R"
+},
+{
+"url": "/san-pham/hanwha-xnf-a8014rv/",
+"title": "Camera mắt cá (Fisheye) Hanwha Vision XNF-A8014RV"
+},
+{
+"url": "/san-pham/hanwha-xnv-a8084rs/",
+"title": "Camera IP Hanwha Vision XNV-A8084RS"
+},
+{
+"url": "/san-pham/hanwha-xnv-a9084rs/",
+"title": "Camera IP Hanwha Vision XNV-A9084RS"
+},
+{
+"url": "/san-pham/hikvision-ds-2cd2683g2-lizs2uhun/",
+"title": "Camera IP Hikvision DS-2CD2683G2-LIZS2UHUN"
+},
+{
+"url": "/san-pham/hikvision-ds-2ce10df0t-pf/",
+"title": "Camera HD-TVI Hikvision DS-2CE10DF0T-PF"
+},
+{
+"url": "/san-pham/hikvision-ds-2ce10kf0t-fs/",
+"title": "Camera HD-TVI Hikvision DS-2CE10KF0T-FS"
+},
+{
+"url": "/san-pham/hikvision-ds-2ce12kf0t-fs/",
+"title": "Camera HD-TVI Hikvision DS-2CE12KF0T-FS"
+},
+{
+"url": "/san-pham/hikvision-ds-2ce16d0t-itfs/",
+"title": "Camera HDTVI 2MP có mic HIKVISION DS-2CE16D0T-ITFS"
+},
+{
+"url": "/san-pham/hikvision-ds-2ce16d0t-lfs/",
+"title": "Camera HD-TVI Hikvision DS-2CE16D0T-LFS"
+},
+{
+"url": "/san-pham/hikvision-ds-2ce17d0t-lfs/",
+"title": "Camera HD-TVI Hikvision DS-2CE17D0T-LFS"
+},
+{
+"url": "/san-pham/hikvision-ds-2ce56h0t-irmmf/",
+"title": "Camera HD-TVI Hikvision DS-2CE56H0T-IRMMF"
+},
+{
+"url": "/san-pham/hikvision-ds-2ce70df0t-pf/",
+"title": "Camera HD-TVI Hikvision DS-2CE70DF0T-PF"
+},
+{
+"url": "/san-pham/hikvision-ds-2ce70kf0t-mfs/",
+"title": "Camera HD-TVI Hikvision DS-2CE70KF0T-MFS"
+},
+{
+"url": "/san-pham/hikvision-ds-2ce72df0t-f/",
+"title": "Camera HD-TVI Hikvision DS-2CE72DF0T-F"
+},
+{
+"url": "/san-pham/hikvision-ds-2ce72kf0t-fs/",
+"title": "Camera HD-TVI Hikvision DS-2CE72KF0T-FS"
+},
+{
+"url": "/san-pham/hikvision-ds-2ce76d0t-itpfs/",
+"title": "Camera HD-TVI Hikvision DS-2CE76D0T-ITPFS"
+},
+{
+"url": "/san-pham/hikvision-ds-2ce78d0t-it3fs/",
+"title": "Camera HD-TVI Hikvision DS-2CE78D0T-IT3FS"
+},
+{
+"url": "/san-pham/hikvision-ds-2de3a404iw-de-w/",
+"title": "Camera IP SpeedDome 4MP HIKVISION DS-2DE3A404IW-DE/W"
+},
+{
+"url": "/san-pham/hikvision-ds-2de4215iw-de/",
+"title": "Camera PTZ Hikvision DS-2DE4215IW-DE"
+},
+{
+"url": "/san-pham/hikvision-ds-2de4215w-de/",
+"title": "Camera PTZ Hikvision DS-2DE4215W-DE"
+},
+{
+"url": "/san-pham/hikvision-ds-2de4215w-de3-c/",
+"title": "Camera PTZ Hikvision DS-2DE4215W-DE3(C)"
+},
+{
+"url": "/san-pham/hikvision-ds-2de4225iw-de-e/",
+"title": "Camera PTZ Hikvision DS-2DE4225IW-DE(E)"
+},
+{
+"url": "/san-pham/hikvision-ds-2de4225w-de-b/",
+"title": "Camera PTZ Hikvision DS-2DE4225W-DE(B)"
+},
+{
+"url": "/san-pham/hikvision-ds-2de4225w-de3-b/",
+"title": "Camera PTZ Hikvision DS-2DE4225W-DE3(B)"
+},
+{
+"url": "/san-pham/hikvision-ds-2de4a215iw-de/",
+"title": "Camera PTZ Hikvision DS-2DE4A215IW-DE"
+},
+{
+"url": "/san-pham/hikvision-ds-2de4a425iw-de-b/",
+"title": "Camera PTZ Hikvision DS-2DE4A425IW-DE(B)"
+},
+{
+"url": "/san-pham/hikvision-ds-2de5225iw-ae-c/",
+"title": "Camera PTZ Hikvision DS-2DE5225IW-AE(C)"
+},
+{
+"url": "/san-pham/hikvision-ds-2de5232iw-ae-b/",
+"title": "Camera IP PTZ 2MP HIKVISION DS-2DE5232IW-AE(B)"
+},
+{
+"url": "/san-pham/hikvision-ds-2de5232iw-ae-c/",
+"title": "Camera PTZ Hikvision DS-2DE5232IW-AE(C)"
+},
+{
+"url": "/san-pham/hikvision-ds-2de7425iw-ae-b/",
+"title": "Camera PTZ Hikvision DS-2DE7425IW-AE(B)"
+},
+{
+"url": "/san-pham/hikvision-ds-2sh043g2-uz/",
+"title": "Camera IP thân trụ 4MP WDR Hikvision DS-2SH043G2-UZ"
+},
+{
+"url": "/san-pham/hikvision-ds-2sh143g2-uz/",
+"title": "Camera IP Hikvision DS-2SH143G2-UZ"
+},
+{
+"url": "/san-pham/hikvision-ds-2sh2b3g2-izs/",
+"title": "Camera IP thân trụ 4MP HIKVISION DS-2SH2B3G2-IZS"
+},
+{
+"url": "/san-pham/hikvision-ds-2sh56ad-5is/",
+"title": "Camera IP Hikvision DS-2SH56AD-5IS"
+},
+{
+"url": "/san-pham/hikvision-ds-2sh646g2-lizsu/",
+"title": "Camera IP 4MP Hikvision DS-2SH646G2-LIZSU"
+},
+{
+"url": "/san-pham/hikvision-ds-2sh7g46g2-lizs/",
+"title": "Camera IP 4MP Hikvision DS-2SH7G46G2-LIZS"
+},
+{
+"url": "/san-pham/hikvision-ds-2td8167-150zc4f-w/",
+"title": "Camera ảnh nhiệt Hikvision DS-2TD8167-150ZC4F/W"
+},
+{
+"url": "/san-pham/hikvision-ds-2xs2t47g0-ld-w-h-4g-c18s40/",
+"title": "Camera HD-TVI Hikvision DS-2XS2T47G0-LD(W)H/4G/C18S40"
+},
+{
+"url": "/san-pham/hikvision-ds-3vn3345-w-4i-z-v2/",
+"title": "Camera IP Hikvision DS-3VN3345-W-4I(Z)-V2"
+},
+{
+"url": "/san-pham/hikvision-ds-3vn3365-w-6i-z/",
+"title": "Camera IP 6MP thân trụ Hikvision DS-3VN3365-W-6I(Z)"
+},
+{
+"url": "/san-pham/hikvision-ds-8shc25mxs-dlw/",
+"title": "Camera PTZ Hikvision DS-8SHC25MXS-DLW"
+},
+{
+"url": "/san-pham/hikvision-ds-vta142t-liu/",
+"title": "Camera IP hình trụ lớn 4MP Hikvision DS-VTA142T-LIU"
+},
+{
+"url": "/san-pham/hikvision-hik-2cd2d24g4-vn/",
+"title": "Camera IP Hikvision HIK-2CD2D24G4-VN"
+},
+{
+"url": "/san-pham/hikvision-hik-2cd2f24g4-vn/",
+"title": "Camera IP thân hồng ngoại 2MP HIK-2CD2F24G4-VN"
+},
+{
+"url": "/san-pham/hikvision-ids-2sh6b6g0-izs/",
+"title": "Camera IP Hikvision IDS-2SH6B6G0-IZS"
+},
+{
+"url": "/san-pham/hikvision-ids-cgt43l/",
+"title": "Camera nhận diện biển số Hikvision iDS-CGT43L"
+},
+{
+"url": "/san-pham/hikvision-sh-dt2a204-avd/",
+"title": "Camera PTZ Hikvision SH-DT2A204-AVD"
+},
+{
+"url": "/san-pham/hikvision-ts-1h2123d3/",
+"title": "Camera IP bán cầu 2MP hồng ngoại 30m TS-1H2123D3"
+},
+{
+"url": "/san-pham/hikvision-vt-2sf8c425mxs-dlw/",
+"title": "Camera PTZ Hikvision VT-2SF8C425MXS-DLW"
+},
+{
+"url": "/san-pham/iot/",
+"title": "IoT & Cảm biến"
+},
+{
+"url": "/san-pham/luu-tru/",
+"title": "NVR & Lưu trữ"
+},
+{
+"url": "/san-pham/mang/",
+"title": "Thiết bị mạng"
+},
+{
+"url": "/san-pham/poly-g7500/",
+"title": "Thiết bị hội nghị truyền hình Polycom G7500"
+},
+{
+"url": "/san-pham/poly-group-310/",
+"title": "Hội nghị truyền hình Polycom RealPresence Group 310"
+},
+{
+"url": "/san-pham/poly-group-500/",
+"title": "Polycom RealPresence Group 500"
+},
+{
+"url": "/san-pham/poly-group-700/",
+"title": "Polycom RealPresence Group 700"
+},
+{
+"url": "/san-pham/poly-studio-x50/",
+"title": "Thiết bị họp trực tuyến Polycom Poly Studio X50"
+},
+{
+"url": "/san-pham/ra-vao/",
+"title": "Kiểm soát ra vào"
+},
+{
+"url": "/so-sanh-giai-phap/",
+"title": "So sánh giải pháp camera AI, AI Box, chấm công, lưu trữ"
+},
+{
+"url": "/tin-tuc/",
+"title": "Tin tức & Kiến thức"
+},
+{
+"url": "/tin-tuc/5-dau-hieu-camera-loi-thoi/",
+"title": "5 dấu hiệu cho thấy hệ thống camera của bạn đã lỗi thời"
+},
+{
+"url": "/tin-tuc/ban-giao-he-thong-300-camera-cho-nha-may-tai-bac-ninh/",
+"title": "Bàn giao hệ thống 300 camera cho nhà máy tại Bắc Ninh"
+},
+{
+"url": "/tin-tuc/chon-o-cung-cho-dau-ghi-bao-nhieu-tb-la-du/",
+"title": "Chọn ổ cứng cho đầu ghi: bao nhiêu TB là đủ?"
+},
+{
+"url": "/tin-tuc/diem-danh-bang-ai-truong-hoc-tiet-kiem-duoc-bao-nhieu-thoi-gian/",
+"title": "Điểm danh bằng AI: trường học tiết kiệm được bao nhiêu thời gian?"
+},
+{
+"url": "/tin-tuc/nhan-dien-khuon-mat-hoat-dong-the-nao-trong-thuc-te/",
+"title": "Nhận diện khuôn mặt hoạt động thế nào trong thực tế?"
+},
+{
+"url": "/tin-tuc/phong-chong-trom-cap-tai-kho-hang-bang-canh-bao-chu-dong/",
+"title": "Phòng chống trộm cắp tại kho hàng bằng cảnh báo chủ động"
+},
+{
+"url": "/toa-nha-thong-minh/",
+"title": "Tòa nhà thông minh"
+},
+{
+"url": "/trung-tam-ai/",
+"title": "Trung tâm AI"
+},
+{
+"url": "/truong-hoc-ai/",
+"title": "Trường học AI"
+},
+{
+"url": "/ve-chung-toi/",
+"title": "Về chúng tôi"
+}
+]
